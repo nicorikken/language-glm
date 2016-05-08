@@ -1,0 +1,97 @@
+name: "GridLAB-D"
+scopeName: "source.glm"
+fileTypes: [
+  "glm"
+]
+maxTokensPerLine: 100
+patterns: [
+  {
+    # TODO: gradually replace this language import
+    include: "source.c"
+  }
+  {
+    include: "#clock"
+  }
+  {
+    include: "#objects"
+  }
+  {
+    include: "#modules"
+  }
+]
+repository:
+  clock:
+    patterns: [
+      {
+        name: "clock.gridlab-d"
+        begin: "(?<=^|\\s)(clock)\\s+([^\\{\\s]*)\\s*\\{"
+        beginCaptures:
+          1: name: "type.clock.gridlab-d"
+          2: name: "definition.clock.gridlab-d"
+        end: "}"
+        patterns: [
+          {
+            include: "#clock-properties"
+          }
+        ]
+      }
+    ]
+  "clock-properties":
+    patterns: [
+      {
+        name: "clock.property.gridlab-d"
+        match: "(?<=^|\\s)(timezone|timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          1: name: "type.clock.property.gridlab-d"
+          2: name: "value.clock.property.gridlab-d"
+      }
+    ]
+  modules:
+    patterns: [
+      {
+        name: "module.gridlab-d"
+        match: "(?<=^|\\s)(module)\\s+([^;\\s]*)(?=\\s*;)"
+        captures:
+          1: name: "type.module.gridlab-d"
+          2: name: "definition.module.gridlab-d"
+      }
+      {
+        name: "module.gridlab-d"
+        begin: "(?<=^|\\s)(module)\\s+([^\\{\\s]*)\\s*\\{"
+        beginCaptures:
+          1: name: "type.module.gridlab-d"
+          2: name: "definition.module.gridlab-d"
+        end: "}"
+        # TODO: include module property patterns
+        # patterns: []
+      }
+    ]
+  objects:
+    patterns: [
+      {
+        name: "object.gridlab-d"
+        begin: "(?<=^|\\s)(object)\\s+([^\\{\\s]*)\\s*\\{"
+        beginCaptures:
+          1: name: "type.object.gridlab-d"
+          2: name: "definition.object.gridlab-d"
+        end: "}"
+        patterns: [
+          {
+            include: "#objects"
+          }
+          {
+            include: "#object-properties"
+          }
+        ]
+      }
+    ]
+  "object-properties":
+    patterns: [
+      {
+        name: "object.property.gridlab-d"
+        match: "(?<=^|\\s)(name|tmyfile|file|filename|reader|interval|limit)\\s+([^;\\s]*)(?=\\s*;)"
+        captures:
+          1: name: "type.object.property.gridlab-d"
+          2: name: "value.object.property.gridlab-d"
+      }
+    ]

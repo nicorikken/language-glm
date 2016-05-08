@@ -1,0 +1,14 @@
+{
+  "name": "language-glm",
+  "version": "0.1.0",
+  "description": "Atom language support for GridLAB-D markup GLM",
+  "keywords": [
+    "glm",
+    "gridlab-d"
+  ],
+  "repository": "https://github.com/nicorikken/language-glm",
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  }
+}

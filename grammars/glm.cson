@@ -5,12 +5,11 @@ fileTypes: [
 ]
 maxTokensPerLine: 100
 patterns: [
-  # {
-  #  include: "#comments"
-  # }
   {
-    # TODO: gradually replace this language import
-    include: "source.c"
+    include: "#comments"
+  }
+  {
+    include: "#preprocessors"
   }
   {
     include: "#clock"
@@ -22,7 +21,7 @@ patterns: [
     include: "#modules"
   }
   {
-    include: "#preprocessors"
+    include: "#generic-directives"
   }
 ]
 repository:
@@ -32,12 +31,9 @@ repository:
     patterns: [
       {
         name: "clock.gridlab-d"
-        # begin: "(?<=^|\\s)(clock)\\s*((?<=\\s)[^\\{\\s]*)?\\s*\\{"
-        begin: "(?<=^|\\s)(clock)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*))?)?\\s*\\{"
+        begin: "(?<=^|\\s)(clock)\\s*\\{"
         beginCaptures:
-          1: name: "type.clock.gridlab-d"
-          2: name: "definition.clock.gridlab-d"
-          3: name: "entity.name.clock.gridlab-d"
+          1: name: "keyword.type.clock.gridlab-d"
         end: "}"
         patterns: [
           {
@@ -53,8 +49,8 @@ repository:
         name: "clock.property.gridlab-d"
         match: "(?<=^|\\s)(timezone|timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
         captures:
-          1: name: "type.clock.property.gridlab-d"
-          2: name: "value.clock.property.gridlab-d"
+          1: name: "keyword.clock.property.gridlab-d"
+          2: name: "entity.clock.property.gridlab-d"
       }
     ]
   modules:
@@ -65,8 +61,8 @@ repository:
         name: "module.gridlab-d"
         match: "(?<=^|\\s)(module)\\s+([^;\\s]*)(?=\\s*;)"
         captures:
-          1: name: "type.module.gridlab-d"
-          2: name: "definition.module.gridlab-d"
+          1: name: "keyword.type.module.gridlab-d"
+          2: name: "entity.name.function.module.gridlab-d"
       }
       {
         # multie line module definition
@@ -77,11 +73,14 @@ repository:
         name: "module.gridlab-d"
         begin: "(?<=^|\\s)(module)\\s+([^\\{\\s]*)\\s*\\{"
         beginCaptures:
-          1: name: "type.module.gridlab-d"
-          2: name: "definition.module.gridlab-d"
+          1: name: "keyword.type.module.gridlab-d"
+          2: name: "entity.name.function.module.gridlab-d"
         end: "}"
-        # TODO: include module property patterns
-        # patterns: []
+        patterns: [
+          {
+            include: "#generic-properties"
+          }
+        ]
       }
     ]
   objects:
@@ -95,14 +94,13 @@ repository:
       {
         name: "object.gridlab-d"
         # begin: "(?<=^|\\s)(object)\\s+([^\\{\\s]*)\\s*\\{"
-        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*))?)?\\s*\\{?"
+        #begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*))?)?\\s*\\{?"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
         beginCaptures:
           1: name: "storage.type.object.gridlab-d"
-          # 1: name: "type.object.gridlab-d"
-          # 2: name: "definition.object.gridlab-d"
           2: name: "entity.name.function.object.gridlab-d"
-          #3: name: "id.object.gridlab-d"
           3: name: "constant.id.object.gridlab-d"
+          4: name: "constant.id.object.gridlab-d"
         end: "}"
         patterns: [
           {
@@ -125,6 +123,37 @@ repository:
           2: name: "value.object.property.gridlab-d"
       }
     ]
+  "generic-directives":
+    patterns: [
+      {
+        name: "meta.directive.gridlab-d"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          1: name: "storage.type.directive.gridlab-d"
+          2: name: "entity.name.function.directive.gridlab-d"
+          3: name: "constant.id.directive.gridlab-d"
+          4: name: "constant.id.directive.gridlab-d"
+        end: "}"
+        patterns: [
+          {
+            include: "#generic-directives"
+          }
+          {
+            include: "#generic-properties"
+          }
+        ]
+      }
+    ]
+  "generic-properties":
+    patterns: [
+      {
+        name: "property.gridlab-d"
+        match: "(?<=^|;)\\s*([^\\s;]*)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          1: name: "contant.keyword.property.gridlab-d"
+          2: name: "entity.property.gridlab-d"
+      }
+    ]
   "preprocessors":
     patterns: [
       {
@@ -135,17 +164,6 @@ repository:
           1: name: "keyword.preprocessor.gridlab-d"
           2: name: "name.preprocessor.gridlab-d"
           3: name: "constant.preprocessor.gridlab-d"
-      }
-    ]
-  "generic-properties":
-    patterns: [
-      {
-        name: "property.gridlab-d"
-        # match: "(?<=^|\\s)(\\w*)\\s+([^;]*)(?=\\s*;)"
-        match: "(?<=^|;)\\s*([^\\s;]*)\\s+([^;]*)(?=\\s*;)"
-        captures:
-          1: name: "type.property.gridlab-d"
-          2: name: "value.property.gridlab-d"
       }
     ]
   "comments":

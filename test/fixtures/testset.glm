@@ -1,0 +1,16 @@
+//comment
+#set foo=bar
+
+foo bar:1 {
+  foo bar;
+}
+
+clock {
+  timestamp '2000-01-01 0:00:00';
+  timezone EST+5EDT;
+}
+
+object foo {};
+object foo:1 {};
+object foo:2..3 {};
+object foo:..4 {};

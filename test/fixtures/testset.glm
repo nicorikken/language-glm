@@ -1,16 +1,121 @@
 //comment
 #set foo=bar
+#endif a
 
 foo bar:1 {
   foo bar;
 }
+
+"string"
+'string'
+0.01
+2
+3,00.5
+
+flags NONE LOCKED
 
 clock {
   timestamp '2000-01-01 0:00:00';
   timezone EST+5EDT;
 }
 
+// Directives http://gridlab-d.sourceforge.net/wiki/index.php/Directives
 object foo {};
 object foo:1 {};
 object foo:2..3 {};
 object foo:..4 {};
+
+// Class http://gridlab-d.sourceforge.net/wiki/index.php/Class_%28directive%29
+class class-name {
+  [public] GLM-type property-name[Units];
+  protected GLM-type reference-name[Units];
+  private C-type private-name;
+  intrinsic create (object parent) {
+    // ...
+    return SUCCESS; // or FAILED
+  };
+  intrinsic init (object parent) {
+    // ...
+    return SUCCESS; // or FAILED
+  };
+  intrinsic isa (char* class-name) {
+    //  New in 3.0!  ...
+    return true; // or false
+  };
+  intrinsic precommit (void) {
+    //  New in 3.0!  ...
+  };
+  intrinsic presync (TIMESTAMP from, TIMESTAMP to) {
+    // ...
+  };
+  intrinsic sync (TIMESTAMP from, TIMESTAMP to) {
+    // ...
+  };
+  intrinsic postsync (TIMESTAMP from, TIMESTAMP to) {
+    // ...
+  };
+  intrinsic plc (TIMESTAMP from, TIMESTAMP to) {
+    // ...
+  };
+  intrinsic commit (TIMESTAMP from, TIMESTAMP to) {
+    //  New in 3.0!  ...
+  };
+  intrinsic notify (char* property-name, int event, void* value) {
+    //  New in 3.0!  ...
+  };
+  function function-name (call arguments...) {
+    // code
+  };
+}
+
+// Clock http://gridlab-d.sourceforge.net/wiki/index.php/Clock_%28directive%29
+clock {
+  timezone tzspec;
+  starttime YYYY-MM-DD hh:mm:ss ZZZ;
+  stoptime YYYY-MM-DD hh:mm:ss ZZZ;
+}
+
+// extern http://gridlab-d.sourceforge.net/wiki/index.php/Extern
+extern "C" library_name:function_name_1[,function_name_2[,...]];
+extern "C" library_name:function_name_1[,function_name_2[,...]] {
+  /* C code */
+}
+
+// ...
+
+// Directives - Module http://gridlab-d.sourceforge.net/wiki/index.php/Module_%28directive%29
+module name;
+module name {
+  variable value;
+  // ...
+}
+
+// Directives - Modules - Climate http://gridlab-d.sourceforge.net/wiki/index.php/Climate_%28module%29
+module climate;
+
+// Directives - Modules - Market http://gridlab-d.sourceforge.net/wiki/index.php/Market_%28module%29
+module market;
+
+// Directives - Modules - Powerflow http://gridlab-d.sourceforge.net/wiki/index.php/Powerflow_%28module%29
+module powerflow;
+module powerflow {
+  acceleration_factor 1.4;
+  default_maximum_voltage_error 1e-6 V;
+  fault_impedance 1e-6+0d Ohm;
+  geographic_degree 0.0;
+  line_capacitance FALSE;
+  lu_solver "";
+  maximum_voltage_error 1e-6 V;
+  nominal_frequency 60.0 Hz;
+  NR_iteration_limit 500;
+  NR_superLU_procs 1;
+  primary_voltage_ratio 60.0 pu;
+  require_voltage_control FALSE;
+  show_matrix_values FALSE;
+  solver_method FBS;
+  warning_underfrequency 55.0 Hz;
+  warning_overfrequency 65.0 Hz;
+  warning_undervoltage 0.8 pu;
+  warning_overvoltage 1.2 pu;
+  warning_voltageangle 2.0 deg;
+}

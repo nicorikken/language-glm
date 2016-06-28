@@ -32,6 +32,9 @@ patterns: [
     include: "#numbers"
   }
   {
+    include: "#timestamps"
+  }
+  {
     include: "#strings"
   }
 ]
@@ -48,20 +51,38 @@ repository:
         end: "}"
         patterns: [
           {
-            include: "#clock-properties"
+            include: "#clock-timestamps"
             #include: "#generic-properties"
+          }
+          {
+            include: "#clock-timezones"
           }
         ]
       }
     ]
-  "clock-properties":
+  "clock-timestamps":
     patterns: [
       {
         name: "clock.property.glm"
-        match: "(?<=^|\\s)(timezone|timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
+        begin: "^\\s*(timestamp|stoptime)"
+        beginCaptures:
+          1: name: "keyword.clock.property.glm"
+        end: '(?<!\\\\)(?=\\n)' #TODO check if this is proper
+        patterns: [
+          {
+            include: "#timestamps"
+          }
+        ]
+      }
+    ]
+  "clock-timezones":
+    patterns: [
+      {
+        name: "clock.property.glm"
+        match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*;)" #TODO make this match more selective
         captures:
           1: name: "keyword.clock.property.glm"
-          2: name: "entity.clock.property.glm"
+          2: name: "constant.timezone.clock.propety.glm"
       }
     ]
   modules:
@@ -307,5 +328,14 @@ repository:
       {
         'match': '%'
         'name': 'invalid.illegal.placeholder.glm'
+      }
+    ]
+  'timestamps':
+    'patterns':[
+      {
+        #'match': '\'\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}\\:\\d{2}\\:\\d{2}\\s+[A-Z]{3}\\\''
+        'match': '(\'\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\\'|INIT|NEVER|INVALID)'
+        #TODO add word boundaries
+        'name': 'constant.timestamp.glm'
       }
     ]

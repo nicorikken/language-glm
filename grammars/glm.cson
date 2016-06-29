@@ -64,7 +64,7 @@ repository:
     patterns: [
       {
         name: "clock.property.glm"
-        begin: "^\\s*(timestamp|stoptime)"
+        begin: "^\\s*(timestamp|stoptime)(?=\\s)"
         beginCaptures:
           1: name: "keyword.clock.property.glm"
         end: '(?<!\\\\)(?=\\n)' #TODO check if this is proper
@@ -181,10 +181,42 @@ repository:
       {
         name: "property.glm"
         match: "(?<=^|;)\\s*([^\\s;]*)\\s+([^;]*)(?=\\s*;)"
+        #TODO trailing semicolumn required?
         captures:
-          1: name: "contant.keyword.property.glm"
-          2: name: "entity.property.glm"
+          1: name: "support.keyword.property.glm"
+          2:
+            patterns: [
+              {
+                include: "#generic-values"
+              }
+            ]
       }
+    ]
+  "generic-values":
+    patterns: [
+      {
+        include: "#strings"
+      }
+      {
+        include: "#flags"
+      }
+      {
+        include: "#numbers"
+      }
+      {
+        include: "#timestamps"
+      }
+      {
+        include: "#strings"
+      }
+      {
+        include: "#generic-value-match"
+      }
+    ]
+  "generic-value-match":
+    patterns: [
+      name: "constant.property.glm"
+      match: "(?<=^|;|\\s)([^;]*)(?=\\s*;)"
     ]
   "macros":
     patterns: [

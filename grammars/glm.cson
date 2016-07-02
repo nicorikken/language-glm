@@ -37,6 +37,10 @@ patterns: [
   {
     include: "#strings"
   }
+  {
+    # TODO nest rather than include on the main level.
+    includes: "#variables"
+  }
 ]
 repository:
   clock:
@@ -374,5 +378,20 @@ repository:
         'match': '(\'\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\\'|INIT|NEVER|INVALID)'
         #TODO add word boundaries
         'name': 'constant.timestamp.glm'
+      }
+    ]
+  'variables':
+    patterns: [
+      {
+        #match: '\\b([^\\s\\=]*)=([^;]*)\\b(?=\\s*;)'
+        match: '\\b([^\\s\\=]*)=([^;]*)'
+        captures:
+          1: name: "keyword.variable.property.glm"
+          2:
+            patterns: [
+              {
+                include: "#generic-values"
+              }
+          ]
       }
     ]

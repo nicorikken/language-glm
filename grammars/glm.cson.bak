@@ -1,0 +1,397 @@
+name: "GridLAB-D Model (GLM)"
+scopeName: "source.glm"
+fileTypes: [
+  "glm"
+]
+maxTokensPerLine: 100
+# sources:
+# 1. c-language v.0.52.1 MIT licensed https://github.com/atom/language-c/blob/master/grammars/c.cson
+patterns: [
+  {
+    include: "#comments"
+  }
+  {
+    include: "#macros"
+  }
+  {
+    include: "#clock"
+  }
+  {
+    include: "#objects"
+  }
+  {
+    include: "#modules"
+  }
+  {
+    include: "#generic-directives"
+  }
+  {
+    include: "#flags"
+  }
+  {
+    include: "#numbers"
+  }
+  {
+    include: "#timestamps"
+  }
+  {
+    include: "#strings"
+  }
+  {
+    # TODO nest rather than include on the main level.
+    includes: "#variables"
+  }
+]
+repository:
+  clock:
+    # clock {
+    # clock{
+    patterns: [
+      {
+        name: "clock.glm"
+        begin: "(?<=^|\\s)(clock)\\s*\\{"
+        beginCaptures:
+          1: name: "keyword.type.clock.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#clock-timestamps"
+          }
+          {
+            include: "#clock-timezones"
+          }
+          {
+            include: "#generic-properties"
+          }
+        ]
+      }
+    ]
+  "clock-timestamps":
+    patterns: [
+      {
+        name: "clock.property.glm"
+        match: "(?<=^|;)\\s*(timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          1: name: "keyword.clock.property.glm"
+          2:
+            patterns: [
+              {
+                include: "#timestamps"
+              }
+            ]
+      }
+    ]
+  "clock-timezones":
+    patterns: [
+      {
+        name: "clock.property.glm"
+        match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*;)" #TODO make this match more selective
+        captures:
+          1: name: "keyword.clock.property.glm"
+          2: name: "constant.timezone.clock.propety.glm"
+      }
+    ]
+  modules:
+    patterns: [
+      {
+        # single line module definition
+        # module name;
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+([^;\\s]*)(?=\\s*;)"
+        captures:
+          1: name: "keyword.type.module.glm"
+          2: name: "entity.name.function.module.glm"
+      }
+      {
+        # multi-line module definition
+        # module name {
+        #   variable value;
+        #   // ...
+        # }
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+([^\\{\\s]*)\\s*\\{"
+        beginCaptures:
+          1: name: "keyword.type.module.glm"
+          2: name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#generic-properties"
+          }
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  objects:
+    # http://gridlab-d.sourceforge.net/wiki/index.php/Object_%28directive%29
+    # object definitions: single, with id, or multiple-numbered
+    # object line_configuration {
+    # object line_configuration:id {
+    # object line_configuration:from..to {
+    # object line_configuration:..count {
+    patterns: [
+      {
+        name: "object.glm"
+        # begin: "(?<=^|\\s)(object)\\s+([^\\{\\s]*)\\s*\\{"
+        #begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*))?)?\\s*\\{?"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          1: name: "storage.type.object.glm"
+          2: name: "entity.name.function.object.glm"
+          3: name: "constant.id.object.glm"
+          4: name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#objects"
+          }
+          {
+            # include: "#object-properties"
+            include: "#generic-properties"
+          }
+        ]
+      }
+    ]
+  "object-properties":
+    patterns: [
+      {
+        name: "object.property.glm"
+        match: "(?<=^|\\s)(name|id|groupid|parent|rank|schedule_skew|latitude|longitude|in|out|heartbeat|tmyfile|file|filename|reader|interval|limit)\\s+([^;\\s]*)(?=\\s*;)"
+        captures:
+          1: name: "type.object.property.glm"
+          2: name: "value.object.property.glm"
+      }
+    ]
+  "generic-directives":
+    patterns: [
+      {
+        name: "meta.directive.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          1: name: "storage.type.directive.glm"
+          2: name: "entity.name.function.directive.glm"
+          3: name: "constant.id.directive.glm"
+          4: name: "constant.id.directive.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#generic-directives"
+          }
+          {
+            include: "#generic-properties"
+          }
+        ]
+      }
+    ]
+  "generic-properties":
+    patterns: [
+      {
+        name: "property.glm"
+        match: "(?<=^|;)\\s*([^\\s;]*)\\s+([^;]*)(?=\\s*;)"
+        #TODO trailing semicolumn required?
+        captures:
+          1: name: "support.keyword.property.glm"
+          2:
+            patterns: [
+              {
+                include: "#generic-values"
+              }
+            ]
+      }
+    ]
+  "generic-values":
+    patterns: [
+      {
+        include: "#strings"
+      }
+      {
+        include: "#flags"
+      }
+      {
+        include: "#numbers"
+      }
+      {
+        include: "#timestamps"
+      }
+      {
+        include: "#strings"
+      }
+      {
+        include: "#generic-value-match"
+      }
+    ]
+  "generic-value-match":
+    patterns: [
+      name: "constant.property.glm"
+      match: "(?<=^|;|\\s)([^;]*)(?=\\s*;)"
+    ]
+  "macros":
+    patterns: [
+      {
+        # #set profiler=1
+        #name: "meta.macro.glm"
+        #match: "(?<=^|;)(#binpath|#define|#endif|#else|#error|#if|#ifdef|#ifexist|#ifndef|#include|#incpath|#libpath|#option|#print|#set|#setenv|#start|#system|#warning)\\s+([^\\s;=]*)=([^;]*)(?=\\s|$|;)"
+        match: "^\\s*((#binpath|#define|#endif|#else|#error|#if|#ifdef|#ifexist|#ifndef|#include|#incpath|#libpath|#option|#print|#set|#setenv|#start|#system|#warning))\\b"
+        captures:
+          1: name: "meta.macro.glm"
+          2: name: "keyword.macro.glm"
+          3: name: "name.macro.glm"
+          4: name: "constant.macro.glm"
+      }
+    ]
+  "comments":
+    # selectively copied from https://github.com/atom/language-c/blob/master/grammars/c.cson L344+
+    "patterns": [
+      {
+        'begin': '/\\*'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.begin.glm'
+        'end': '\\*/'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.end.glm'
+        'name': 'comment.block.glm'
+      }
+      {
+        'match': '\\*/.*\\n'
+        'name': 'invalid.illegal.stray-comment-end.glm'
+      }
+      {
+        'begin': '(^[ \\t]+)?(?=//)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.whitespace.comment.leading.glm'
+        'end': '(?!\\G)'
+        'patterns': [
+          {
+            'begin': '//'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.glm'
+            'end': '\\n'
+            'name': 'comment.line.double-slash.glm'
+            'patterns': [
+              {
+                'include': '#line_continuation_character'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  'flags':
+    'patterns': [
+      {
+        'name': 'constant.flag.glm'
+        'match': '\\b(NONE|HASPLC|LOCKED|RECALC|FOREIGN|SKIPSAVE|RERANK|DELTAMODE)\\b'
+      }
+    ]
+  'line_continuation_character': #copied from source 1
+    'patterns': [
+      {
+        'match': '(\\\\)\\s*\\n'
+        'captures':
+          '1':
+            'name': 'constant.character.escape.line-continuation.glm'
+      }
+    ]
+  'numbers': #copied from source 1
+    'patterns': [
+      {
+        'match': '\\b((0(x|X)[0-9a-fA-F]*)|(0(b|B)[01]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b'
+        'name': 'constant.numeric.glm'
+      }
+    ]
+  'strings': # copied from source 1
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.glm'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.glm'
+        'name': 'string.quoted.double.glm'
+        'patterns': [
+          {
+            'include': '#string_escaped_char'
+          }
+          {
+            'include': '#string_placeholder'
+          }
+          {
+            'include': '#line_continuation_character'
+          }
+        ]
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.glm'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.glm'
+        'name': 'string.quoted.single.glm'
+        'patterns': [
+          {
+            'include': '#string_escaped_char'
+          }
+          {
+            'include': '#line_continuation_character'
+          }
+        ]
+      }
+    ]
+  'string_escaped_char':
+    'patterns': [
+      {
+        'match': '\\\\(\\\\|[abefnprtv\'"?]|[0-3]\\d{,2}|[4-7]\\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})'
+        'name': 'constant.character.escape.glm'
+      }
+      {
+        'match': '\\\\.'
+        'name': 'invalid.illegal.unknown-escape.glm'
+      }
+    ]
+  'string_placeholder':
+    'patterns': [
+      {
+        'match': '(?x)%\n    \t\t\t\t\t\t(\\d+\\$)?                             # field (argument #)\n    \t\t\t\t\t\t[#0\\- +\']*                           # flags\n    \t\t\t\t\t\t[,;:_]?                              # separator character (AltiVec)\n    \t\t\t\t\t\t((-?\\d+)|\\*(-?\\d+\\$)?)?              # minimum field width\n    \t\t\t\t\t\t(\\.((-?\\d+)|\\*(-?\\d+\\$)?)?)?         # precision\n    \t\t\t\t\t\t(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier\n    \t\t\t\t\t\t[diouxXDOUeEfFgGaACcSspn%]           # conversion type\n    \t\t\t\t\t'
+        'name': 'constant.other.placeholder.glm'
+      }
+      {
+        'match': '%'
+        'name': 'invalid.illegal.placeholder.glm'
+      }
+    ]
+  'timestamps':
+    'patterns':[
+      {
+        #'match': '\'\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}\\:\\d{2}\\:\\d{2}\\s+[A-Z]{3}\\\''
+        'match': '(\'\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\\'|INIT|NEVER|INVALID)'
+        #TODO add word boundaries
+        'name': 'constant.timestamp.glm'
+      }
+    ]
+  'variables':
+    patterns: [
+      {
+        #match: '\\b([^\\s\\=]*)=([^;]*)\\b(?=\\s*;)'
+        match: '\\b([^\\s\\=]*)=([^;]*)'
+        captures:
+          1: name: "keyword.variable.property.glm"
+          2:
+            patterns: [
+              {
+                include: "#generic-values"
+              }
+          ]
+      }
+    ]

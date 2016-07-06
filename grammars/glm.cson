@@ -9,6 +9,7 @@ patterns: [
   # directives
   {include: "#clock"}
   {include: "#modules"}
+  {include: "#objects"}
 ]
 repository:
 
@@ -147,7 +148,7 @@ repository:
   clock:
     patterns: [{
       name: 'clock.glm'
-      begin: "^\\s*(clock)\\s*\\{"
+      begin: "^\\s*(clock)\\s*\\{?"
       beginCaptures:
         1: name: 'keyword.type.clock.glm'
       end: "}"
@@ -171,7 +172,7 @@ repository:
     patterns: [{
       name: 'clock.property.glm'
       # TODO make this match more selective
-      match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*);"
+      match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*;)"
       captures:
         1: name: 'keyword.clock.property.glm'
         2: name: 'constant.timezone.clock.property.glm'
@@ -185,7 +186,7 @@ repository:
 
 # TODO link
 
-# TODO module
+# module
   modules:
     patterns: [
       {include: "#module-inline"}
@@ -202,7 +203,7 @@ repository:
   "module-block":
     patterns: [{
       name: 'module.glm'
-      begin: "(?<=^|\\s)(module)\\s+([^;\\{]*\\s*)\\{"
+      begin: "(?<=^|\\s)(module)\\s+([^;\\{\\\/]*\\s*)\\{?"
       beginCaptures:
         1: name: "keyword.type.module.glm"
         2: patterns: [{include: "#module-name"}]
@@ -239,9 +240,40 @@ repository:
           1: name: 'keyword.global.commercial.module.glm'
           2: patterns: [{include: "#wildcard-element"}] #TODO
       }
+      {
+        match:'(?=^|;)\\s*(gnuplot_path|flush_interval)\\s+([^;]*)(?=\\s*;)'
+        captures:
+          1: name: 'keyword.global.tape.module.glm'
+          2: patterns: [{include: "#wildcard-element"}] #TODO
+      }
     ]
 
 # TODO object
+  objects:
+    patterns: [
+      name: 'object.glm'
+      begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+      beginCaptures:
+        # TODO make class match more selective
+        1: name: "storage.type.object.glm"
+        2: name: "entity.name.function.object.glm"
+        3: name: "constant.id.object.glm"
+        4: name: "constant.id.object.glm"
+      end: "}"
+      patterns: [
+        {include: "#comments"}
+        {include: "#object-properties-common"}
+        #TODO include other properties
+      ]]
+  "object-properties-common":
+    patterns: [{
+      name: 'object.common.property.glm'
+      # TODO make this match more selective
+      match: "^\\s*(name|id|groupid|parent|rank|schedule_skew|latitude|longitude|in|out|heartbeat|flags)\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'keyword.object.common.property.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+      }]
 
 # TODO schedule
 
@@ -295,11 +327,21 @@ repository:
           patterns: [
             {include: "#wildcard-element"}
           ]}]
+
   timestamps:
     patterns: [{
       match: "(\'\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\\'|INIT|NEVER|INVALID)"
       name: 'constant.timestamp.glm'
     }]
+
+  "intrinsic-variable-expansion":
+      comment: "intrinsic expansion of variables in object definitions"
+      patterns: [{
+        match: "{(file|filename|fileext|filepath|line|namespace|class|id|var)}"
+        name: 'meta.variable.macro.glm'
+        captures:
+          1: name: 'entity.name.function.intrinsic.expansion.glm'
+      }]
 
 #
 # Not yet completed (TODO)
@@ -311,6 +353,7 @@ repository:
         1:
           name: 'constant.wildcard.glm'
           patterns: [
+            {include: "#intrinsic-variable-expansion"}
             {include: "#macro-variable-expansion"}
           ]}]
   command:

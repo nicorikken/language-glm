@@ -6,7 +6,9 @@ fileTypes: [
 patterns: [
   {include: "#comments"}
   {include: "#macros"}
-  {include: "#directives"}
+  # directives
+  {include: "#clock"}
+  {include: "#modules"}
 ]
 repository:
 
@@ -138,10 +140,6 @@ repository:
           ]}]
 
 # directives (generic category)
-  directives:
-    patterns: [
-      {include: "#clock"}
-    ]
 
 # TODO class
 
@@ -196,23 +194,52 @@ repository:
   "module-inline":
     patterns: [{
       name: 'module.glm'
-      match: "(?<=^|\\s)(module)\\s+([^;\\s]*)(?=\\s*;)"
+      match: "(?<=^|\\s)(module)\\s+([^;\\s]*\\s*);"
       captures:
         1: name: 'keyword.type.module.glm'
-        2: name: 'entity.name.function.module.glm'
+        2: patterns: [{include: "#module-name"}]
       }]
   "module-block":
     patterns: [{
       name: 'module.glm'
-      begin: "(?<=^|\\s)(module)\\s+([^\\{\\s]*)\\s*\\{"
+      begin: "(?<=^|\\s)(module)\\s+([^;\\{]*\\s*)\\{"
       beginCaptures:
         1: name: "keyword.type.module.glm"
-        2: name: "entity.name.function.module.glm"
+        2: patterns: [{include: "#module-name"}]
       end: "}"
       patterns: [
         {include: "#comments"}
+        {include: "#module-global-variables"}
         #TODO maybe include generic variables
       ]}]
+  "module-name":
+    patterns: [{
+      comment: "made to only match the provided module names"
+      match: '(?<=^)(climate|market|powerflow|residential|reliability|generators|commercial|communications|matpower|network|assert|tape)(?=\\s*\\Z)'
+      captures:
+        1: name: 'entity.name.function.module.glm'
+      }]
+  "module-global-variables":
+    patterns:[
+      {
+        match: '(?<=^|;)\\s*(acceleration_factor|default_maximum_voltage_error|fault_impedance|geographic_degree|line_capacitance|lu_solver|maximum_voltage_error|nominal_frequency|NR_iteration_limit|NR_superLU_procs|primary_voltage_ratio|require_voltage_control|show_matrix_values|solver_method|warning_underfrequency|warning_overfrequency|warning_undervoltage|warning_overvoltage|warning_voltageangle)\\s+([^;]*)(?=\\s*;)'
+        captures:
+          1: name: 'keyword.global.powerflow.module.glm'
+          2: patterns: [{include: "#wildcard-element"}] #TODO
+      }
+      {
+        match:'(?<=^|;)\\s*(default_line_voltage|default_line_current|default_outdoor_temperature|default_humidity|default_solar|default_etp_iterations)\\s+([^;]*)(?=\\s*;)'
+        captures:
+          1: name: 'keyword.global.residential.module.glm'
+          2: patterns: [{include: "#wildcard-element"}] #TODO
+      }
+      {
+        match:'(?<=^|;)\\s*(warn_control|warn_low_temp|warn_high_temp)\\s+([^;]*)(?=\\s*;)'
+        captures:
+          1: name: 'keyword.global.commercial.module.glm'
+          2: patterns: [{include: "#wildcard-element"}] #TODO
+      }
+    ]
 
 # TODO object
 

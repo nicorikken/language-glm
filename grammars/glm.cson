@@ -254,7 +254,7 @@ repository:
       name: 'object.glm'
       begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
       beginCaptures:
-        # TODO make class match more selective
+        # TODO make class match more selective, based on class name
         1: name: "storage.type.object.glm"
         2: name: "entity.name.function.object.glm"
         3: name: "constant.id.object.glm"
@@ -263,6 +263,13 @@ repository:
       patterns: [
         {include: "#comments"}
         {include: "#object-properties-common"}
+        {include: "#powerflow-properties-node"}
+        {include: "#powerflow-properties-link"}
+        {include: "#powerflow-properties-line"}
+        {include: "#powerflow-properties-line_configuration"}
+        {include: "#powerflow-properties-line_spacing"}
+        {include: "#powerflow-properties-overhead_line"}
+        {include: "#powerflow-properties-underground_line"}
         #TODO include other properties
       ]]
   "object-properties-common":
@@ -274,12 +281,83 @@ repository:
         1: name: 'keyword.object.common.property.glm'
         2: patterns: [{include: "#wildcard-element"}] #TODO
       }]
+  "powerflow-properties-node":
+    comment: "base class for the powerflow modules"
+    #TODO have this base class used by derived classes
+    patterns: [{
+      name: 'node.powerflow.property.glm'
+      match: "^\\s*(phases|nominal_voltage|voltage_(?:A|B|C|AB|BC|CA)|current_[ABC]|power_[ABC]|shunt_[ABC]|bustype)\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.node.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+      }]
+  "powerflow-properties-link":
+    comment: "base class for the powerflow modules"
+    #TODO have this base class used by derived classes
+    patterns: [{
+      name: 'link.powerflow.property.glm'
+      match: "^\\s*(from|to|power_in|power_out|power_losses|power_in_[ABC]|power_out[ABC]|power_losses_[ABC]|status|current_out_[ABC]|current_in_[ABC]|flow_direction|mean_repair_time)\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.link.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+      }]
+  "powerflow-properties-line":
+    patterns: [
+      # {include: "#powerflow-properties-link"} TODO make derivation
+      {
+        name: 'line.powerflow.property.glm'
+        match: "^\\s*(configuration|length)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          1: name: 'entity.name.function.line.powerflow.glm'
+          2: patterns: [{include: "#wildcard-element"}] #TODO
+      }]
+  "powerflow-properties-line_configuration":
+    patterns: [{
+      name: 'line-configuration.powerflow.property.glm'
+      match: "^\\s*(conductor_[ABCN]|spacing|z(?:11|12|13|21|22|23|31|32|33))\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.line-configuration.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+    }]
+  "powerflow-properties-line_spacing":
+    patterns: [{
+      name: 'line-spacing.powerflow.property.glm'
+      match: "^\\s*(distance_(?:AB|BC|CA|AN|BN|CN|AE|BE|CE|NE))\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.line-spacing.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+      }]
+  "powerflow-properties-overhead_line":
+    patterns: [{
+      name: 'overhead-line.powerflow.property.glm'
+      match: "^\\s*(geometric_mean_radius|resistance|diameter|rating\.(?:summer|winter)\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.overhead-line.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+    }]
+  "powerflow-properties-underground_line":
+    patterns: [{
+      name: 'underground-line.powerflow.property.glm'
+      match: "^\\s*(outer_diameter|conductor_(?:gmr|diameter|resistance)|neutral_(?:gmr|diameter|resistance|strands)|insulation_relative_permitivitty|shield_(?:gmr|resistance)|rating\.(?:summer|winter)\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+      captures:
+        1: name: 'entity.name.function.underground-line.powerflow.glm'
+        2: patterns: [{include: "#wildcard-element"}] #TODO
+    }]
+
 
 # TODO schedule
 
 # TODO script
 
 # variables
+  coordinates:
+    comments: "support for longitude and latitude"
+    patterns: [{
+      match: "(\\d+[NSEW]\\d+[:\\.]\\d*)"
+      captures:
+        1: name: 'constant.coordinate.glm'
+      }]
+
   "macro-variable-expansion":
     comment: "macro expansion of variables"
     patterns: [{

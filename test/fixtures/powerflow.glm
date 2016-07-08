@@ -1,0 +1,516 @@
+// Source GLD Class #2
+module powerflow {
+  solver_method FBS; //NR; GS is depricated
+  default_maximum_voltage_error 1e-6; //Defines convergence criteria
+  NR_iteration_limit 50; //No. of SuperLU iterations per GLD iter.
+  NR_superLU_procs 1; //No. of processors used by SuperLU
+}
+
+// Source: http://gridlab-d.sourceforge.net/wiki/index.php/Power_Flow_User_Guide
+
+// objects
+object node {
+  phases ABC;
+}
+
+object node {
+  phases "ABC";
+}
+
+object node {
+  phases A|B|C;
+}
+
+object node {
+  phases "A|B|C";
+}
+object node {
+  nominal_voltage 7200.0;
+}
+
+// node
+object node {
+  name NodeOne;
+  phases ABC;
+  nominal_voltage 7200.0;
+}
+
+object node {
+  name NodeOne;
+  phases ABC;
+  nominal_voltage 7200.0;
+  voltage_A 7200.0+0d;
+  voltage_B 7200.0-120.0d;
+  voltage_C 7200.0+120.0d;
+  bustype PQ;
+}
+
+// link
+object link {
+  name Node1toNode2;
+  phases ABC;
+  from Node1;
+  to Node2;
+  }
+
+// line
+object overhead_line {
+  name Node1toNode2;
+  phases ABC;
+  from Node1;
+  to Node2;
+  length 5280;
+  configuration Best_overhead_line_cfg;
+}
+
+object underground_line {
+  name Node1toNode2;
+  phases ABC;
+  from Node1;
+  to Node2;
+  length 5280;
+  configuration An_underground_line_cfg;
+}
+
+// line configuration
+object line_configuration {
+  name line_config_A;
+  conductor_A overhead_line_conductor_100;
+  conductor_B overhead_line_conductor_100;
+  conductor_C overhead_line_conductor_100;
+  conductor_N overhead_line_conductor_101;
+  spacing line_spacing_200;
+}
+
+object line_configuration {
+  name line_config_B;
+  z11 0.45+1.07j;
+  z12 0.15+0.50j;
+  z13 0.15+0.38j;
+  z21 0.15+0.50j;
+  z22 0.46+1.04j;
+  z23 0.15+0.42j;
+  z31 0.15+0.38j;
+  z32 0.15+0.42j;
+  z33 0.46+1.06j;
+}
+
+// line spacing
+object line_spacing {
+  name line_spacing_200;
+  distance_AB 2.5;
+  distance_BC 4.5;
+  distance_AC 7.0;
+  distance_AN 5.656854;
+  distance_BN 4.272002;
+  distance_CN 5.0;
+}
+
+// overhead line
+object overhead_line{
+  phases "ABCN";
+  name 701-802;
+  from node_701;
+  to load_802;
+  length 125960;
+  configuration line_config_A;
+}
+
+// overhead line conductor
+object overhead_line_conductor {
+  name overhead_line_conductor_100;
+  geometric_mean_radius .00446;
+  resistance 1.12;
+}
+
+// underground line
+object underground_line {
+  phases "ABC";
+  name 703-727;
+  from node_703;
+  to load_827;
+  length 240;
+  configuration line_config_7241;
+}
+
+// underground line conductor
+object underground_line_conductor {
+  name ug_conduct_7210;
+  outer_diameter 1.980000;
+  conductor_gmr 0.036800;
+  conductor_diameter 1.150000;
+  conductor_resistance 0.105000;
+  neutral_gmr 0.003310;
+  neutral_resistance 5.903000;
+  neutral_diameter 0.102000;
+  neutral_strands 20.000000;
+  shield_gmr 0.000000;
+  shield_resistance 0.000000;
+}
+
+// triplex line
+object triplex_line {
+  phases AS;
+  length 100 ft;
+  from node_4a;
+  to node_4;
+  configuration triplex_config_AB;
+}
+
+// triplex line configuration
+object triplex_line_configuration {
+  conductor_1 trip_cond_H;
+  conductor_2 trip_cond_H;
+  conductor_N trip_cond_N;
+  insulation_thickness 0.08 in;
+  diameter 0.368 in;
+}
+
+object triplex_line_configuration {
+  z11 1.52+0.61j;
+  z12 +0.55+0.44j;
+  z21 -0.55-0.44j;
+  z22 -1.52-0.61j;
+}
+
+// line conductor
+object triplex_line_conductor {
+  name trip_cond_1;
+  resistance 0.97;
+  geometric_mean_radius 0.0111;
+}
+
+// transformer
+object transformer {
+  name xfrmr_709_775;
+  phases "ABC";
+  from node_709;
+  to node_775;
+  configuration xfrmr_config_400;
+}
+
+object transformer {
+  name xfrmr_709_775;
+  phases "ABC";
+  from node_709;
+  to node_775;
+  configuration xfrmr_config_400;
+  use_thermal_model TRUE;
+  climate Seattle;
+  aging_granularity 300;
+  percent_loss_of_life 20;
+}
+
+// transformer configuration
+object transformer_configuration {
+  name xfrm_config_400;
+  connect_type SINGLE_PHASE_CENTER_TAPPED;
+  install_type PADMOUNT;
+  power_rating 500;
+  primary_voltage 4800;
+  secondary_voltage 480;
+  full_load_loss 0.006;
+  no_load_loss 0.003;
+  reactance_resistance_ratio 10;
+  core_coil_weight 50;
+  tank_fittings_weight 60;
+  oil_volume 5;
+  rated_winding_hot_spot_rise 80;
+  rated_top_oil_rise 30;
+  rated_winding_time_constant 0.5;
+  installed_insulation_life 175200;
+  coolant_type MINERAL_OIL;
+  cooling_type OA;
+  }
+
+object transformer_configuration {
+  name xfrm_config_400;
+  connect_type SINGLE_PHASE_CENTER_TAPPED;
+  install_type PADMOUNT;
+  power_rating 500;
+  primary_voltage 4800;
+  secondary_voltage 480;
+  full_load_loss 0.006;
+  no_load_loss 0.003;
+  reactance_resistance_ratio 10;
+  core_coil_weight 50;
+  tank_fittings_weight 60;
+  oil_volume 5;
+  rated_winding_hot_spot_rise 80;
+  rated_top_oil_rise 30;
+  rated_winding_time_constant 0.5;
+  installed_insulation_life 175200;
+  coolant_type MINERAL_OIL;
+  cooling_type OA;
+}
+
+// load
+object load {
+  phases "ABCD";
+  name 841;
+  constant_current_C -0.586139+9.765222j;
+  constant_impedance_B 221.915014+104.430595j;
+  constant_power_A 42000.000000+21000.000000j;
+  nominal_voltage 4800;
+}
+
+// meter
+object meter {
+  name Mtr1;
+  phases ABC;
+  nominal_voltage 4800.0;
+}
+
+// triplex node
+object triplex_node {
+  name TPL_tAS;
+  phases AS;
+  voltage_1 120 + 0j;
+  voltage_2 120 + 0j;
+  voltage_N 0;
+  current_1  1.0;
+  power_1 1000+2000j;
+  shunt_1 5.3333e-004 -2.6667e-004i;
+  nominal_voltage 120;
+};
+
+// triplex meter
+object triplex_meter {
+  name TrplMtr1;
+  phases AS;
+  nominal_voltage 120.0;
+}
+
+// triplex node
+// TODO No example available yet
+
+// regulator
+object regulator {
+  name Reg799781;
+  phases "ABC";
+  from node_799;
+  to node_781;
+  configuration reg_conf_79978101;
+}
+
+// regulator configuration
+object regulator_configuration {
+  name reg_conf_79978101;
+  connect_type 2;
+  band_center 122.000;
+  band_width 2.0;
+  time_delay 30.0;
+  raise_taps 16;
+  lower_taps 16;
+  current_transducer_ratio 350;
+  power_transducer_ratio 40;
+  compensator_r_setting_A 1.5;
+  compensator_x_setting_A 3.0;
+  compensator_r_setting_B 1.5;
+  compensator_x_setting_B 3.0;
+  CT_phase "ABC";
+  PT_phase "ABC";
+  regulation 0.10;
+  Control MANUAL;
+  control_level INDIVIDUAL;
+  Type A;
+  tap_pos_A 7;
+  tap_pos_B 4;
+}
+
+// capacitor
+object capacitor {
+  phases ABCN;
+  name CapNode;
+  phases_connected ABCD;
+  control MANUAL;
+  capacitor_A 0.5 MVAr;
+  capacitor_B 0.5 MVAr;
+  capacitor_C 0.5 MVAr;
+  control_level INDIVIDUAL;
+  switchA OPEN;
+  switchB OPEN;
+  switchC CLOSED;
+  nominal_voltage 7200;
+}
+
+// fuse
+object fuse {
+  phases "ABC";
+  name node1-node2;
+  from node1;
+  to node2;
+}
+
+object fuse {
+  phases "ABC";
+  name node1-node2;
+  from node1;
+  to node2;
+  current_limit 9999.0 A;
+  mean_replacement_time 3600.0;
+  repair_dist_type NONE;
+}
+
+// switch
+object switch {
+  name switch1;
+  phases ABCN;
+  from node_250;
+  to node_243;
+  status CLOSED;
+}
+
+// recloser
+object recloser {
+  name recloser_2;
+  phases "ABCN";
+  from node_2a;
+  to node_2b;
+  retry_time 1s;
+  max_number_of_tries 3;
+}
+
+// relay
+object relay {
+  name recloser_A;
+  phases ABCN;
+  from node_1;
+  to load_5;
+  time_to_change 1.0s;
+  recloser_delays 5.0s;
+  recloser_tries 5;
+}
+
+// substation
+object substation {
+  name SubS;
+  bustype SWING;
+  parent network_node;
+  reference_phase PHASE_A;
+  phases ABCN;
+  nominal_voltage 7199.558;
+}
+
+// parametric load
+object pqload {
+  name pqload1;
+  phases ABC;
+  Zp 200 ohm;
+  Zq_T 250 F;
+  Im 300;
+  Ia 45;
+  Pp 100;
+  Pp_T 3;
+  Pq_T 1;
+  nominal_voltage 2400;
+}
+
+// volt-var control
+object volt_var_control {
+  name IVVC37;
+  control_method ACTIVE;
+  capacitor_delay 10.0;
+  regulator_delay 5.0;
+  desired_pf 0.98;
+  d_max 0.8;
+  d_min 0.1;
+  substation_link "SubTransNode-799";
+  regulator_list "reg799-781,regnode799-U0081";
+  capacitor_list "CapNode_A,CapNode_B";
+  voltage_measurements "load829,1,load841,1,load825,1,U0029,2,U0041,2,U0025,2";
+  minimum_voltages 2500.0;
+  maximum_voltages 3000.0;
+  desired_voltages 2600.0;
+}
+
+object volt_var_control {
+	name IVVC37;
+	regulator_list "reg799-781,regnode799-U0081";
+	capacitor_list "CapNode_A,CapNode_B";
+}
+
+// volt dump
+object voltdump {
+  filename output_voltage.csv;
+}
+
+// current dump
+object currdump {
+  filename output_current.csv;
+}
+
+// bill dump
+object billdump {
+  filename bill_1.csv;
+}
+
+object billdump {
+  group "Residential_tm_solar";
+  runtime '2012-04-01 01:00:00';
+  filename residential_solar_bill.csv;
+}
+
+// fault check
+object fault_check {
+	name fault_check_obj;
+	check_mode ONCHANGE;
+	output_filename outage_check.txt;
+	eventgen_object Test_Evt_Obj;
+}
+
+object fault_check {
+	name fault_check_obj;
+}
+
+// frequency generator
+// TODO in development
+
+// motor
+// TODO in development
+
+// restoration
+object restoration {
+	name RestorVal;
+	reconfig_attempts 3;
+	reconfig_iteration_limit 5;
+	populate_tree TRUE;
+}
+
+// series reactor
+object series_reactor {
+  from node1;
+  to node2;
+  phases ABC;
+  phase_A_impedance 1+1j;
+  phase_B_resistance 2;
+  phase_C_reactance 3;
+}
+
+// sectionalizer
+object sectionalizer {
+	name Test_Section;
+	phases ABC;
+}
+
+object sectionalizer {
+	name Test_Section;
+	phases ABC;
+	phase_A_state CLOSED;
+	phase_B_state CLOSED;
+	phase_C_state CLOSED;
+	operating_mode BANKED;
+}
+
+// power metrics
+object power_metrics {
+	name PwrMetrics;
+}
+
+object power_metrics {
+	name PwrMetrics;
+	base_time_value 60.0;
+}
+
+// emissions
+// TODO in development

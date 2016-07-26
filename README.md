@@ -15,6 +15,7 @@ Image copyright by Steve Parker, Power Pattern, 2015, CC-2.0-BY
 - Structural folding support
 - Prettify command like [pretty-json](https://github.com/federomero/pretty-json)
 - Support for [symbols tree view](https://github.com/xndcn/symbols-tree-view)
+  - This inherits the tag parsing from the [symbols view package](https://github.com/atom/symbols-view), which leads the matching regexes into [ctags](http://ctags.sourceforge.net/index.html) from out of the [ctags-config file](https://github.com/atom/symbols-view/blob/master/lib/ctags-config).
 
 ## Inspiration and reuse
 - [GLM language parser](https://github.com/sordina/GLM)

@@ -1,0 +1,116 @@
+// Examples for module tape
+
+// class collector
+object collector:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// collector properties
+	property "";
+	trigger "";
+	file "";
+	limit 0;
+	group "";
+	flush 0;
+	interval +0 s;
+}
+
+
+// class group
+ERROR    [INIT] : --example: class 553497872 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class histogram
+object histogram:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// histogram properties
+	filename "";
+	filetype "";
+	mode "";
+	group "";
+	bins "";
+	property "";
+	min +0;
+	max +0;
+	samplerate +0 s;
+	countrate +0 s;
+	bin_count 0;
+	limit 0;
+}
+
+
+// class multi
+ERROR    [INIT] : --example: class 26688208 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class player
+object player:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// player properties
+	property "";
+	file "";
+	filetype "";
+	mode "";
+	loop 0;
+}
+
+Segmentation fault
+
+// class recorder
+object recorder:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// recorder properties
+	property "";
+	trigger "";
+	file "";
+	filetype "";
+	mode "";
+	multifile "";
+	limit 0;
+	plotcommands "";
+	xdata "";
+	columns "";
+	flush 0;
+	interval +0 s;
+	output SCREEN;
+	header_units DEFAULT;
+	line_units DEFAULT;
+}
+
+
+// class shaper
+object shaper:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// shaper properties
+	file "";
+	filetype "";
+	mode "";
+	group "";
+	property "";
+	magnitude +0;
+	events +0;
+}
+
+Segmentation fault
+
+// class violation
+ERROR    [INIT] : --example: class -541575088 is not found
+FATAL    [INIT] : shutdown after command line rejected

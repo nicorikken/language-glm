@@ -1,0 +1,1423 @@
+// Examples for module powerflow
+
+// class billdump
+object billdump:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// billdump properties
+	group "";
+	runtime 'INIT';
+	filename "";
+	runcount 0;
+	meter_type TRIPLEX_METER;
+}
+
+
+// class capacitor
+object capacitor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// capacitor properties
+	pt_phase "";
+	phases_connected "";
+	switchA OPEN;
+	switchB OPEN;
+	switchC OPEN;
+	control MANUAL;
+	cap_A_switch_count +0;
+	cap_B_switch_count +0;
+	cap_C_switch_count +0;
+	voltage_set_high +0 V;
+	voltage_set_low +0 V;
+	VAr_set_high +0 VAr;
+	VAr_set_low +0 VAr;
+	current_set_low +0 A;
+	current_set_high +0 A;
+	capacitor_A +0 VAr;
+	capacitor_B +0 VAr;
+	capacitor_C +0 VAr;
+	cap_nominal_voltage +0 V;
+	time_delay +0 s;
+	dwell_time +0 s;
+	lockout_time +0 s;
+	remote_sense "";
+	remote_sense_B "";
+	control_level BANK;
+}
+
+
+// class currdump
+object currdump:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// currdump properties
+	group "";
+	runtime 'INIT';
+	filename "";
+	runcount 0;
+	mode rect;
+}
+
+
+// class emissions
+object emissions:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// emissions properties
+	Nuclear_Order +0;
+	Hydroelectric_Order +0;
+	Solarthermal_Order +0;
+	Biomass_Order +0;
+	Wind_Order +0;
+	Coal_Order +0;
+	Naturalgas_Order +0;
+	Geothermal_Order +0;
+	Petroleum_Order +0;
+	Naturalgas_Max_Out +0 kWh;
+	Coal_Max_Out +0 kWh;
+	Biomass_Max_Out +0 kWh;
+	Geothermal_Max_Out +0 kWh;
+	Hydroelectric_Max_Out +0 kWh;
+	Nuclear_Max_Out +0 kWh;
+	Wind_Max_Out +0 kWh;
+	Petroleum_Max_Out +0 kWh;
+	Solarthermal_Max_Out +0 kWh;
+	Naturalgas_Out +0 kWh;
+	Coal_Out +0 kWh;
+	Biomass_Out +0 kWh;
+	Geothermal_Out +0 kWh;
+	Hydroelectric_Out +0 kWh;
+	Nuclear_Out +0 kWh;
+	Wind_Out +0 kWh;
+	Petroleum_Out +0 kWh;
+	Solarthermal_Out +0 kWh;
+	Naturalgas_Conv_Eff +0 Btu/kWh;
+	Coal_Conv_Eff +0 Btu/kWh;
+	Biomass_Conv_Eff +0 Btu/kWh;
+	Geothermal_Conv_Eff +0 Btu/kWh;
+	Hydroelectric_Conv_Eff +0 Btu/kWh;
+	Nuclear_Conv_Eff +0 Btu/kWh;
+	Wind_Conv_Eff +0 Btu/kWh;
+	Petroleum_Conv_Eff +0 Btu/kWh;
+	Solarthermal_Conv_Eff +0 Btu/kWh;
+	Naturalgas_CO2 +0 lb/Btu;
+	Coal_CO2 +0 lb/Btu;
+	Biomass_CO2 +0 lb/Btu;
+	Geothermal_CO2 +0 lb/Btu;
+	Hydroelectric_CO2 +0 lb/Btu;
+	Nuclear_CO2 +0 lb/Btu;
+	Wind_CO2 +0 lb/Btu;
+	Petroleum_CO2 +0 lb/Btu;
+	Solarthermal_CO2 +0 lb/Btu;
+	Naturalgas_SO2 +0 lb/Btu;
+	Coal_SO2 +0 lb/Btu;
+	Biomass_SO2 +0 lb/Btu;
+	Geothermal_SO2 +0 lb/Btu;
+	Hydroelectric_SO2 +0 lb/Btu;
+	Nuclear_SO2 +0 lb/Btu;
+	Wind_SO2 +0 lb/Btu;
+	Petroleum_SO2 +0 lb/Btu;
+	Solarthermal_SO2 +0 lb/Btu;
+	Naturalgas_NOx +0 lb/Btu;
+	Coal_NOx +0 lb/Btu;
+	Biomass_NOx +0 lb/Btu;
+	Geothermal_NOx +0 lb/Btu;
+	Hydroelectric_NOx +0 lb/Btu;
+	Nuclear_NOx +0 lb/Btu;
+	Wind_NOx +0 lb/Btu;
+	Petroleum_NOx +0 lb/Btu;
+	Solarthermal_NOx +0 lb/Btu;
+	Naturalgas_emissions_CO2 +0 lb;
+	Naturalgas_emissions_SO2 +0 lb;
+	Naturalgas_emissions_NOx +0 lb;
+	Coal_emissions_CO2 +0 lb;
+	Coal_emissions_SO2 +0 lb;
+	Coal_emissions_NOx +0 lb;
+	Biomass_emissions_CO2 +0 lb;
+	Biomass_emissions_SO2 +0 lb;
+	Biomass_emissions_NOx +0 lb;
+	Geothermal_emissions_CO2 +0 lb;
+	Geothermal_emissions_SO2 +0 lb;
+	Geothermal_emissions_NOx +0 lb;
+	Hydroelectric_emissions_CO2 +0 lb;
+	Hydroelectric_emissions_SO2 +0 lb;
+	Hydroelectric_emissions_NOx +0 lb;
+	Nuclear_emissions_CO2 +0 lb;
+	Nuclear_emissions_SO2 +0 lb;
+	Nuclear_emissions_NOx +0 lb;
+	Wind_emissions_CO2 +0 lb;
+	Wind_emissions_SO2 +0 lb;
+	Wind_emissions_NOx +0 lb;
+	Petroleum_emissions_CO2 +0 lb;
+	Petroleum_emissions_SO2 +0 lb;
+	Petroleum_emissions_NOx +0 lb;
+	Solarthermal_emissions_CO2 +0 lb;
+	Solarthermal_emissions_SO2 +0 lb;
+	Solarthermal_emissions_NOx +0 lb;
+	Total_emissions_CO2 +0 lb;
+	Total_emissions_SO2 +0 lb;
+	Total_emissions_NOx +0 lb;
+	Total_energy_out +0 kWh;
+	Region +0;
+	cycle_interval +0 s;
+}
+
+
+// class fault
+ERROR    [INIT] : --example: class -160678480 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class frequency
+ERROR    [INIT] : --example: class -1847529920 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class fuse
+object fuse:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// fuse properties
+	phase_A_status BLOWN;
+	phase_B_status BLOWN;
+	phase_C_status BLOWN;
+	repair_dist_type NONE;
+	current_limit +0 A;
+	mean_replacement_time +0 s;
+	fuse_resistance +0 Ohm;
+}
+
+
+// class impedance
+ERROR    [INIT] : --example: class 175714272 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class line
+object line:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// line properties
+	configuration "";
+	length +0 ft;
+}
+
+
+// class link
+object link:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+}
+
+
+// class load
+object load:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// load properties
+	load_class U;
+	constant_power_A +0+0i VA;
+	constant_power_B +0+0i VA;
+	constant_power_C +0+0i VA;
+	constant_power_A_real +0 W;
+	constant_power_B_real +0 W;
+	constant_power_C_real +0 W;
+	constant_power_A_reac +0 VAr;
+	constant_power_B_reac +0 VAr;
+	constant_power_C_reac +0 VAr;
+	constant_current_A +0+0i A;
+	constant_current_B +0+0i A;
+	constant_current_C +0+0i A;
+	constant_current_A_real +0 A;
+	constant_current_B_real +0 A;
+	constant_current_C_real +0 A;
+	constant_current_A_reac +0 A;
+	constant_current_B_reac +0 A;
+	constant_current_C_reac +0 A;
+	constant_impedance_A +0+0i Ohm;
+	constant_impedance_B +0+0i Ohm;
+	constant_impedance_C +0+0i Ohm;
+	constant_impedance_A_real +0 Ohm;
+	constant_impedance_B_real +0 Ohm;
+	constant_impedance_C_real +0 Ohm;
+	constant_impedance_A_reac +0 Ohm;
+	constant_impedance_B_reac +0 Ohm;
+	constant_impedance_C_reac +0 Ohm;
+	constant_power_AN +0+0i VA;
+	constant_power_BN +0+0i VA;
+	constant_power_CN +0+0i VA;
+	constant_power_AN_real +0 W;
+	constant_power_BN_real +0 W;
+	constant_power_CN_real +0 W;
+	constant_power_AN_reac +0 VAr;
+	constant_power_BN_reac +0 VAr;
+	constant_power_CN_reac +0 VAr;
+	constant_current_AN +0+0i A;
+	constant_current_BN +0+0i A;
+	constant_current_CN +0+0i A;
+	constant_current_AN_real +0 A;
+	constant_current_BN_real +0 A;
+	constant_current_CN_real +0 A;
+	constant_current_AN_reac +0 A;
+	constant_current_BN_reac +0 A;
+	constant_current_CN_reac +0 A;
+	constant_impedance_AN +0+0i Ohm;
+	constant_impedance_BN +0+0i Ohm;
+	constant_impedance_CN +0+0i Ohm;
+	constant_impedance_AN_real +0 Ohm;
+	constant_impedance_BN_real +0 Ohm;
+	constant_impedance_CN_real +0 Ohm;
+	constant_impedance_AN_reac +0 Ohm;
+	constant_impedance_BN_reac +0 Ohm;
+	constant_impedance_CN_reac +0 Ohm;
+	constant_power_AB +0+0i VA;
+	constant_power_BC +0+0i VA;
+	constant_power_CA +0+0i VA;
+	constant_power_AB_real +0 W;
+	constant_power_BC_real +0 W;
+	constant_power_CA_real +0 W;
+	constant_power_AB_reac +0 VAr;
+	constant_power_BC_reac +0 VAr;
+	constant_power_CA_reac +0 VAr;
+	constant_current_AB +0+0i A;
+	constant_current_BC +0+0i A;
+	constant_current_CA +0+0i A;
+	constant_current_AB_real +0 A;
+	constant_current_BC_real +0 A;
+	constant_current_CA_real +0 A;
+	constant_current_AB_reac +0 A;
+	constant_current_BC_reac +0 A;
+	constant_current_CA_reac +0 A;
+	constant_impedance_AB +0+0i Ohm;
+	constant_impedance_BC +0+0i Ohm;
+	constant_impedance_CA +0+0i Ohm;
+	constant_impedance_AB_real +0 Ohm;
+	constant_impedance_BC_real +0 Ohm;
+	constant_impedance_CA_real +0 Ohm;
+	constant_impedance_AB_reac +0 Ohm;
+	constant_impedance_BC_reac +0 Ohm;
+	constant_impedance_CA_reac +0 Ohm;
+	measured_voltage_A +0+0i;
+	measured_voltage_B +0+0i;
+	measured_voltage_C +0+0i;
+	measured_voltage_AB +0+0i;
+	measured_voltage_BC +0+0i;
+	measured_voltage_CA +0+0i;
+	phase_loss_protection FALSE;
+	base_power_A +0 VA;
+	base_power_B +0 VA;
+	base_power_C +0 VA;
+	power_pf_A +0 pu;
+	current_pf_A +0 pu;
+	impedance_pf_A +0 pu;
+	power_pf_B +0 pu;
+	current_pf_B +0 pu;
+	impedance_pf_B +0 pu;
+	power_pf_C +0 pu;
+	current_pf_C +0 pu;
+	impedance_pf_C +0 pu;
+	power_fraction_A +0 pu;
+	current_fraction_A +0 pu;
+	impedance_fraction_A +0 pu;
+	power_fraction_B +0 pu;
+	current_fraction_B +0 pu;
+	impedance_fraction_B +0 pu;
+	power_fraction_C +0 pu;
+	current_fraction_C +0 pu;
+	impedance_fraction_C +0 pu;
+}
+
+
+// class meter
+object meter:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// meter properties
+	measured_real_energy +0 Wh;
+	measured_reactive_energy +0 VAh;
+	measured_power +0+0i VA;
+	measured_power_A +0+0i VA;
+	measured_power_B +0+0i VA;
+	measured_power_C +0+0i VA;
+	measured_demand +0 W;
+	measured_real_power +0 W;
+	measured_reactive_power +0 VAr;
+	meter_power_consumption +0+0i VA;
+	measured_voltage_A +0+0i V;
+	measured_voltage_B +0+0i V;
+	measured_voltage_C +0+0i V;
+	measured_voltage_AB +0+0i V;
+	measured_voltage_BC +0+0i V;
+	measured_voltage_CA +0+0i V;
+	measured_current_A +0+0i A;
+	measured_current_B +0+0i A;
+	measured_current_C +0+0i A;
+	customer_interrupted FALSE;
+	customer_interrupted_secondary FALSE;
+	monthly_bill +0 $;
+	previous_monthly_bill +0 $;
+	previous_monthly_energy +0 kWh;
+	monthly_fee +0 $;
+	monthly_energy +0 kWh;
+	bill_mode NONE;
+	power_market "";
+	bill_day 0;
+	price +0 $/kWh;
+	price_base +0 $/kWh;
+	first_tier_price +0 $/kWh;
+	first_tier_energy +0 kWh;
+	second_tier_price +0 $/kWh;
+	second_tier_energy +0 kWh;
+	third_tier_price +0 $/kWh;
+	third_tier_energy +0 kWh;
+}
+
+
+// class motor
+object motor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// motor properties
+}
+
+
+// class node
+object node:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+}
+
+
+// class overhead
+ERROR    [INIT] : --example: class 826803760 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class power
+ERROR    [INIT] : --example: class 1403387888 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class powerflow
+ERROR    [INIT] : --example: class 1004503648 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class pqload
+object pqload:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// load properties
+	load_class U;
+	constant_power_A +0+0i VA;
+	constant_power_B +0+0i VA;
+	constant_power_C +0+0i VA;
+	constant_power_A_real +0 W;
+	constant_power_B_real +0 W;
+	constant_power_C_real +0 W;
+	constant_power_A_reac +0 VAr;
+	constant_power_B_reac +0 VAr;
+	constant_power_C_reac +0 VAr;
+	constant_current_A +0+0i A;
+	constant_current_B +0+0i A;
+	constant_current_C +0+0i A;
+	constant_current_A_real +0 A;
+	constant_current_B_real +0 A;
+	constant_current_C_real +0 A;
+	constant_current_A_reac +0 A;
+	constant_current_B_reac +0 A;
+	constant_current_C_reac +0 A;
+	constant_impedance_A +0+0i Ohm;
+	constant_impedance_B +0+0i Ohm;
+	constant_impedance_C +0+0i Ohm;
+	constant_impedance_A_real +0 Ohm;
+	constant_impedance_B_real +0 Ohm;
+	constant_impedance_C_real +0 Ohm;
+	constant_impedance_A_reac +0 Ohm;
+	constant_impedance_B_reac +0 Ohm;
+	constant_impedance_C_reac +0 Ohm;
+	constant_power_AN +0+0i VA;
+	constant_power_BN +0+0i VA;
+	constant_power_CN +0+0i VA;
+	constant_power_AN_real +0 W;
+	constant_power_BN_real +0 W;
+	constant_power_CN_real +0 W;
+	constant_power_AN_reac +0 VAr;
+	constant_power_BN_reac +0 VAr;
+	constant_power_CN_reac +0 VAr;
+	constant_current_AN +0+0i A;
+	constant_current_BN +0+0i A;
+	constant_current_CN +0+0i A;
+	constant_current_AN_real +0 A;
+	constant_current_BN_real +0 A;
+	constant_current_CN_real +0 A;
+	constant_current_AN_reac +0 A;
+	constant_current_BN_reac +0 A;
+	constant_current_CN_reac +0 A;
+	constant_impedance_AN +0+0i Ohm;
+	constant_impedance_BN +0+0i Ohm;
+	constant_impedance_CN +0+0i Ohm;
+	constant_impedance_AN_real +0 Ohm;
+	constant_impedance_BN_real +0 Ohm;
+	constant_impedance_CN_real +0 Ohm;
+	constant_impedance_AN_reac +0 Ohm;
+	constant_impedance_BN_reac +0 Ohm;
+	constant_impedance_CN_reac +0 Ohm;
+	constant_power_AB +0+0i VA;
+	constant_power_BC +0+0i VA;
+	constant_power_CA +0+0i VA;
+	constant_power_AB_real +0 W;
+	constant_power_BC_real +0 W;
+	constant_power_CA_real +0 W;
+	constant_power_AB_reac +0 VAr;
+	constant_power_BC_reac +0 VAr;
+	constant_power_CA_reac +0 VAr;
+	constant_current_AB +0+0i A;
+	constant_current_BC +0+0i A;
+	constant_current_CA +0+0i A;
+	constant_current_AB_real +0 A;
+	constant_current_BC_real +0 A;
+	constant_current_CA_real +0 A;
+	constant_current_AB_reac +0 A;
+	constant_current_BC_reac +0 A;
+	constant_current_CA_reac +0 A;
+	constant_impedance_AB +0+0i Ohm;
+	constant_impedance_BC +0+0i Ohm;
+	constant_impedance_CA +0+0i Ohm;
+	constant_impedance_AB_real +0 Ohm;
+	constant_impedance_BC_real +0 Ohm;
+	constant_impedance_CA_real +0 Ohm;
+	constant_impedance_AB_reac +0 Ohm;
+	constant_impedance_BC_reac +0 Ohm;
+	constant_impedance_CA_reac +0 Ohm;
+	measured_voltage_A +0+0i;
+	measured_voltage_B +0+0i;
+	measured_voltage_C +0+0i;
+	measured_voltage_AB +0+0i;
+	measured_voltage_BC +0+0i;
+	measured_voltage_CA +0+0i;
+	phase_loss_protection FALSE;
+	base_power_A +0 VA;
+	base_power_B +0 VA;
+	base_power_C +0 VA;
+	power_pf_A +0 pu;
+	current_pf_A +0 pu;
+	impedance_pf_A +0 pu;
+	power_pf_B +0 pu;
+	current_pf_B +0 pu;
+	impedance_pf_B +0 pu;
+	power_pf_C +0 pu;
+	current_pf_C +0 pu;
+	impedance_pf_C +0 pu;
+	power_fraction_A +0 pu;
+	current_fraction_A +0 pu;
+	impedance_fraction_A +0 pu;
+	power_fraction_B +0 pu;
+	current_fraction_B +0 pu;
+	impedance_fraction_B +0 pu;
+	power_fraction_C +0 pu;
+	current_fraction_C +0 pu;
+	impedance_fraction_C +0 pu;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// pqload properties
+	weather "";
+	T_nominal +0 degF;
+	Zp_T +0 ohm/degF;
+	Zp_H +0 ohm/%;
+	Zp_S +0 ohm*h/Btu;
+	Zp_W +0 ohm/mph;
+	Zp_R +0 ohm*h/in;
+	Zp +0 ohm;
+	Zq_T +0 F/degF;
+	Zq_H +0 F/%;
+	Zq_S +0 F*h/Btu;
+	Zq_W +0 F/mph;
+	Zq_R +0 F*h/in;
+	Zq +0 F;
+	Im_T +0 A/degF;
+	Im_H +0 A/%;
+	Im_S +0 A*h/Btu;
+	Im_W +0 A/mph;
+	Im_R +0 A*h/in;
+	Im +0 A;
+	Ia_T +0 deg/degF;
+	Ia_H +0 deg/%;
+	Ia_S +0 deg*h/Btu;
+	Ia_W +0 deg/mph;
+	Ia_R +0 deg*h/in;
+	Ia +0 deg;
+	Pp_T +0 W/degF;
+	Pp_H +0 W/%;
+	Pp_S +0 W*h/Btu;
+	Pp_W +0 W/mph;
+	Pp_R +0 W*h/in;
+	Pp +0 W;
+	Pq_T +0 VAr/degF;
+	Pq_H +0 VAr/%;
+	Pq_S +0 VAr*h/Btu;
+	Pq_W +0 VAr/mph;
+	Pq_R +0 VAr*h/in;
+	Pq +0 VAr;
+	input_temp +0 degF;
+	input_humid +0 %;
+	input_solar +0 Btu/h;
+	input_wind +0 mph;
+	input_rain +0 in/h;
+	output_imped_p +0 Ohm;
+	output_imped_q +0 Ohm;
+	output_current_m +0 A;
+	output_current_a +0 deg;
+	output_power_p +0 W;
+	output_power_q +0 VAr;
+	output_impedance +0+0i ohm;
+	output_current +0+0i A;
+	output_power +0+0i VA;
+}
+
+
+// class recloser
+object recloser:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// switch properties
+	phase_A_state OPEN;
+	phase_B_state OPEN;
+	phase_C_state OPEN;
+	operating_mode INDIVIDUAL;
+	switch_resistance +0 Ohm;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// recloser properties
+	retry_time +0 s;
+	max_number_of_tries +0;
+	number_of_tries +0;
+}
+
+
+// class regulator
+object regulator:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// regulator properties
+	configuration "";
+	tap_A 0;
+	tap_B 0;
+	tap_C 0;
+	tap_A_change_count +0;
+	tap_B_change_count +0;
+	tap_C_change_count +0;
+	sense_node "";
+	regulator_resistance +0 Ohm;
+}
+
+
+// class restoration
+object restoration:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// restoration properties
+	reconfig_attempts 0;
+	reconfig_iteration_limit 0;
+	source_vertex "";
+	faulted_section "";
+	feeder_power_limit "";
+	feeder_power_links "";
+	feeder_vertex_list "";
+	microgrid_power_limit "";
+	microgrid_power_links "";
+	microgrid_vertex_list "";
+	lower_voltage_limit +0 pu;
+	upper_voltage_limit +0 pu;
+	output_filename "";
+	generate_all_scenarios FALSE;
+}
+
+
+// class sectionalizer
+object sectionalizer:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// switch properties
+	phase_A_state OPEN;
+	phase_B_state OPEN;
+	phase_C_state OPEN;
+	operating_mode INDIVIDUAL;
+	switch_resistance +0 Ohm;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// sectionalizer properties
+}
+
+
+// class series
+ERROR    [INIT] : --example: class 184287824 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class substation
+object substation:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_A +0+0i V;
+	voltage_B +0+0i V;
+	voltage_C +0+0i V;
+	voltage_AB +0+0i V;
+	voltage_BC +0+0i V;
+	voltage_CA +0+0i V;
+	current_A +0+0i A;
+	current_B +0+0i A;
+	current_C +0+0i A;
+	power_A +0+0i VA;
+	power_B +0+0i VA;
+	power_C +0+0i VA;
+	shunt_A +0+0i S;
+	shunt_B +0+0i S;
+	shunt_C +0+0i S;
+	current_AB +0+0i A;
+	current_BC +0+0i A;
+	current_CA +0+0i A;
+	current_AN +0+0i A;
+	current_BN +0+0i A;
+	current_CN +0+0i A;
+	power_AB +0+0i VA;
+	power_BC +0+0i VA;
+	power_CA +0+0i VA;
+	power_AN +0+0i VA;
+	power_BN +0+0i VA;
+	power_CN +0+0i VA;
+	shunt_AB +0+0i S;
+	shunt_BC +0+0i S;
+	shunt_CA +0+0i S;
+	shunt_AN +0+0i S;
+	shunt_BN +0+0i S;
+	shunt_CN +0+0i S;
+	mean_repair_time +0 s;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	Norton_dynamic FALSE;
+	topological_parent "";
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// substation properties
+	zero_sequence_voltage +0+0i V;
+	positive_sequence_voltage +0+0i V;
+	negative_sequence_voltage +0+0i V;
+	base_power +100 VA;
+	power_convergence_value +0 VA;
+	reference_phase PHASE_A;
+	transmission_level_constant_power_load +0+0i VA;
+	transmission_level_constant_current_load +0+0i A;
+	transmission_level_constant_impedance_load +0+0i Ohm;
+	average_distribution_load +0+0i VA;
+	distribution_power_A +0+0i VA;
+	distribution_power_B +0+0i VA;
+	distribution_power_C +0+0i VA;
+	distribution_voltage_A +0+0i V;
+	distribution_voltage_B +0+0i V;
+	distribution_voltage_C +0+0i V;
+	distribution_voltage_AB +0+0i V;
+	distribution_voltage_BC +0+0i V;
+	distribution_voltage_CA +0+0i V;
+	distribution_current_A +0+0i A;
+	distribution_current_B +0+0i A;
+	distribution_current_C +0+0i A;
+	distribution_real_energy +0 Wh;
+}
+
+
+// class switch
+object switch:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// switch properties
+	phase_A_state OPEN;
+	phase_B_state OPEN;
+	phase_C_state OPEN;
+	operating_mode INDIVIDUAL;
+	switch_resistance +0 Ohm;
+}
+
+
+// class transformer
+object transformer:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// transformer properties
+	configuration "";
+	climate "";
+	ambient_temperature +0 degC;
+	top_oil_hot_spot_temperature +0 degC;
+	winding_hot_spot_temperature +0 degC;
+	percent_loss_of_life +0;
+	aging_constant +0;
+	use_thermal_model FALSE;
+	transformer_replacement_count +0;
+	aging_granularity +0 s;
+}
+
+
+// class triplex
+ERROR    [INIT] : --example: class -2109031744 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class underground
+ERROR    [INIT] : --example: class 148626016 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class volt
+ERROR    [INIT] : --example: class -1124171792 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class voltdump
+object voltdump:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// voltdump properties
+	group "";
+	runtime 'INIT';
+	filename "";
+	file "";
+	runcount 0;
+	mode rect;
+}
+

@@ -1,0 +1,36 @@
+// Examples for module assert
+
+// class assert
+object assert:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// assert properties
+	status INIT;
+	target "";
+	part "";
+	relation ==;
+	value "";
+	within "";
+	lower "";
+	upper "";
+}
+
+
+// class complex
+ERROR    [INIT] : --example: class -1867657808 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class double
+ERROR    [INIT] : --example: class -757513904 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class enum
+ERROR    [INIT] : --example: class 1280238144 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class int
+ERROR    [INIT] : --example: class 1778056448 is not found
+FATAL    [INIT] : shutdown after command line rejected

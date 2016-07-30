@@ -1,0 +1,694 @@
+// Examples for module residential
+
+// class appliance
+object appliance:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// appliance properties
+	powers "";
+	impedances "";
+	currents "";
+	durations "";
+	transitions "";
+	heatgains "";
+}
+
+
+// class clotheswasher
+object clotheswasher:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.950000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0.5 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0.95;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// clotheswasher properties
+	motor_power +0.422838 kW;
+	circuit_split +0;
+	queue +0 unit;
+	demand +0 unit/day;
+	energy_meter +0+0i kWh;
+	stall_voltage +0 V;
+	start_voltage +0 V;
+	clothesWasherPower +0;
+	stall_impedance +0+0i Ohm;
+	trip_delay +0 s;
+	reset_delay +0 s;
+	Is_on +0;
+	normal_perc +0.5;
+	perm_press_perc +0.8;
+	NORMAL_PREWASH_POWER +20;
+	NORMAL_WASH_POWER +40;
+	NORMAL_SPIN_LOW_POWER +60;
+	NORMAL_SPIN_MEDIUM_POWER +150;
+	NORMAL_SPIN_HIGH_POWER +220;
+	NORMAL_SMALLWASH_POWER +25;
+	NORMAL_PREWASH_ENERGY +14400;
+	NORMAL_WASH_ENERGY +9600;
+	NORMAL_SPIN_LOW_ENERGY +7200;
+	NORMAL_SPIN_MEDIUM_ENERGY +18000;
+	NORMAL_SPIN_HIGH_ENERGY +26400;
+	NORMAL_SMALLWASH_ENERGY +3000;
+	PERMPRESS_PREWASH_POWER +20;
+	PERMPRESS_WASH_POWER +40;
+	PERMPRESS_SPIN_LOW_POWER +60;
+	PERMPRESS_SPIN_MEDIUM_POWER +150;
+	PERMPRESS_SPIN_HIGH_POWER +220;
+	PERMPRESS_SMALLWASH_POWER +25;
+	PERMPRESS_PREWASH_ENERGY +14400;
+	PERMPRESS_WASH_ENERGY +9600;
+	PERMPRESS_SPIN_LOW_ENERGY +7200;
+	PERMPRESS_SPIN_MEDIUM_ENERGY +18000;
+	PERMPRESS_SPIN_HIGH_ENERGY +26400;
+	PERMPRESS_SMALLWASH_ENERGY +3000;
+	GENTLE_PREWASH_POWER +20;
+	GENTLE_WASH_POWER +40;
+	GENTLE_SPIN_LOW_POWER +60;
+	GENTLE_SPIN_MEDIUM_POWER +150;
+	GENTLE_SPIN_HIGH_POWER +220;
+	GENTLE_SMALLWASH_POWER +25;
+	GENTLE_PREWASH_ENERGY +14400;
+	GENTLE_WASH_ENERGY +9600;
+	GENTLE_SPIN_LOW_ENERGY +7200;
+	GENTLE_SPIN_MEDIUM_ENERGY +18000;
+	GENTLE_SPIN_HIGH_ENERGY +26400;
+	GENTLE_SMALLWASH_ENERGY +3000;
+	queue_min +0 unit;
+	queue_max +0 unit;
+	clotheswasher_run_prob +0;
+	state STOPPED;
+	spin_mode SPIN_LOW;
+	wash_mode NORMAL;
+}
+
+
+// class dishwasher
+Segmentation fault
+
+// class dryer
+Segmentation fault
+
+// class evcharger
+Segmentation fault
+
+// class freezer
+object freezer:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// freezer properties
+	size +29.9335 cf;
+	rated_capacity +0 Btu/h;
+	temperature +0 degF;
+	setpoint +13.9865 degF;
+	deadband +2.18008 degF;
+	next_time 'INIT';
+	output +0;
+	event_temp +0;
+	UA +0.3 Btu/degF*h;
+	state OFF;
+}
+
+
+// class house
+object house:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.970000; power.r: 0.000000; power.i: -nan";
+	energy +0+0i kVAh;
+	power +0+0j kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0.97;
+	constant_power +0-nanj kVA;
+	constant_current +0-nanj kVA;
+	constant_admittance +0-nanj kVA;
+	voltage_factor +0 pu;
+	breaker_amps +200 A;
+	configuration IS220;
+	override NORMAL;
+	power_state OFF;
+	// house properties
+	weather "";
+	floor_area +2500 sf;
+	gross_wall_area +1632.99 sf;
+	ceiling_height +8 ft;
+	aspect_ratio +1.5;
+	envelope_UA +1516.87 Btu/degF*h;
+	window_wall_ratio +0.15;
+	number_of_doors +4;
+	exterior_wall_fraction +1;
+	interior_exterior_wall_ratio +1.5;
+	exterior_ceiling_fraction +1;
+	exterior_floor_fraction +1;
+	window_shading +0;
+	window_exterior_transmission_coefficient +0.6;
+	solar_heatgain_factor +0;
+	airchange_per_hour +0 unit/h;
+	airchange_UA +0 Btu/degF*h;
+	UA +0 Btu/degF*h;
+	internal_gain +0 Btu/h;
+	solar_gain +0 Btu/h;
+	incident_solar_radiation +0 Btu/h*sf;
+	heat_cool_gain +0 Btu/h;
+	include_solar_quadrant NONE;
+	horizontal_diffuse_solar_radiation +0 Btu/h*sf;
+	north_incident_solar_radiation +0 Btu/h*sf;
+	northwest_incident_solar_radiation +0 Btu/h*sf;
+	west_incident_solar_radiation +0 Btu/h*sf;
+	southwest_incident_solar_radiation +0 Btu/h*sf;
+	south_incident_solar_radiation +0 Btu/h*sf;
+	southeast_incident_solar_radiation +0 Btu/h*sf;
+	east_incident_solar_radiation +0 Btu/h*sf;
+	northeast_incident_solar_radiation +0 Btu/h*sf;
+	heating_cop_curve DEFAULT;
+	heating_cap_curve DEFAULT;
+	cooling_cop_curve DEFAULT;
+	cooling_cap_curve DEFAULT;
+	use_latent_heat FALSE;
+	include_fan_heatgain FALSE;
+	thermostat_deadband +2 degF;
+	dlc_offset +0 degF;
+	thermostat_cycle_time 120;
+	thermostat_off_cycle_time 0;
+	thermostat_on_cycle_time 0;
+	thermostat_last_cycle_time 'INIT';
+	heating_setpoint +70 degF;
+	cooling_setpoint +75 degF;
+	design_heating_setpoint +70 degF;
+	design_cooling_setpoint +75 degF;
+	over_sizing_factor +0;
+	simulate_window_openings FALSE;
+	is_window_open +0;
+	window_low_temperature_cutoff +0 degF;
+	window_high_temperature_cutoff +0 degF;
+	window_quadratic_coefficient +0;
+	window_linear_coefficient +0;
+	window_constant_coefficient +0;
+	window_temperature_delta +0;
+	design_heating_capacity +12000 Btu/h;
+	design_cooling_capacity +12000 Btu/h;
+	cooling_design_temperature +95 degF;
+	heating_design_temperature +0 degF;
+	design_peak_solar +195 Btu/h*sf;
+	design_internal_gains +5306.89 W/sf;
+	air_heat_fraction +0 pu;
+	mass_solar_gain_fraction +0.5 pu;
+	mass_internal_gain_fraction +0.5 pu;
+	auxiliary_heat_capacity +0 Btu/h;
+	aux_heat_deadband +2 degF;
+	aux_heat_temperature_lockout +10 degF;
+	aux_heat_time_delay +300 s;
+	cooling_supply_air_temp +0 degF;
+	heating_supply_air_temp +0 degF;
+	duct_pressure_drop +0.5 inH2O;
+	fan_design_power +0 W;
+	fan_low_power_fraction +0 pu;
+	fan_power +0 kW;
+	fan_design_airflow +116.189 cfm;
+	fan_impedance_fraction +0 pu;
+	fan_power_fraction +0 pu;
+	fan_current_fraction +0 pu;
+	fan_power_factor +0 pu;
+	heating_demand +1.84651 kW;
+	cooling_demand +0.864025 kW;
+	heating_COP +2.5 pu;
+	cooling_COP +3.5 Btu/kWh;
+	air_temperature +72.4767 degF;
+	outdoor_temperature +74 degF;
+	outdoor_rh +0 %;
+	mass_heat_capacity +4293.81 Btu/degF;
+	mass_heat_coeff +9138.92 Btu/degF*h;
+	mass_temperature +72.4767 degF;
+	air_volume +20000 cf;
+	air_mass +1470 lb;
+	air_heat_capacity +1059.28 Btu/degF;
+	latent_load_fraction +0.3 pu;
+	total_thermal_mass_per_floor_area +2 Btu/degF*sf;
+	interior_surface_heat_transfer_coeff +1.46 Btu/h*degF*sf;
+	number_of_stories +1;
+	is_AUX_on +0;
+	is_HEAT_on +0;
+	is_COOL_on +0;
+	thermal_storage_present +0;
+	thermal_storage_in_use +0;
+	thermostat_mode OFF;
+	system_type NONE;
+	auxiliary_strategy DEADBAND;
+	system_mode OFF;
+	last_system_mode OFF;
+	heating_system_type HEAT_PUMP;
+	cooling_system_type HEAT_PUMP;
+	auxiliary_system_type ELECTRIC;
+	fan_type ONE_SPEED;
+	thermal_integrity_level VERY_LITTLE;
+	glass_type OTHER;
+	window_frame NONE;
+	glazing_treatment OTHER;
+	glazing_layers 0;
+	motor_model NONE;
+	motor_efficiency VERY_POOR;
+	last_mode_timer 21600;
+	hvac_motor_efficiency +0 unit;
+	hvac_motor_loss_power_factor +0 unit;
+	Rroof +11 degF*sf*h/Btu;
+	Rwall +4 degF*sf*h/Btu;
+	Rfloor +4 degF*sf*h/Btu;
+	Rwindows +0.787402 degF*sf*h/Btu;
+	Rdoors +3 degF*sf*h/Btu;
+	hvac_breaker_rating +200 A;
+	hvac_power_factor +0 unit;
+	hvac_load +0 kW;
+	last_heating_load +0 kW;
+	last_cooling_load +0 kW;
+	hvac_power +0-nanj kVA;
+	total_load +0 kW;
+	panel "power_factor: 0.000000; power.r: 0.000000";
+	panel.energy +0+0i kVAh;
+	panel.power +0+0i kVA;
+	panel.peak_demand +0+0i kVA;
+	panel.heatgain +0 Btu/h;
+	panel.cumulative_heatgain +0 Btu;
+	panel.heatgain_fraction +0 pu;
+	panel.current_fraction +0 pu;
+	panel.impedance_fraction +0 pu;
+	panel.power_fraction +0 pu;
+	panel.power_factor +0;
+	panel.constant_power +0+0i kVA;
+	panel.constant_current +0+0i kVA;
+	panel.constant_admittance +0+0i kVA;
+	panel.voltage_factor +0 pu;
+	panel.breaker_amps +0 A;
+	panel.configuration IS110;
+	design_internal_gain_density +0 W/sf;
+	compressor_on FALSE;
+	compressor_count 0;
+	hvac_last_on 'INIT';
+	hvac_last_off 'INIT';
+	hvac_period_length +0 s;
+	hvac_duty_cycle +0;
+	a +497.691;
+	b +5353.09;
+	c +0;
+	d +0;
+	c1 -8.62747;
+	c2 +8.62747;
+	A3 +1;
+	A4 -0.2467;
+	k1 -nan;
+	k2 -nan;
+	r1 +0;
+	r2 -10.7559;
+	Teq -nan;
+	Tevent +0;
+	Qi +0;
+	Qa +0;
+	Qm +0;
+	Qh +0;
+	Qlatent +0;
+	dTair +0;
+	adj_cooling_cap +13297.8;
+	adj_heating_cap +19125.8;
+	adj_cooling_cop +4.5107;
+	adj_heating_cop +3.03571;
+	thermostat_control FULL;
+}
+
+
+// class lights
+object lights:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "impedance_fraction: 1.000000; power_factor: 1.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0.9 pu;
+	current_fraction +0 pu;
+	impedance_fraction +1 pu;
+	power_fraction +0 pu;
+	power_factor +1;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +1 pu;
+	breaker_amps +40 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// lights properties
+	type INCANDESCENT;
+	placement INDOOR;
+	installed_power +2.29797 kW;
+	power_density +0.919189 W/sf;
+	curtailment +0 pu;
+	demand +0 pu;
+	actual_power +0+0i kVA;
+}
+
+
+// class microwave
+object microwave:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0j kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0j kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +1 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// microwave properties
+	installed_power +0 kW;
+	standby_power +0 kW;
+	circuit_split +0;
+	state OFF;
+	cycle_length +0 s;
+	runtime +0 s;
+	state_time +0 s;
+}
+
+
+// class occupantload
+object occupantload:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// occupantload properties
+	number_of_occupants 4;
+	occupancy_fraction +0 unit;
+	heatgain_per_person +400 Btu/h;
+}
+
+
+// class plugload
+object plugload:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_fraction: 1.000000; power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +1 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +40 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// plugload properties
+	circuit_split +0;
+	demand +0 unit;
+	installed_power +0 kW;
+	actual_power +0+0i kVA;
+}
+
+Segmentation fault
+
+// class range
+terminate called after throwing an instance of 'char const*'
+Aborted
+
+// class refrigerator
+object refrigerator:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.950000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0j kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0.95;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// refrigerator properties
+	size +29.9335 cf;
+	rated_capacity +1021.33 Btu/h;
+	temperature +36.7555 degF;
+	setpoint +36.5946 degF;
+	deadband +2.18008 degF;
+	cycle_time +0 s;
+	output +0;
+	event_temp +0;
+	UA +0.6 Btu/degF*h;
+	compressor_off_normal_energy +40500;
+	compressor_off_normal_power +15 W;
+	compressor_on_normal_energy +252000;
+	compressor_on_normal_power +120 W;
+	defrost_energy +1.32e+06;
+	defrost_power +550 W;
+	icemaking_energy +18000;
+	icemaking_power +300 W;
+	ice_making_probability +0.02;
+	FF_Door_Openings 0;
+	door_opening_energy 0;
+	door_opening_power 0;
+	DO_Thershold +1.18576e-322;
+	dr_mode_double +0;
+	energy_needed +0;
+	energy_used +0;
+	refrigerator_power +0;
+	icemaker_running FALSE;
+	check_DO 0;
+	is_240 FALSE;
+	defrostDelayed +0;
+	long_compressor_cycle_due FALSE;
+	long_compressor_cycle_time +0;
+	long_compressor_cycle_power +120;
+	long_compressor_cycle_energy +720000;
+	long_compressor_cycle_threshold +0.05;
+	defrost_criterion TIMED;
+	run_defrost FALSE;
+	door_opening_criterion +0;
+	compressor_defrost_time +0;
+	delay_defrost_time +28800;
+	daily_door_opening 0;
+	state 0;
+}
+
+
+// class residential
+ERROR    [INIT] : --example: class 1377367168 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class thermal
+ERROR    [INIT] : --example: class -1876196048 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class waterheater
+object waterheater:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// waterheater properties
+	tank_volume +50 gal;
+	tank_UA +0 Btu*h/degF;
+	tank_diameter +1.50008 ft;
+	tank_height +3.782 ft;
+	water_demand +0 gpm;
+	heating_element_capacity +0 kW;
+	inlet_water_temperature +0 degF;
+	waterheater_model ONEZNODE;
+	heat_mode ELECTRIC;
+	location INSIDE;
+	tank_setpoint +0 degF;
+	thermostat_deadband +0 degF;
+	temperature +0 degF;
+	height +0 ft;
+	demand +0+0i kVA;
+	actual_load +0 kW;
+	previous_load +0 kW;
+	actual_power +0+0i kVA;
+	is_waterheater_on +0;
+	gas_fan_power +0 kW;
+	gas_standby_power +0 kW;
+	heat_pump_coefficient_of_performance +0 Btu/kWh;
+	Tcontrol +0 degF;
+	current_tank_status FULL;
+	dr_signal +0;
+	COP +0;
+	operating_mode +0;
+	fortran_sim_time +0 s;
+	waterheater_power +0 kW;
+	load_state DEPLETING;
+	actual_voltage +240;
+	nominal_voltage +240;
+	re_override OV_NORMAL;
+}
+

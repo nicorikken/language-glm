@@ -1,0 +1,215 @@
+// Examples for module market
+
+// class auction
+object auction:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// auction properties
+	unit "";
+	period +300 s;
+	latency +0 s;
+	market_id 0;
+	network "";
+	verbose FALSE;
+	linkref "";
+	pricecap +9999;
+	price_cap +9999;
+	special_mode NONE;
+	statistic_mode ON;
+	fixed_price +0;
+	fixed_quantity +0;
+	capacity_reference_object "";
+	capacity_reference_property "";
+	capacity_reference_bid_price +0;
+	max_capacity_reference_bid_quantity +0;
+	capacity_reference_bid_quantity +0;
+	init_price +0;
+	init_stdev +0;
+	future_mean_price +0;
+	use_future_mean_price FALSE;
+	current_market.start_time 'INIT';
+	current_market.end_time 'INIT';
+	current_market.clearing_price +0 $;
+	current_market.clearing_quantity +0;
+	current_market.clearing_type NULL;
+	current_market.marginal_quantity_load +0;
+	current_market.marginal_quantity +0;
+	current_market.marginal_quantity_bid +0;
+	current_market.marginal_quantity_frac +0;
+	current_market.seller_total_quantity +0;
+	current_market.buyer_total_quantity +0;
+	current_market.seller_min_price +0;
+	current_market.buyer_total_unrep +0;
+	current_market.cap_ref_unrep +0;
+	next_market.start_time 'INIT';
+	next_market.end_time 'INIT';
+	next_market.clearing_price +0 $;
+	next_market.clearing_quantity +0;
+	next_market.clearing_type NULL;
+	next_market.marginal_quantity_load +0;
+	next_market.marginal_quantity_bid +0;
+	next_market.marginal_quantity_frac +0;
+	next_market.seller_total_quantity +0;
+	next_market.buyer_total_quantity +0;
+	next_market.seller_min_price +0;
+	next_market.cap_ref_unrep +0;
+	past_market.start_time 'INIT';
+	past_market.end_time 'INIT';
+	past_market.clearing_price +0 $;
+	past_market.clearing_quantity +0;
+	past_market.clearing_type NULL;
+	past_market.marginal_quantity_load +0;
+	past_market.marginal_quantity_bid +0;
+	past_market.marginal_quantity_frac +0;
+	past_market.seller_total_quantity +0;
+	past_market.buyer_total_quantity +0;
+	past_market.seller_min_price +0;
+	past_market.cap_ref_unrep +0;
+	margin_mode NORMAL;
+	warmup 0;
+	ignore_failed_market FALSE;
+	ignore_pricecap FALSE;
+	transaction_log_file "";
+	transaction_log_limit 0;
+	curve_log_file "";
+	curve_log_limit 0;
+	curve_log_info NORMAL;
+}
+
+Processing 2001-01-28 18:05:00 UTC...
+// class controller
+object controller:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// controller properties
+	simple_mode NONE;
+	bid_mode OFF;
+	use_override OFF;
+	ramp_low +0 degF;
+	ramp_high +0 degF;
+	range_low +0;
+	range_high +0;
+	target "";
+	setpoint "";
+	demand "";
+	load "";
+	total "";
+	market "";
+	state "";
+	avg_target "";
+	std_target "";
+	bid_price +0;
+	bid_quantity +0;
+	set_temp +0 degF;
+	base_setpoint +0 degF;
+	market_price +0;
+	period +0 s;
+	control_mode RAMP;
+	resolve_mode DEADBAND;
+	slider_setting +0;
+	slider_setting_heat +0;
+	slider_setting_cool +0;
+	override "";
+	heating_range_high +0 degF;
+	heating_range_low +0 degF;
+	heating_ramp_high +0;
+	heating_ramp_low +0;
+	cooling_range_high +0 degF;
+	cooling_range_low +0 degF;
+	cooling_ramp_high +0;
+	cooling_ramp_low +0;
+	heating_base_setpoint +0 degF;
+	cooling_base_setpoint +0 degF;
+	deadband "";
+	heating_setpoint "";
+	heating_demand "";
+	cooling_setpoint "";
+	cooling_demand "";
+	sliding_time_delay +0 s;
+	use_predictive_bidding FALSE;
+	device_actively_engaged +0;
+	cleared_market 0;
+	locked 0;
+	p_ON +0;
+	p_OFF +0;
+	p_ONLOCK +0;
+	p_OFFLOCK +0;
+	delta_u +0;
+	regulation_market_on "";
+	regulation_market_off "";
+	fast_regulation_signal +0 s;
+	market_price_on +0;
+	market_price_off +0;
+	period_on +0 s;
+	period_off +0 s;
+	regulation_period 0;
+	r1 +0;
+	mu0 +0;
+	mu1 +0;
+	average_target "";
+	standard_deviation_target "";
+	bid_id 0;
+	bid_delay 0;
+	thermostat_state "";
+	proxy_average +0;
+	proxy_standard_deviation +0;
+	proxy_market_id 0;
+	proxy_market2_id 0;
+	proxy_clear_price +0 $;
+	proxy_price_cap +0;
+	proxy_market_unit "";
+	proxy_initial_price +0;
+}
+
+
+// class double
+ERROR    [INIT] : --example: class -1717644352 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class generator
+ERROR    [INIT] : --example: class -2127551280 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class passive
+ERROR    [INIT] : --example: class -749942640 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class stub
+ERROR    [INIT] : --example: class 212907376 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class stubauction
+object stubauction:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// stubauction properties
+	unit "";
+	period +300 s;
+	last.P +0;
+	current_market.clearing_price +0;
+	past_market.clearing_price +0;
+	next.P +0;
+	avg24 +0;
+	std24 +0;
+	avg72 +0;
+	std72 +0;
+	avg168 +0;
+	std168 +0;
+	market_id 0;
+	verbose FALSE;
+	control_mode NORMAL;
+}
+
+Processing 2000-04-18 10:35:00 UTC...
+// class supervisory
+ERROR    [INIT] : --example: class -10928880 is not found
+FATAL    [INIT] : shutdown after command line rejected

@@ -1,0 +1,82 @@
+// Examples for module climate
+
+// class climate
+object climate:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// climate properties
+	solar_elevation +0;
+	solar_azimuth +0;
+	city "";
+	tmyfile "";
+	temperature +0 degF;
+	humidity +0 %;
+	solar_flux +0 W/sf;
+	solar_direct +0 W/sf;
+	solar_diffuse +0 W/sf;
+	solar_global +0 W/sf;
+	extraterrestrial_direct_normal +0 W/sf;
+	pressure +0 mbar;
+	wind_speed +0 m/s;
+	wind_dir +0 deg;
+	wind_gust +0 mph;
+	record.low +0 degF;
+	record.low_day 0;
+	record.high +0 degF;
+	record.high_day 0;
+	record.solar +0 W/sf;
+	rainfall +0 in/h;
+	snowdepth +0 in;
+	interpolate NONE;
+	solar_horiz +0;
+	solar_north +0;
+	solar_northeast +0;
+	solar_east +0;
+	solar_southeast +0;
+	solar_south +0;
+	solar_southwest +0;
+	solar_west +0;
+	solar_northwest +0;
+	solar_raw +0 W/sf;
+	ground_reflectivity +0 pu;
+	reader "";
+	forecast "";
+	cloud_model NONE;
+	cloud_opacity +0 pu;
+	cloud_reflectivity +0 pu;
+}
+
+
+// class csv
+ERROR    [INIT] : --example: class 225071984 is not found
+FATAL    [INIT] : shutdown after command line rejected
+
+// class weather
+object weather:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// weather properties
+	temperature +0 degF;
+	humidity +0 %;
+	solar_dir +0 W/sf;
+	solar_direct +0 W/sf;
+	solar_diff +0 W/sf;
+	solar_diffuse +0 W/sf;
+	solar_global +0 W/sf;
+	wind_speed +0 mph;
+	rainfall +0 in/h;
+	snowdepth +0 in;
+	pressure +0 mbar;
+	month 0;
+	day 0;
+	hour 0;
+	minute 0;
+	second 0;
+}
+

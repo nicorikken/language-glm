@@ -1,0 +1,40 @@
+// Examples for module reliability
+
+// class eventgen
+object eventgen:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// eventgen properties
+	target_group "";
+	fault_type "";
+	failure_dist UNIFORM;
+	restoration_dist UNIFORM;
+	failure_dist_param_1 +0;
+	failure_dist_param_2 +0;
+	restoration_dist_param_1 +0;
+	restoration_dist_param_2 +0;
+	manual_outages "";
+	max_outage_length +0 s;
+	max_simultaneous_faults 0;
+}
+
+
+// class metrics
+object metrics:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// metrics properties
+	report_file "";
+	customer_group "";
+	module_metrics_object "";
+	metrics_of_interest "";
+	metric_interval +0 s;
+	report_interval +0 s;
+}
+

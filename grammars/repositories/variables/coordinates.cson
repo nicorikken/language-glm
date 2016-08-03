@@ -1,0 +1,8 @@
+key: 'coordinates'
+
+comments: "support for longitude and latitude"
+patterns: [{
+  match: "(\\d+[NSEW]\\d+[:\\.]\\d*)"
+  captures:
+    1: name: 'constant.coordinate.glm'
+  }]

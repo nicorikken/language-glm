@@ -1,0 +1,6 @@
+key: 'timestamps'
+
+patterns: [{
+  match: "(\'\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\\'|INIT|NEVER|INVALID)"
+  name: 'constant.timestamp.glm'
+}]

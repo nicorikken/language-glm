@@ -1,0 +1,30 @@
+key: 'powerflow-properties-triplex_node'
+
+patterns: [{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(bustype|busflags)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(reference_bus)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(maximum_voltage_error)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(voltage_(?:1|2|N|12|1N|2N)|current_(?:1|2|N|12)|(?:power|shunt|impedance)_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+  }]

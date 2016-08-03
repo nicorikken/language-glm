@@ -1,0 +1,12 @@
+key: 'object'
+
+comment: "for matching object names inside properties"
+patterns: [{
+  match: "(\\w+)"
+  captures:
+    1:
+      name: 'constant.object.glm'
+      patterns: [
+        {include: "#intrinsic-variable-expansion"}
+        {include: "#macro-variable-expansion"}
+      ]}]

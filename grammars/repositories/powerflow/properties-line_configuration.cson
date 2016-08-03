@@ -1,0 +1,9 @@
+key: 'powerflow-properties-line_configuration'
+
+patterns: [{
+  name: 'line-configuration.powerflow.property.glm'
+  match: "^\\s*(conductor_[ABCN]|spacing|z(?:11|12|13|21|22|23|31|32|33))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.line-configuration.powerflow.glm'
+    2: patterns: [{include: "#wildcard-element"}] #TODO
+}]

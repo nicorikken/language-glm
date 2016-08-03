@@ -1,0 +1,11 @@
+key: 'powerflow-properties-line'
+
+patterns: [
+  # {include: "#powerflow-properties-link"} TODO make derivation
+  {
+    name: 'line.powerflow.property.glm'
+    match: "^\\s*(configuration|length)\\s+([^;]*)(?=\\s*;)"
+    captures:
+      1: name: 'entity.name.function.line.powerflow.glm'
+      2: patterns: [{include: "#wildcard-element"}] #TODO
+  }]

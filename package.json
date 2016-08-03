@@ -10,5 +10,12 @@
   "license": "LGPL-v3",
   "engines": {
     "atom": "*"
-  }
+  },
+  "dependencies": {
+    "season": "^5.3"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.15.0"
+  },
+  "main": "lib/main.coffee"
 }

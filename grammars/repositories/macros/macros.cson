@@ -1,0 +1,11 @@
+key: 'macros'
+
+patterns: [{
+  # TODO ensure mid-statement semicolumn is not breaking statement parsing
+  match: "^\\s*(\#.*?)(?=$|;|\/\/)"
+  captures:
+    1:
+      name: "meta.macro.glm"
+      patterns: [
+        {include: "#macros-includes"}
+    ]}]

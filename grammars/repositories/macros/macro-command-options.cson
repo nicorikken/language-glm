@@ -1,0 +1,10 @@
+key: 'macro-command-options'
+
+patterns: [{
+  match: "(\#option)\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#command-option"}
+      ]}]

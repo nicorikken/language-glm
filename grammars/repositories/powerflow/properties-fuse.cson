@@ -1,0 +1,16 @@
+key: 'powerflow-properties-fuse'
+
+patterns: [{
+  name: 'fuse.powerflow.property.glm'
+  match: "^\\s*(current_limit|mean_replacement_time)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fuse.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'fuse.powerflow.property.glm'
+  match: "^\\s*(phase_[ABC]_status|repair_dist_type)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fuse.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+  }]

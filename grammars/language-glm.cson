@@ -1,0 +1,2013 @@
+name: "GridLAB-D Model (GLM)"
+scopeName: "source.glm"
+fileTypes: [
+  "glm"
+]
+maxTokensPerLine: 100
+patterns: [
+  {
+    include: "#comments"
+  }
+  {
+    include: "#macros"
+  }
+  {
+    include: "#clock"
+  }
+  {
+    include: "#modules"
+  }
+  {
+    include: "#objects"
+  }
+  {
+    include: "#variables"
+  }
+]
+repository:
+  "macros-includes":
+    patterns: [
+      {
+        include: "#macro-file"
+      }
+      {
+        include: "#macro-closed"
+      }
+      {
+        include: "#macro-command-options"
+      }
+      {
+        include: "#macro-commands"
+      }
+      {
+        include: "#macro-file"
+      }
+      {
+        include: "#macro-message"
+      }
+      {
+        include: "#macro-path"
+      }
+      {
+        include: "#macro-test"
+      }
+      {
+        include: "#macro-variable"
+      }
+      {
+        include: "#macro-variable-custom"
+      }
+      {
+        include: "#macro-variable-environment"
+      }
+      {
+        include: "#macro-variable-global"
+      }
+    ]
+  "clock-includes":
+    patterns: [
+      {
+        include: "#clock-timestamps"
+      }
+      {
+        include: "#clock-timezones"
+      }
+    ]
+  modules:
+    patterns: [
+      {
+        include: "#module-inline"
+      }
+      {
+        include: "#module-block"
+      }
+      {
+        include: "#module-name"
+      }
+    ]
+  "module-global-variables":
+    patterns: [
+      {
+        include: "#powerflow-module-globals"
+      }
+      {
+        include: "#residential-module-globals"
+      }
+      {
+        include: "#commercial-module-globals"
+      }
+      {
+        include: "#tape-module-globals"
+      }
+    ]
+  "object-includes":
+    patterns: [
+      {
+        include: "#comments"
+      }
+      {
+        include: "#object-properties-common"
+      }
+      {
+        include: "#powerflow-properties"
+      }
+    ]
+  "powerflow-properties":
+    patterns: [
+      {
+        include: "#powerflow-properties-node"
+      }
+      {
+        include: "#powerflow-properties-link"
+      }
+      {
+        include: "#powerflow-properties-line"
+      }
+      {
+        include: "#powerflow-properties-line_configuration"
+      }
+      {
+        include: "#powerflow-properties-line_spacing"
+      }
+      {
+        include: "#powerflow-properties-overhead_line"
+      }
+      {
+        include: "#powerflow-properties-underground_line"
+      }
+      {
+        include: "#powerflow-properties-triplex_line_configuration"
+      }
+      {
+        include: "#powerflow-properties-triplex_line_conductor"
+      }
+      {
+        include: "#powerflow-properties-transformer"
+      }
+      {
+        include: "#powerflow-properties-transformer_configuration"
+      }
+      {
+        include: "#powerflow-properties-load"
+      }
+      {
+        include: "#powerflow-properties-meter"
+      }
+      {
+        include: "#powerflow-properties-triplex_node"
+      }
+      {
+        include: "#powerflow-properties-triplex_meter"
+      }
+      {
+        include: "#powerflow-properties-triplex_load"
+      }
+      {
+        include: "#powerflow-properties-regulator"
+      }
+      {
+        include: "#powerflow-properties-regulator_configuration"
+      }
+      {
+        include: "#powerflow-properties-capacitor"
+      }
+      {
+        include: "#powerflow-properties-fuse"
+      }
+      {
+        include: "#powerflow-properties-switch"
+      }
+      {
+        include: "#powerflow-properties-recloser"
+      }
+      {
+        include: "#powerflow-properties-relay"
+      }
+      {
+        include: "#powerflow-properties-substation"
+      }
+      {
+        include: "#powerflow-properties-pqload"
+      }
+      {
+        include: "#powerflow-properties-volt_var_control"
+      }
+      {
+        include: "#powerflow-properties-voltdump"
+      }
+      {
+        include: "#powerflow-properties-currentdump"
+      }
+      {
+        include: "#powerflow-properties-billdump"
+      }
+      {
+        include: "#powerflow-properties-fault_check"
+      }
+      {
+        include: "#powerflow-properties-restoration"
+      }
+      {
+        include: "#powerflow-properties-series_reactor"
+      }
+      {
+        include: "#powerflow-properties-sectionalizer"
+      }
+      {
+        include: "#powerflow-properties-power_metrics"
+      }
+    ]
+    variables:
+      patterns: [
+        {
+          include: "#coordinates"
+        }
+        {
+          include: "#macro-variable-expansion"
+        }
+        {
+          include: "#string"
+        }
+        {
+          include: "#set-environment-variable"
+        }
+        {
+          include: "#set-global-variable"
+        }
+        {
+          include: "#set-custom-variable"
+        }
+        {
+          include: "#timestamps"
+        }
+        {
+          include: "#intrinsic-variable-expansion"
+        }
+        {
+          include: "#object"
+        }
+        {
+          include: "#wildcard-element"
+        }
+        {
+          include: "#boolean"
+        }
+        {
+          include: "#int16"
+        }
+        {
+          include: "#int32"
+        }
+        {
+          include: "#char32"
+        }
+        {
+          include: "#char1024"
+        }
+        {
+          include: "#command"
+        }
+        {
+          include: "#command-option"
+        }
+        {
+          include: "#enumeration"
+        }
+        {
+          include: "#file"
+        }
+        {
+          include: "#path"
+        }
+        {
+          include: "#set"
+        }
+        {
+          include: "#test"
+        }
+        {
+          include: "#variable"
+        }
+        {
+          include: "#double"
+        }
+        {
+          include: "#complex"
+        }
+      ]
+  "clock-timestamps":
+    patterns: [
+      {
+        name: "clock.property.glm"
+        match: "(?<=^|;)\\s*(timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.clock.property.glm"
+          "2":
+            patterns: [
+              {
+                include: "#timestamps"
+              }
+            ]
+      }
+    ]
+  "clock-timezones":
+    patterns: [
+      {
+        name: "clock.property.glm"
+        match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.clock.property.glm"
+          "2":
+            name: "constant.timezone.clock.property.glm"
+      }
+    ]
+  clock:
+    patterns: [
+      {
+        name: "clock.glm"
+        begin: "^\\s*(clock)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.clock.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#clock-includes"
+          }
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  comments:
+    patterns: [
+      {
+        match: "//.*$"
+        name: "comment.line.glm"
+      }
+    ]
+  "object-properties-common":
+    patterns: [
+      {
+        name: "object.common.property.glm"
+        match: "^\\s*(name|id|groupid|parent|rank|schedule_skew|latitude|longitude|in|out|heartbeat|flags)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.object.common.property.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  objects:
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)([^\\{\\s:]*)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#object-includes"
+          }
+        ]
+      }
+    ]
+  "macro-closed":
+    patterns: [
+      {
+        match: "(#(?:endif|else))"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+      }
+    ]
+  "macro-command-options":
+    patterns: [
+      {
+        match: "(#option)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#command-option"
+              }
+            ]
+      }
+    ]
+  "macro-commands":
+    patterns: [
+      {
+        match: "(#(?:start|system))\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#command"
+              }
+            ]
+      }
+    ]
+  "macro-file":
+    patterns: [
+      {
+        match: "(#include)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#file"
+              }
+            ]
+      }
+    ]
+  "macro-message":
+    patterns: [
+      {
+        match: "(#(?:error|print|warning))\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#string"
+              }
+            ]
+      }
+    ]
+  "macro-path":
+    patterns: [
+      {
+        match: "(#(?:binpath|incpath|libpath))\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#path"
+              }
+            ]
+      }
+    ]
+  "macro-test":
+    patterns: [
+      {
+        match: "(#if)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#test"
+              }
+            ]
+      }
+    ]
+  "macro-variable-custom":
+    patterns: [
+      {
+        match: "(#define)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set-custom-variable"
+              }
+            ]
+      }
+    ]
+  "macro-variable-environment":
+    patterns: [
+      {
+        match: "(#setenv)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set-environment-variable"
+              }
+            ]
+      }
+    ]
+  "macro-variable-global":
+    patterns: [
+      {
+        match: "(#set)\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set-global-variable"
+              }
+              {
+                include: "#set-custom-variable"
+              }
+            ]
+      }
+    ]
+  "macro-variable":
+    patterns: [
+      {
+        match: "(#(?:ifdef|ifndef))\\s+(.*)"
+        captures:
+          "1":
+            name: "keyword.macro.glm"
+          "2":
+            patterns: [
+              {
+                include: "#variable"
+              }
+            ]
+      }
+    ]
+  macros:
+    patterns: [
+      {
+        match: "^\\s*(#.*?)(?=$|;|//)"
+        captures:
+          "1":
+            name: "meta.macro.glm"
+            patterns: [
+              {
+                include: "#macros-includes"
+              }
+            ]
+      }
+    ]
+  "module-block":
+    patterns: [
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+([^;\\{\\/]*\\s*)\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#module-name"
+              }
+            ]
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#module-global-variables"
+          }
+        ]
+      }
+    ]
+  "module-inline":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+([^;\\s]*\\s*);"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#module-name"
+              }
+            ]
+      }
+    ]
+  "module-name":
+    patterns: [
+      {
+        comment: "made to only match the provided module names"
+        match: "(?<=^)(climate|market|powerflow|residential|reliability|generators|commercial|communications|matpower|network|assert|tape)(?=\\s*\\Z)"
+        captures:
+          "1":
+            name: "entity.name.function.module.glm"
+      }
+    ]
+  boolean:
+    patterns: [
+      {
+        match: "(TRUE|FALSE|0|1)"
+        captures:
+          "1":
+            name: "constant.boolean.glm"
+      }
+    ]
+  char1024:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  char32:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  "command-option":
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  command:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  complex:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  coordinates:
+    patterns: [
+      {
+        match: "(\\d+[NSEW]\\d+[:\\.]\\d*)"
+        captures:
+          "1":
+            name: "constant.coordinate.glm"
+      }
+    ]
+  double:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  enumeration:
+    patterns: [
+      {
+        match: "([A-Z0-9_|]+)"
+        captures:
+          "1":
+            name: "constant.enumeration.glm"
+      }
+    ]
+  file:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  int16:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  int32:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  "intrinsic-variable-expansion":
+    patterns: [
+      {
+        match: "{(file|filename|fileext|filepath|line|namespace|class|id|var)}"
+        name: "meta.variable.macro.glm"
+        captures:
+          "1":
+            name: "entity.name.function.intrinsic.expansion.glm"
+      }
+    ]
+  "macro-variable-expansion":
+    patterns: [
+      {
+        match: "{(\\w+)}"
+        name: "meta.variable.macro.glm"
+        captures:
+          "1":
+            name: "entity.variable.macro.glm"
+      }
+    ]
+  object:
+    patterns: [
+      {
+        match: "(\\w+)"
+        captures:
+          "1":
+            name: "constant.object.glm"
+            patterns: [
+              {
+                include: "#intrinsic-variable-expansion"
+              }
+              {
+                include: "#macro-variable-expansion"
+              }
+            ]
+      }
+    ]
+  path:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  "set-custom-variable":
+    patterns: [
+      {
+        match: "(\\w+)=(.+)"
+        captures:
+          "1":
+            name: "entity.variable.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "set-environment-variable":
+    patterns: [
+      {
+        match: "(DBFLAGS|CC|COMPSPEC|SHELL|GLPATH|GLTEMP|HOMEVAR|HOMEDRIVE|TEMP|USER|USERNAME|GRIDLABD|PATH|INCLUDE|LIB|CCFLAGS|CXXFLAGS|CXX|LDFLAGS|GLBROWSER|LD_LIBRARY_PATH|COMPUTERNAME|HOSTNAME|TZ|NUMBER_OF_PROCESSORS)=(.+)"
+        captures:
+          "1":
+            name: "keyword.environment.variable.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "set-global-variable":
+    patterns: [
+      {
+        match: "(APPLE|browser|check_version|checkpoint_file|checkpoint_interval|checkpoint_keepall|checkpoint_seqnum|checkpoint_type|clean|clock|command_line|compileonly|complex_format|dateformat|debug|debugger|double_format|dumpall|dumpfile|environment|execdir|event_trace|event_trace_filter|force_compile|gdb|gdb_window|GUID|include|infourl|init_sequence|init_max_defer|inline_block_size|iteration_limit|kmlfile|LINUX|mailto|mainloop_state|MATLAB|maximum_synctime|maximum_timestep|modelname|module_compiler_flags|mt_profile|MYSQL|no_depricate|nolocks|NOW|object_format|object_scan|object_tree_balance|pauseat|pauseatexit|platform|profiler|quiet|random_number_generator|randomseed|relax_naming_rules|return_code|RUN|run_realtime|runchecks|savefile|server_portnum|server_quit_on_close|show_progress|skipsafe|starttime|stoptime|streaming_io|strictnames|suppress_repeat_messages|technology_readiness_level|test|testoutputfile|threadcount|tmp|trace|urlbase|validate|validate_report|verbose|version.major|version.minor|warn|website|WINDOWS|workdir|xml_encoding)=(.+)"
+        captures:
+          "1":
+            name: "keyword.name.global.variable.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  set:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  string:
+    patterns: [
+      {
+        match: "\\\"[^\\\"]*\\\""
+        name: "string.glm"
+      }
+    ]
+  test:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  timestamps:
+    patterns: [
+      {
+        match: "('\\d{4}-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}(?:\\s+[A-Z]{3})?\\'|INIT|NEVER|INVALID)"
+        name: "constant.timestamp.glm"
+      }
+    ]
+  variable:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
+  "wildcard-element":
+    patterns: [
+      {
+        match: "([^\\s\\;]+)"
+        captures:
+          "1":
+            name: "constant.wildcard.glm"
+            patterns: [
+              {
+                include: "#intrinsic-variable-expansion"
+              }
+              {
+                include: "#macro-variable-expansion"
+              }
+            ]
+      }
+    ]
+  "powerflow-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(acceleration_factor|default_maximum_voltage_error|fault_impedance|geographic_degree|line_capacitance|lu_solver|maximum_voltage_error|nominal_frequency|NR_iteration_limit|NR_superLU_procs|primary_voltage_ratio|require_voltage_control|show_matrix_values|solver_method|warning_underfrequency|warning_overfrequency|warning_undervoltage|warning_overvoltage|warning_voltageangle)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.powerflow.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-billdump":
+    patterns: [
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char32"
+              }
+            ]
+      }
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*(runtime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#timestamp"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-capacitor":
+    patterns: [
+      {
+        name: "capacitor.powerflow.property.glm"
+        match: "^\\s*(pt_phase|phases_connected)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.capacitor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set"
+              }
+            ]
+      }
+      {
+        name: "capacitor.powerflow.property.glm"
+        match: "^\\s*(switch[ABC]|control|control_level)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.capacitor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "capacitor.powerflow.property.glm"
+        match: "^\\s*(cap_[ABC]_switch_count)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.capacitor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int16"
+              }
+            ]
+      }
+      {
+        name: "capacitor.powerflow.property.glm"
+        match: "^\\s*((?:voltage|VAr)_set_(?:high|low)|capacitor_[ABC]|cap_nominal_voltage|time_delay|dwell_time|lockout_time)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.capacitor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "capacitor.powerflow.property.glm"
+        match: "^\\s*(remote_sense(?:_B)?)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.capacitor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-currentdump":
+    patterns: [
+      {
+        name: "currentdump.powerflow.property.glm"
+        match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.currentdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char32"
+              }
+            ]
+      }
+      {
+        name: "currentdump.powerflow.property.glm"
+        match: "^\\s*(runtime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.currentdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#timestamp"
+              }
+            ]
+      }
+      {
+        name: "currentdump.powerflow.property.glm"
+        match: "^\\s*(mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.currentdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-fault_check":
+    patterns: [
+      {
+        name: "fault-check.powerflow.property.glm"
+        match: "^\\s*(check_mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fault-check.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "fault-check.powerflow.property.glm"
+        match: "^\\s*(output_filename)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fault-check.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char1024"
+              }
+            ]
+      }
+      {
+        name: "fault-check.powerflow.property.glm"
+        match: "^\\s*(reliability_mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fault-check.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#boolean"
+              }
+            ]
+      }
+      {
+        name: "fault-check.powerflow.property.glm"
+        match: "^\\s*(eventgen_object)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fault-check.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-fuse":
+    patterns: [
+      {
+        name: "fuse.powerflow.property.glm"
+        match: "^\\s*(current_limit|mean_replacement_time)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fuse.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "fuse.powerflow.property.glm"
+        match: "^\\s*(phase_[ABC]_status|repair_dist_type)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.fuse.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-line_configuration":
+    patterns: [
+      {
+        name: "line-configuration.powerflow.property.glm"
+        match: "^\\s*(conductor_[ABCN]|spacing|z(?:11|12|13|21|22|23|31|32|33))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.line-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-line_spacing":
+    patterns: [
+      {
+        name: "line-spacing.powerflow.property.glm"
+        match: "^\\s*(distance_(?:AB|AC|BC|CA|AN|BN|CN|AE|BE|CE|NE))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.line-spacing.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-line":
+    patterns: [
+      {
+        name: "line.powerflow.property.glm"
+        match: "^\\s*(configuration|length)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.line.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-link":
+    patterns: [
+      {
+        name: "link.powerflow.property.glm"
+        match: "^\\s*(from|to|power_in|power_out|power_losses|power_in_[ABC]|power_out[ABC]|power_losses_[ABC]|status|current_out_[ABC]|current_in_[ABC]|flow_direction|mean_repair_time)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.link.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-load":
+    patterns: [
+      {
+        name: "load.powerflow.property.glm"
+        match: "^\\s*(load_class)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.load.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "load.powerflow.property.glm"
+        match: "^\\s*(measured_voltage_(?:A|B|C|AB|BC|CA)|constant_power_[ABC]|constant_current_[ABC]|constant_impedance_[ABC]|base_power_[ABC]|power_pf_[ABC]|current_pf_[ABC]|impedance_pf_[ABC]|power_fraction_[ABC]|current_fraction_[ABC]|impedance_fraction_[ABC])\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.load.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-meter":
+    patterns: [
+      {
+        name: "meter.powerflow.property.glm"
+        match: "^\\s*(measured_(?:real_energy|reactive_energy|demand|real_power|reactive_power)|price|monthly_(?:fee|bill|energy)|previous_monthly_(?:bill|energy)|(?:first|second|third)_tier_(?:price|energy))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "meter.powerflow.property.glm"
+        match: "^\\s*(measured_(?:power(?:_[ABC])?|voltage_[ABC]|current_[ABC]))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+      {
+        name: "meter.powerflow.property.glm"
+        match: "^\\s*(bill_mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "meter.powerflow.property.glm"
+        match: "^\\s*(bill_day)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int32"
+              }
+            ]
+      }
+      {
+        name: "meter.powerflow.property.glm"
+        match: "^\\s*(power_market)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-node":
+    patterns: [
+      {
+        name: "node.powerflow.property.glm"
+        match: "^\\s*(phases|nominal_voltage|voltage_(?:A|B|C|AB|BC|CA)|current_[ABC]|power_[ABC]|shunt_[ABC]|bustype)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.node.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-overhead_line":
+    patterns: [
+      {
+        name: "overhead-line.powerflow.property.glm"
+        match: "^\\s*(geometric_mean_radius|resistance|diameter|rating.(?:summer|winter).(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.overhead-line.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-power_metrics":
+    patterns: [
+      {
+        name: "power-metrics.powerflow.property.glm"
+        match: "^\\s*((?:SAIDI|SAIFI|ASAI|CAIDI|MAIFI)(?:_int)?|base_time_value)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.power-metrics.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-pqload":
+    patterns: [
+      {
+        name: "pqload.powerflow.property.glm"
+        match: "^\\s*(weather)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.pqload.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "pqload.powerflow.property.glm"
+        match: "^\\s*(T_nominal|(?:Zp|Zq|Im|Ia|Pp|Pq)(?:_[THSWR])?|input_(?:temp|humid|solar|wind|rain)|output_(?:imped_[pq]|current_[ma]|power_[pq]))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.pqload.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "pqload.powerflow.property.glm"
+        match: "^\\s*(output_(?:impedance|current|power))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.pqload.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-recloser":
+    patterns: [
+      {
+        name: "recloser.powerflow.property.glm"
+        match: "^\\s*(retry_time|(?:maximum_)?number_of_tries)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.recloser.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-regulator_configuration":
+    patterns: [
+      {
+        name: "regulator-configuration.powerflow.property.glm"
+        match: "^\\s*(connect_type|Control|control_level|Type)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "regulator-configuration.powerflow.property.glm"
+        match: "^\\s*(band_center|band_width|time_delay|dwell_time|(?:current|power)_transducer_ratio|compensator_[rx]_setting_[ABC]|regulation)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "regulator-configuration.powerflow.property.glm"
+        match: "^\\s*((?:raise|lower)_taps|tap_pos_[ABC])\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int16"
+              }
+            ]
+      }
+      {
+        name: "regulator-configuration.powerflow.property.glm"
+        match: "^\\s*([CP]T_phase)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-regulator":
+    patterns: [
+      {
+        name: "regulator.powerflow.property.glm"
+        match: "^\\s*(configuration|sense_node)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "regulator.powerflow.property.glm"
+        match: "^\\s*(tap_[ABC](?:_change_count)?)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.regulator.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int16"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-relay":
+    patterns: [
+      {
+        name: "relay.powerflow.property.glm"
+        match: "^\\s*(time_to_change|recloser_delay)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.relay.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "relay.powerflow.property.glm"
+        match: "^\\s*(recloser_tries)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.relay.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int16"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-restoration":
+    patterns: [
+      {
+        name: "restoration.powerflow.property.glm"
+        match: "^\\s*(reconfig_(?:attempts|iteration_limit))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.restoration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "restoration.powerflow.property.glm"
+        match: "^\\s*(populate_tree)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.restoration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#boolean"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-sectionalizer":
+    patterns: [
+      {
+        include: "#powerflow-properties-switch"
+      }
+    ]
+  "powerflow-properties-series_reactor":
+    patterns: [
+      {
+        name: "series-reactor.powerflow.property.glm"
+        match: "^\\s*(phase_[ABC]_(?:impedance|resistance|reactance)|rated_current_limit)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.series-reactor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-substation":
+    patterns: [
+      {
+        name: "substation.powerflow.property.glm"
+        match: "^\\s*(positive_sequence_voltage|transmission_level_constant_(?:power|impedance|constant)_load|average_distribution_load|distribution_power_[ABC])\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.substation.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+      {
+        name: "substation.powerflow.property.glm"
+        match: "^\\s*(reference_phase)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.substation.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-switch":
+    patterns: [
+      {
+        name: "switch.powerflow.property.glm"
+        match: "^\\s*(phase_[ABC]_state|operating_mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.switch.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-transformer_configuration":
+    patterns: [
+      {
+        name: "transformer-configuration.powerflow.property.glm"
+        match: "^\\s*(connect_type|install_type|coolant_type|cooling_type)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "transformer-configuration.powerflow.property.glm"
+        match: "^\\s*(primary_voltage|secondary_voltage|power[ABC]?_rating|resistance|reactance|full_load_loss|no_load_loss|reactance_resistance_ratio|core_coil_weight|tank_fittings_weight|oil_volume|rated_winding_hot_spot_rise|rated_top_oil_rise|rated_winding_time_constant|installed_insulation_life)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "transformer-configuration.powerflow.property.glm"
+        match: "^\\s*(impedance[12]?|shunt_impedance)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-transformer":
+    patterns: [
+      {
+        name: "transformer.powerflow.property.glm"
+        match: "^\\s*(aging_constant|aging_granularity|ambient_temperature|percent_loss_of_life|top_oil_hot_spot_temperature|winding_hot_spot_temperature)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "transformer.powerflow.property.glm"
+        match: "^\\s*(climate|configuration)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "transformer.powerflow.property.glm"
+        match: "^\\s*(use_thermal_model)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.transformer.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#boolean"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-triplex_line_conductor":
+    patterns: [
+      {
+        name: "triplex-line-conductor.powerflow.property.glm"
+        match: "^\\s*(resistance|geometric_mean_radius)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-line-conductor.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-triplex_line_configuration":
+    patterns: [
+      {
+        name: "triplex-line-configuration.powerflow.property.glm"
+        match: "^\\s*(conductor_[12N]|spacing)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-line-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "triplex-line-configuration.powerflow.property.glm"
+        match: "^\\s*(insulation_thickness|diameter)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-line-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "triplex-line-configuration.powerflow.property.glm"
+        match: "^\\s*(z11|z12|z21|z22)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-line-configuration.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-triplex_load":
+    patterns: [
+      {
+        name: "triplex-load.powerflow.property.glm"
+        match: "^\\s*(base_power_(?:1|2|12)|(?:power|current|impedance)_pf_(?:1|2|12)|(?:power|current|impedance)_fraction_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-load.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "triplex-load.powerflow.property.glm"
+        match: "^\\s*(measured_voltage_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-load.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-triplex_meter":
+    patterns: [
+      {
+        name: "triplex-meter.powerflow.property.glm"
+        match: "^\\s*(measured_(?:real_energy|reactive_energy|demand|real_power|reactive_power)|price|monthly_(?:fee|bill|energy)|previous_monthly_(?:bill|energy)|(?:first|second|third)_tier_(?:price|energy))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "triplex-meter.powerflow.property.glm"
+        match: "^\\s*(measured_(?:power?|voltage_[12N]|current_[12N])|indiv_measured_power_[12N])\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+      {
+        name: "triplex-meter.powerflow.property.glm"
+        match: "^\\s*(bill_mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "triplex-meter.powerflow.property.glm"
+        match: "^\\s*(bill_day)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int32"
+              }
+            ]
+      }
+      {
+        name: "triplex-meter.powerflow.property.glm"
+        match: "^\\s*(power_market)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex-meter.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-triplex_node":
+    patterns: [
+      {
+        name: "triplex_node.powerflow.property.glm"
+        match: "^\\s*(bustype|busflags)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex_node.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "triplex_node.powerflow.property.glm"
+        match: "^\\s*(reference_bus)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex_node.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "triplex_node.powerflow.property.glm"
+        match: "^\\s*(maximum_voltage_error)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex_node.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "triplex_node.powerflow.property.glm"
+        match: "^\\s*(voltage_(?:1|2|N|12|1N|2N)|current_(?:1|2|N|12)|(?:power|shunt|impedance)_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.triplex_node.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-underground_line":
+    patterns: [
+      {
+        name: "underground-line.powerflow.property.glm"
+        match: "^\\s*(outer_diameter|conductor_(?:gmr|diameter|resistance)|neutral_(?:gmr|diameter|resistance|strands)|insulation_relative_permitivitty|shield_(?:gmr|resistance)|rating.(?:summer|winter).(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.underground-line.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-volt_var_control":
+    patterns: [
+      {
+        name: "volt-var-control.powerflow.property.glm"
+        match: "^\\s*(control_method)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.volt-var-control.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "volt-var-control.powerflow.property.glm"
+        match: "^\\s*((?:capacitor|regulator)_delay|desired_pf|d_max|d_min)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.volt-var-control.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+      {
+        name: "volt-var-control.powerflow.property.glm"
+        match: "^\\s*(substation_link)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.volt-var-control.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "volt-var-control.powerflow.property.glm"
+        match: "^\\s*(pf_phase)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.volt-var-control.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set"
+              }
+            ]
+      }
+      {
+        name: "volt-var-control.powerflow.property.glm"
+        match: "^\\s*((?:regulator|capacitor)_list|voltage_measurements|(?:minimum|maximum|desired)_voltages|max_vdrop|(?:high|low)_load_deadband)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.volt-var-control.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char1024"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-voltdump":
+    patterns: [
+      {
+        name: "voltdump.powerflow.property.glm"
+        match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.voltdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char32"
+              }
+            ]
+      }
+      {
+        name: "voltdump.powerflow.property.glm"
+        match: "^\\s*(runtime)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.voltdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#timestamp"
+              }
+            ]
+      }
+      {
+        name: "voltdump.powerflow.property.glm"
+        match: "^\\s*(mode)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.voltdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "residential-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(default_line_voltage|default_line_current|default_outdoor_temperature|default_humidity|default_solar|default_etp_iterations)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.residential.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "commercial-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(warn_control|warn_low_temp|warn_high_temp)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.commercial.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
+  "tape-module-globals":
+    patterns: [
+      {
+        match: "(?=^|;)\\s*(gnuplot_path|flush_interval)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.tape.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]

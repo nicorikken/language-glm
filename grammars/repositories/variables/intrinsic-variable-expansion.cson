@@ -1,0 +1,9 @@
+key: 'intrinsic-variable-expansion'
+
+comment: "intrinsic expansion of variables in object definitions"
+patterns: [{
+  match: "{(file|filename|fileext|filepath|line|namespace|class|id|var)}"
+  name: 'meta.variable.macro.glm'
+  captures:
+    1: name: 'entity.name.function.intrinsic.expansion.glm'
+}]

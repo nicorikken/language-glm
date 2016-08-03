@@ -1,0 +1,23 @@
+key: 'powerflow-properties-currentdump'
+
+patterns: [{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#char32"}]
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(runtime)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#timestamp"}]
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+  }]

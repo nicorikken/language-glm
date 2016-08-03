@@ -1,0 +1,10 @@
+key: 'powerflow-module-globals'
+
+patterns: [
+  {
+    match: '(?<=^|;)\\s*(acceleration_factor|default_maximum_voltage_error|fault_impedance|geographic_degree|line_capacitance|lu_solver|maximum_voltage_error|nominal_frequency|NR_iteration_limit|NR_superLU_procs|primary_voltage_ratio|require_voltage_control|show_matrix_values|solver_method|warning_underfrequency|warning_overfrequency|warning_undervoltage|warning_overvoltage|warning_voltageangle)\\s+([^;]*)(?=\\s*;)'
+    captures:
+      1: name: 'keyword.global.powerflow.module.glm'
+      2: patterns: [{include: "#wildcard-element"}] #TODO
+  }
+]

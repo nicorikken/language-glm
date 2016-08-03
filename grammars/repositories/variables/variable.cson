@@ -1,0 +1,5 @@
+key: 'variable'
+
+patterns: [
+  {include: "#wildcard-element"}
+]

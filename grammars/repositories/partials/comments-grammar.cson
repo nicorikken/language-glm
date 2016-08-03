@@ -1,0 +1,6 @@
+key: 'comments'
+
+patterns: [
+  match: "\/\/.*$"
+  name: 'comment.line.glm'
+]

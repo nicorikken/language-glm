@@ -1,0 +1,37 @@
+key: 'powerflow-properties-volt_var_control'
+
+patterns: [{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*(control_method)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*((?:capacitor|regulator)_delay|desired_pf|d_max|d_min)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*(substation_link)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*(pf_phase)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#set"}]
+}
+{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*((?:regulator|capacitor)_list|voltage_measurements|(?:minimum|maximum|desired)_voltages|max_vdrop|(?:high|low)_load_deadband)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#char1024"}]
+  }]

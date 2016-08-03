@@ -1,0 +1,9 @@
+key: 'macro-variable-expansion'
+
+comment: "macro expansion of variables"
+patterns: [{
+  match: "{(\\w+)}"
+  name: 'meta.variable.macro.glm'
+  captures:
+    1: name: 'entity.variable.macro.glm'
+}]

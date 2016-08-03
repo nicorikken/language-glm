@@ -1,0 +1,7 @@
+key: 'boolean'
+
+patterns: [{
+  match: "(TRUE|FALSE|0|1)"
+  captures:
+    1: name: 'constant.boolean.glm'
+}]

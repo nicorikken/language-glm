@@ -1,0 +1,11 @@
+key: 'clock-timestamps'
+
+patterns: [{
+  name: 'clock.property.glm'
+  match: "(?<=^|;)\\s*(timestamp|stoptime)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'keyword.clock.property.glm'
+    2:
+      patterns: [
+        {include: "#timestamps"}
+      ]}]

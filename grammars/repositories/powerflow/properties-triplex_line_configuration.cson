@@ -1,0 +1,23 @@
+key: 'powerflow-properties-triplex_line_configuration'
+
+patterns: [{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(conductor_[12N]|spacing)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(insulation_thickness|diameter)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(z11|z12|z21|z22)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+  }]

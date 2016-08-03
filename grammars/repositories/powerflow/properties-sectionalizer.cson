@@ -1,0 +1,4 @@
+key: 'powerflow-properties-sectionalizer'
+
+comment: "same as switch"
+patterns: [{include: "#powerflow-properties-switch"}]

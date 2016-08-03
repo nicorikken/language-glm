@@ -1,0 +1,10 @@
+key: 'macro-commands'
+
+patterns: [{
+  match: "(\#(?:start|system))\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#command"}
+      ]}]

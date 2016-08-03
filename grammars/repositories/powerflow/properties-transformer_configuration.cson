@@ -1,0 +1,23 @@
+key: 'powerflow-properties-transformer_configuration'
+
+patterns:[{
+  name: 'transformer-configuration.powerflow.property.glm'
+  match: "^\\s*(connect_type|install_type|coolant_type|cooling_type)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.transformer-configuration.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'transformer-configuration.powerflow.property.glm'
+  match: "^\\s*(primary_voltage|secondary_voltage|power[ABC]?_rating|resistance|reactance|full_load_loss|no_load_loss|reactance_resistance_ratio|core_coil_weight|tank_fittings_weight|oil_volume|rated_winding_hot_spot_rise|rated_top_oil_rise|rated_winding_time_constant|installed_insulation_life)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.transformer-configuration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'transformer-configuration.powerflow.property.glm'
+  match: "^\\s*(impedance[12]?|shunt_impedance)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.transformer-configuration.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}]

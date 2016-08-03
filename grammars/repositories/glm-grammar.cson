@@ -1,0 +1,212 @@
+# Grammar master
+name: ''
+scopeName: ''
+fileTypes: []
+
+maxTokensPerLine: 100
+
+patterns: [
+  include: '#comments'
+,
+  include: "#macros" # -> macros-includes
+,
+  include: "#clock"
+  #TODO extern
+  #TODO global
+  #TODO instance
+  #TODO link
+,
+  include: "#modules"
+,
+  include: "#objects"
+  #TODO schedule
+  #TODO script
+,
+  include: "#variables"
+]
+repository:
+  'macros-includes':
+    patterns: [
+      include: "#macro-file"
+    ,
+      include: "#macro-closed"
+    ,
+      # TODO include: "#macro-assign"
+    #,
+      include: "#macro-command-options" # -> command-option
+    ,
+      include: "#macro-commands"
+    ,
+      include: "#macro-file"
+    ,
+      include: "#macro-message"
+    ,
+      include: "#macro-path"
+    ,
+      include: "#macro-test"
+    ,
+      include: "#macro-variable"
+    ,
+      include: "#macro-variable-custom"
+    ,
+      include: "#macro-variable-environment"
+    ,
+      include: "#macro-variable-global"
+    ]
+  'clock-includes':
+    patterns: [
+      include: "#clock-timestamps"
+    ,
+      include: "#clock-timezones"
+    ]
+  'modules':
+    patterns: [
+      include: "#module-inline"
+    ,
+      include: "#module-block"
+    ,
+      include: "#module-name"
+    ]
+  'module-global-variables':
+    patterns: [
+      include: "#powerflow-module-globals"
+    ,
+      include: "#residential-module-globals"
+    ,
+      include: "#commercial-module-globals"
+    ,
+      include: "#tape-module-globals"
+    ]
+  'object-includes':
+    #TODO dispatch per object type
+    patterns: [
+      include: '#comments'
+    ,
+      include: "#object-properties-common"
+    ,
+      include: "#powerflow-properties"
+    ]
+  'powerflow-properties':
+    patterns: [
+      include: "#powerflow-properties-node"
+    ,
+      include: "#powerflow-properties-link"
+    ,
+      include: "#powerflow-properties-line"
+    ,
+      include: "#powerflow-properties-line_configuration"
+    ,
+      include: "#powerflow-properties-line_spacing"
+    ,
+      include: "#powerflow-properties-overhead_line"
+    ,
+      include: "#powerflow-properties-underground_line"
+    ,
+      include: "#powerflow-properties-triplex_line_configuration"
+    ,
+      include: "#powerflow-properties-triplex_line_conductor"
+    ,
+      include: "#powerflow-properties-transformer"
+    ,
+      include: "#powerflow-properties-transformer_configuration"
+    ,
+      include: "#powerflow-properties-load"
+    ,
+      include: "#powerflow-properties-meter"
+    ,
+      include: "#powerflow-properties-triplex_node"
+    ,
+      include: "#powerflow-properties-triplex_meter"
+    ,
+      include: "#powerflow-properties-triplex_load"
+    ,
+      include: "#powerflow-properties-regulator"
+    ,
+      include: "#powerflow-properties-regulator_configuration"
+    ,
+      include: "#powerflow-properties-capacitor"
+    ,
+      include: "#powerflow-properties-fuse"
+    ,
+      include: "#powerflow-properties-switch"
+    ,
+      include: "#powerflow-properties-recloser"
+    ,
+      include: "#powerflow-properties-relay"
+    ,
+      include: "#powerflow-properties-substation"
+    ,
+      include: "#powerflow-properties-pqload"
+    ,
+      include: "#powerflow-properties-volt_var_control"
+    ,
+      include: "#powerflow-properties-voltdump"
+    ,
+      include: "#powerflow-properties-currentdump"
+    ,
+      include: "#powerflow-properties-billdump"
+    ,
+      include: "#powerflow-properties-fault_check"
+    ,
+      include: "#powerflow-properties-restoration"
+    ,
+      include: "#powerflow-properties-series_reactor"
+    ,
+      include: "#powerflow-properties-sectionalizer"
+    ,
+      include: "#powerflow-properties-power_metrics"
+      #TODO include other (experimental) properties
+    ]
+    'variables': # grouping only for convenience
+      patterns: [
+        include: "#coordinates"
+      ,
+        include: "#macro-variable-expansion"
+      ,
+        include: "#string"
+      , # TODO implement these specific types
+        include: "#set-environment-variable"
+      ,
+        include: "#set-global-variable"
+      ,
+        include: "#set-custom-variable"
+      ,
+        include: "#timestamps"
+      ,
+        include: "#intrinsic-variable-expansion"
+      ,
+        include: "#object"
+      ,
+    # Not yet completed (TODO)
+        include: "#wildcard-element"
+      ,
+        include: "#boolean"
+      ,
+        include: "#int16"
+      ,
+        include: "#int32"
+      ,
+        include: "#char32"
+      ,
+        include: "#char1024"
+      ,
+        include: "#command"
+      ,
+        include: "#command-option"
+      ,
+        include: "#enumeration"
+      ,
+        include: "#file"
+      ,
+        include: "#path"
+      ,
+        include: "#set"
+      ,
+        include: "#test"
+      ,
+        include: "#variable"
+      ,
+        include: "#double"
+      ,
+        include: "#complex"
+      ]

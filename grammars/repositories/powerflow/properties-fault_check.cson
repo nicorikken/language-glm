@@ -1,0 +1,30 @@
+key: 'powerflow-properties-fault_check'
+
+patterns: [{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(check_mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(output_filename)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#char1024"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(reliability_mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(eventgen_object)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+  }]

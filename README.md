@@ -30,3 +30,6 @@ This license is specifically chosen to enable all users to benefit from downstre
 ![](doc/lgplv3-147x51.png)
 
 See the [COPYRIGHT.LESSER](COPYRIGHT.LESSER) file for details.
+
+### Thanks
+* Thanks to [ldez](https://github.com/ldez) for providing great CoffeeScript tooling for splitting up grammar into manageable pieces.

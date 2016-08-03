@@ -1,0 +1,6 @@
+key: 'complex'
+
+#ref http://gridlab-d.sourceforge.net/wiki/index.php/Complex
+patterns: [
+  {include: "#wildcard-element"}
+]

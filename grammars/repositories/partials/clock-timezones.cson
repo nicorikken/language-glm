@@ -1,0 +1,10 @@
+key: 'clock-timezones'
+
+patterns: [{
+  name: 'clock.property.glm'
+  # TODO make this match more selective
+  match: "^\\s*(timezone)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'keyword.clock.property.glm'
+    2: name: 'constant.timezone.clock.property.glm'
+  }]

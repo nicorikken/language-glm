@@ -1,0 +1,30 @@
+key: 'powerflow-properties-regulator_configuration'
+
+patterns: [{
+  name: 'regulator-configuration.powerflow.property.glm'
+  match: "^\\s*(connect_type|Control|control_level|Type)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator-configuration.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'regulator-configuration.powerflow.property.glm'
+  match: "^\\s*(band_center|band_width|time_delay|dwell_time|(?:current|power)_transducer_ratio|compensator_[rx]_setting_[ABC]|regulation)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator-configuration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'regulator-configuration.powerflow.property.glm'
+  match: "^\\s*((?:raise|lower)_taps|tap_pos_[ABC])\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator-configuration.powerflow.glm'
+    2: patterns: [{include: "#int16"}]
+}
+{
+  name: 'regulator-configuration.powerflow.property.glm'
+  match: "^\\s*([CP]T_phase)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator-configuration.powerflow.glm'
+    2: patterns: [{include: "#set"}]
+  }]

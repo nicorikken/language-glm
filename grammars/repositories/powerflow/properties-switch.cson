@@ -1,0 +1,9 @@
+key: 'powerflow-properties-switch'
+
+patterns: [{
+  name: 'switch.powerflow.property.glm'
+  match: "^\\s*(phase_[ABC]_state|operating_mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.switch.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+  }]

@@ -1,0 +1,11 @@
+key: 'powerflow-properties-node'
+
+comment: "base class for the powerflow modules"
+#TODO have this base class used by derived classes
+patterns: [{
+  name: 'node.powerflow.property.glm'
+  match: "^\\s*(phases|nominal_voltage|voltage_(?:A|B|C|AB|BC|CA)|current_[ABC]|power_[ABC]|shunt_[ABC]|bustype)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.node.powerflow.glm'
+    2: patterns: [{include: "#wildcard-element"}] #TODO
+  }]

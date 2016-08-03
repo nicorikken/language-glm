@@ -1,0 +1,5 @@
+key: 'path'
+
+patterns: [
+  {include: "#wildcard-element"}
+]

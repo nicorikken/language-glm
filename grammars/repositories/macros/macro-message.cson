@@ -1,0 +1,10 @@
+key: 'macro-message'
+
+patterns: [{
+  match: "(\#(?:error|print|warning))\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#string"}
+    ]}]

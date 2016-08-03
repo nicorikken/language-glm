@@ -1,0 +1,12 @@
+key: 'set-environment-variable'
+
+patterns: [{
+  # TODO split based on acceptable variable values.
+  match: "(DBFLAGS|CC|COMPSPEC|SHELL|GLPATH|GLTEMP|HOMEVAR|HOMEDRIVE|TEMP|USER|USERNAME|GRIDLABD|PATH|INCLUDE|LIB|CCFLAGS|CXXFLAGS|CXX|LDFLAGS|GLBROWSER|LD_LIBRARY_PATH|COMPUTERNAME|HOSTNAME|TZ|NUMBER_OF_PROCESSORS)=(.+)"
+  captures:
+    # TODO find a name with a distinct default color from custom variables
+    1: name: 'keyword.environment.variable.glm'
+    2:
+      patterns: [
+        {include: "#wildcard-element"}
+      ]}]

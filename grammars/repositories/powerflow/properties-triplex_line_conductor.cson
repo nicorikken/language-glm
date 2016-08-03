@@ -1,0 +1,9 @@
+key: 'powerflow-properties-triplex_line_conductor'
+
+patterns:[{
+  name: 'triplex-line-conductor.powerflow.property.glm'
+  match: "^\\s*(resistance|geometric_mean_radius)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-conductor.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

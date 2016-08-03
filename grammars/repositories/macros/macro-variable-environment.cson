@@ -1,0 +1,10 @@
+key: 'macro-variable-environment'
+
+patterns: [{
+  match: "(\#setenv)\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#set-environment-variable"}
+      ]}]

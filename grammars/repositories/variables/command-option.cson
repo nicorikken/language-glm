@@ -1,0 +1,5 @@
+key: 'command-option'
+
+patterns: [
+  {include: "#wildcard-element"}
+]

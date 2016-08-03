@@ -1,0 +1,13 @@
+key: 'clock'
+
+patterns: [{
+  name: 'clock.glm'
+  begin: "^\\s*(clock)\\s*\\{?"
+  beginCaptures:
+    1: name: 'keyword.type.clock.glm'
+  end: "}"
+  patterns: [
+    {include: "#clock-includes"}
+    {include: "#comments"}
+    #TODO maybe include generic variables
+  ]}]

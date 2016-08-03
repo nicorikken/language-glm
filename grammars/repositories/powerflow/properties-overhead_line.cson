@@ -1,0 +1,9 @@
+key: 'powerflow-properties-overhead_line'
+
+patterns: [{
+  name: 'overhead-line.powerflow.property.glm'
+  match: "^\\s*(geometric_mean_radius|resistance|diameter|rating\.(?:summer|winter)\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.overhead-line.powerflow.glm'
+    2: patterns: [{include: "#wildcard-element"}] #TODO
+}]

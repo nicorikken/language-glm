@@ -1,0 +1,16 @@
+key: 'powerflow-properties-substation'
+
+patterns: [{
+  name: 'substation.powerflow.property.glm'
+  match: "^\\s*(positive_sequence_voltage|transmission_level_constant_(?:power|impedance|constant)_load|average_distribution_load|distribution_power_[ABC])\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.substation.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}
+{
+  name: 'substation.powerflow.property.glm'
+  match: "^\\s*(reference_phase)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.substation.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+  }]

@@ -1,0 +1,11 @@
+key: 'macro-variable-global'
+
+patterns: [{
+  match: "(\#set)\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#set-global-variable"}
+        {include: "#set-custom-variable"} #fallback to custom
+      ]}]

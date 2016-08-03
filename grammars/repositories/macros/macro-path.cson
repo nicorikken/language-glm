@@ -1,0 +1,10 @@
+key: 'macro-path'
+
+patterns: [{
+  match: "(\#(?:binpath|incpath|libpath))\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#path"}
+      ]}]

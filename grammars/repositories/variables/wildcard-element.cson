@@ -1,0 +1,11 @@
+key: 'wildcard-element'
+
+patterns: [{
+  match: "([^\\s\\;]+)"
+  captures:
+    1:
+      name: 'constant.wildcard.glm'
+      patterns: [
+        {include: "#intrinsic-variable-expansion"}
+        {include: "#macro-variable-expansion"}
+      ]}]

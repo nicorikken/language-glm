@@ -1,0 +1,6 @@
+key: 'string'
+
+patterns: [{
+  match: "\\\"[^\\\"]*\\\""
+  name: 'string.glm'
+}]

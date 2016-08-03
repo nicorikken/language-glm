@@ -1,0 +1,16 @@
+key: 'powerflow-properties-triplex_load'
+
+patterns: [{
+  name: 'triplex-load.powerflow.property.glm'
+  match: "^\\s*(base_power_(?:1|2|12)|(?:power|current|impedance)_pf_(?:1|2|12)|(?:power|current|impedance)_fraction_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-load.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex-load.powerflow.property.glm'
+  match: "^\\s*(measured_voltage_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-load.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+  }]

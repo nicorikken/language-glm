@@ -1,0 +1,10 @@
+key: 'residential-module-globals'
+
+patterns: [
+  {
+    match:'(?<=^|;)\\s*(default_line_voltage|default_line_current|default_outdoor_temperature|default_humidity|default_solar|default_etp_iterations)\\s+([^;]*)(?=\\s*;)'
+    captures:
+      1: name: 'keyword.global.residential.module.glm'
+      2: patterns: [{include: "#wildcard-element"}] #TODO
+  }
+]

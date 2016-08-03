@@ -1,0 +1,7 @@
+key: 'macro-closed'
+
+patterns: [{
+  match: "(\#(?:endif|else))"
+  captures:
+    1: name: "keyword.macro.glm"
+}]

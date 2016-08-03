@@ -1,0 +1,10 @@
+key: 'set-custom-variable'
+
+patterns: [{
+  match: "(\\w+)=(.+)"
+  captures:
+    1: name: 'entity.variable.glm'
+    2:
+      patterns: [
+        {include: "#wildcard-element"}
+      ]}]

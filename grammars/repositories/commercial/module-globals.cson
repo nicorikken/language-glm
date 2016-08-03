@@ -1,0 +1,10 @@
+key: 'commercial-module-globals'
+
+patterns: [
+  {
+    match:'(?<=^|;)\\s*(warn_control|warn_low_temp|warn_high_temp)\\s+([^;]*)(?=\\s*;)'
+    captures:
+      1: name: 'keyword.global.commercial.module.glm'
+      2: patterns: [{include: "#wildcard-element"}] #TODO
+  }
+]

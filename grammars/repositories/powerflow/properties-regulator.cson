@@ -1,0 +1,16 @@
+key: 'powerflow-properties-regulator'
+
+patterns: [{
+  name: 'regulator.powerflow.property.glm'
+  match: "^\\s*(configuration|sense_node)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'regulator.powerflow.property.glm'
+  match: "^\\s*(tap_[ABC](?:_change_count)?)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator.powerflow.glm'
+    2: patterns: [{include: "#int16"}]
+  }]

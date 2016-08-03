@@ -1,0 +1,7 @@
+key: 'enumeration'
+
+patterns: [{
+  match: "([A-Z0-9_|]+)"
+  captures:
+    1: name: 'constant.enumeration.glm'
+}]

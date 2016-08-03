@@ -1,0 +1,10 @@
+key: 'macro-test'
+
+patterns: [{
+  match: "(\#if)\\s+(.*)"
+  captures:
+    1: name: 'keyword.macro.glm'
+    2:
+      patterns: [
+        {include: "#test"}
+      ]}]

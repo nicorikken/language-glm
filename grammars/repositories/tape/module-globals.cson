@@ -1,0 +1,10 @@
+key: 'tape-module-globals'
+
+patterns: [
+  {
+    match:'(?=^|;)\\s*(gnuplot_path|flush_interval)\\s+([^;]*)(?=\\s*;)'
+    captures:
+      1: name: 'keyword.global.tape.module.glm'
+      2: patterns: [{include: "#wildcard-element"}] #TODO
+  }
+]

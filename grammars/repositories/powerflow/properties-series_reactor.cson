@@ -1,0 +1,9 @@
+key: 'powerflow-properties-series_reactor'
+
+patterns: [{
+  name: 'series-reactor.powerflow.property.glm'
+  match: "^\\s*(phase_[ABC]_(?:impedance|resistance|reactance)|rated_current_limit)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.series-reactor.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+  }]

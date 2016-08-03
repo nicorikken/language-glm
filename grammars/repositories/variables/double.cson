@@ -1,0 +1,6 @@
+key: 'double'
+
+#TODO include units as well
+patterns: [
+  {include: "#wildcard-element"}
+]

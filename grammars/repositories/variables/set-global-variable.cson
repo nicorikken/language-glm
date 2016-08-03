@@ -1,0 +1,13 @@
+key: 'set-global-variable'
+
+comment: "restricted to predefined values, use #set-custom-variable for this generic fallback"
+patterns: [{
+  # TODO split based on acceptable variable values
+  match: "(APPLE|browser|check_version|checkpoint_file|checkpoint_interval|checkpoint_keepall|checkpoint_seqnum|checkpoint_type|clean|clock|command_line|compileonly|complex_format|dateformat|debug|debugger|double_format|dumpall|dumpfile|environment|execdir|event_trace|event_trace_filter|force_compile|gdb|gdb_window|GUID|include|infourl|init_sequence|init_max_defer|inline_block_size|iteration_limit|kmlfile|LINUX|mailto|mainloop_state|MATLAB|maximum_synctime|maximum_timestep|modelname|module_compiler_flags|mt_profile|MYSQL|no_depricate|nolocks|NOW|object_format|object_scan|object_tree_balance|pauseat|pauseatexit|platform|profiler|quiet|random_number_generator|randomseed|relax_naming_rules|return_code|RUN|run_realtime|runchecks|savefile|server_portnum|server_quit_on_close|show_progress|skipsafe|starttime|stoptime|streaming_io|strictnames|suppress_repeat_messages|technology_readiness_level|test|testoutputfile|threadcount|tmp|trace|urlbase|validate|validate_report|verbose|version.major|version.minor|warn|website|WINDOWS|workdir|xml_encoding)=(.+)"
+  captures:
+    # TODO find a name with a distinct default color from custom variables
+    1: name: 'keyword.name.global.variable.glm'
+    2:
+      patterns: [
+        {include: "#wildcard-element"}
+      ]}]

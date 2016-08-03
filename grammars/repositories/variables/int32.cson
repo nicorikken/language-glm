@@ -1,0 +1,5 @@
+key: 'int32'
+
+patterns: [
+  {include: "#wildcard-element"}
+]

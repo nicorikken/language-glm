@@ -1,0 +1,37 @@
+key: 'powerflow-properties-meter'
+
+patterns:[{
+  name: 'meter.powerflow.property.glm'
+  match: "^\\s*(measured_(?:real_energy|reactive_energy|demand|real_power|reactive_power)|price|monthly_(?:fee|bill|energy)|previous_monthly_(?:bill|energy)|(?:first|second|third)_tier_(?:price|energy))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.meter.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'meter.powerflow.property.glm'
+  match: "^\\s*(measured_(?:power(?:_[ABC])?|voltage_[ABC]|current_[ABC]))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.meter.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}
+{
+  name: 'meter.powerflow.property.glm'
+  match: "^\\s*(bill_mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.meter.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'meter.powerflow.property.glm'
+  match: "^\\s*(bill_day)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.meter.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
+}
+{
+  name: 'meter.powerflow.property.glm'
+  match: "^\\s*(power_market)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.meter.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}]

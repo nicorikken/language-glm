@@ -1,0 +1,14 @@
+key: 'module-block'
+
+patterns: [{
+  name: 'module.glm'
+  begin: "(?<=^|\\s)(module)\\s+([^;\\{\\\/]*\\s*)\\{?"
+  beginCaptures:
+    1: name: "keyword.type.module.glm"
+    2: patterns: [{include: "#module-name"}]
+  end: "}"
+  patterns: [
+    {include: "#comments"}
+    {include: "#module-global-variables"}
+    #TODO maybe include generic variables
+  ]}]

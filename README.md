@@ -24,6 +24,9 @@ Image copyright by Steve Parker, Power Pattern, 2015, CC-2.0-BY
 
 ## Copyright and Licensing
 Copyright (C) 2016 Nico Rikken.
-Free use of this software is granted under the terms of the MIT License.
+Free use of this software is granted under the terms of the LGPL v3 License.
+This license is specifically chosen to enable all users to benefit from downstream derivations.
 
-See the [LICENSE](LICENSE.md) file for details.
+![](doc/lgplv3-147x51.png)
+
+See the [COPYRIGHT.LESSER](COPYRIGHT.LESSER) file for details.

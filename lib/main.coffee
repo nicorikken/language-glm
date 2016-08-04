@@ -77,6 +77,25 @@ module.exports =
     rootGrammar.fileTypes = [
       'glm'
     ]
+    rootGrammar.copyright = '''
+      Copyright (C) 2016 Nico Rikken nico@nicorikken.eu
+    '''
+    rootGrammar.license = '''
+    This file is part of Language-GLM.
+
+    Language-GLM is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Language-GLM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Language-GLM.  If not, see <http://www.gnu.org/licenses/>.
+    '''
 
     @helper.appendPartialGrammarsDirectory rootGrammar, ['partials/', 'macros/', 'modules/', 'variables/', 'powerflow/', 'residential/', 'commercial/', 'tape/']
 

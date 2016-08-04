@@ -2,8 +2,7 @@
 
 _Atom language support for GridLAB-D markup GLM_
 
-[![](doc/power-pattern.jpg)](https://www.flickr.com/photos/mrsteveparker/16008590119)
-Image copyright by Steve Parker, Power Pattern, 2015, CC-2.0-BY
+![](doc/highlight-preview.png)
 
 ## Goals
 - Full syntax parsing

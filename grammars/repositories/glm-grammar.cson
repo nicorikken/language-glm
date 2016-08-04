@@ -31,8 +31,6 @@ repository:
     ,
       include: "#macro-closed"
     ,
-      # TODO include: "#macro-assign"
-    #,
       include: "#macro-command-options" # -> command-option
     ,
       include: "#macro-commands"

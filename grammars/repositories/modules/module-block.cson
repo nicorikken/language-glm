@@ -6,6 +6,7 @@ patterns: [{
   beginCaptures:
     1: name: "keyword.type.module.glm"
     2: patterns: [{include: "#module-name"}]
+    #TODO do not include modules which can only be called in inline syntax, like the assert module.
   end: "}"
   patterns: [
     {include: "#comments"}

@@ -93,13 +93,40 @@ repository:
   modules:
     patterns: [
       {
-        include: "#module-inline"
+        include: "#module-assert"
       }
       {
-        include: "#module-block"
+        include: "#module-climate"
       }
       {
-        include: "#module-name"
+        include: "#module-commercial"
+      }
+      {
+        include: "#module-communications"
+      }
+      {
+        include: "#module-generators"
+      }
+      {
+        include: "#module-market"
+      }
+      {
+        include: "#module-matpower"
+      }
+      {
+        include: "#module-network"
+      }
+      {
+        include: "#module-powerflow"
+      }
+      {
+        include: "#module-reliability"
+      }
+      {
+        include: "#module-residential"
+      }
+      {
+        include: "#module-tape"
       }
     ]
   "module-global-variables":
@@ -580,55 +607,343 @@ repository:
             ]
       }
     ]
-  "module-block":
+  "module-assert":
     patterns: [
       {
         name: "module.glm"
-        begin: "(?<=^|\\s)(module)\\s+([^;\\{\\/]*\\s*)\\{?"
+        match: "(?<=^|\\s)(module)\\s+(assert)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(assert)\\s*\\{?"
         beginCaptures:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: [
-              {
-                include: "#module-name"
-              }
-            ]
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-climate":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(climate)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(climate)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-commercial":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(commercial)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(commercial)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
         end: "}"
         patterns: [
           {
             include: "#comments"
           }
           {
-            include: "#module-global-variables"
+            include: "#commercial-module-globals"
           }
         ]
       }
     ]
-  "module-inline":
+  "module-communications":
     patterns: [
       {
         name: "module.glm"
-        match: "(?<=^|\\s)(module)\\s+([^;\\s]*\\s*);"
+        match: "(?<=^|\\s)(module)\\s+(communications)\\s*;"
         captures:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: [
-              {
-                include: "#module-name"
-              }
-            ]
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(communications)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
       }
     ]
-  "module-name":
+  "module-generators":
     patterns: [
       {
-        comment: "made to only match the provided module names"
-        match: "(?<=^)(climate|market|powerflow|residential|reliability|generators|commercial|communications|matpower|network|assert|tape)(?=\\s*\\Z)"
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(generators)\\s*;"
         captures:
           "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(generators)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
             name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-market":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(market)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(market)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#market-module-globals"
+          }
+        ]
+      }
+    ]
+  "module-matpower":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(matpower)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(matpower)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-network":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(network)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(network)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-powerflow":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(powerflow)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(powerflow)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#powerflow-module-globals"
+          }
+        ]
+      }
+    ]
+  "module-reliability":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(reliability)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(reliability)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+        ]
+      }
+    ]
+  "module-residential":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(residential)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(residential)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#residential-module-globals"
+          }
+        ]
+      }
+    ]
+  "module-tape":
+    patterns: [
+      {
+        name: "module.glm"
+        match: "(?<=^|\\s)(module)\\s+(tape)\\s*;"
+        captures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            patterns: "entity.name.function.module.glm"
+      }
+      {
+        name: "module.glm"
+        begin: "(?<=^|\\s)(module)\\s+(tape)\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "keyword.type.module.glm"
+          "2":
+            name: "entity.name.function.module.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#tape-module-globals"
+          }
+        ]
       }
     ]
   boolean:

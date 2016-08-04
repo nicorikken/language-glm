@@ -79,11 +79,29 @@ repository:
     ]
   'modules':
     patterns: [
-      include: "#module-inline"
+      include: "#module-assert"
     ,
-      include: "#module-block"
+      include: "#module-climate"
     ,
-      include: "#module-name"
+      include: "#module-commercial"
+    ,
+      include: "#module-communications"
+    ,
+      include: "#module-generators"
+    ,
+      include: "#module-market"
+    ,
+      include: "#module-matpower"
+    ,
+      include: "#module-network"
+    ,
+      include: "#module-powerflow"
+    ,
+      include: "#module-reliability"
+    ,
+      include: "#module-residential"
+    ,
+      include: "#module-tape"
     ]
   'module-global-variables':
     patterns: [

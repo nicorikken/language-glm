@@ -1,0 +1,22 @@
+key: 'module-commercial'
+
+patterns: [
+  {
+    name: 'module.glm'
+    match: "(?<=^|\\s)(module)\\s+(commercial)\\s*;"
+    captures:
+      1: name: 'keyword.type.module.glm'
+      2: patterns: "entity.name.function.module.glm"
+  }
+  {
+    name: 'module.glm'
+    begin: "(?<=^|\\s)(module)\\s+(commercial)\\s*\\{?"
+    beginCaptures:
+      1: name: "keyword.type.module.glm"
+      2: name: "entity.name.function.module.glm"
+    end: "}"
+    patterns: [
+      {include: "#comments"}
+      {include: "#commercial-module-globals"}
+      #TODO maybe include generic variables
+  ]}]

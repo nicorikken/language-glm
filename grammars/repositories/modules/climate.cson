@@ -1,0 +1,21 @@
+key: 'module-climate'
+
+patterns: [
+  {
+    name: 'module.glm'
+    match: "(?<=^|\\s)(module)\\s+(climate)\\s*;"
+    captures:
+      1: name: 'keyword.type.module.glm'
+      2: patterns: "entity.name.function.module.glm"
+  }
+  {
+    name: 'module.glm'
+    begin: "(?<=^|\\s)(module)\\s+(climate)\\s*\\{?"
+    beginCaptures:
+      1: name: "keyword.type.module.glm"
+      2: name: "entity.name.function.module.glm"
+    end: "}"
+    patterns: [
+      {include: "#comments"}
+      #TODO maybe include generic variables
+  ]}]

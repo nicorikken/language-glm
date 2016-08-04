@@ -1,8 +1,0 @@
-key: 'module-name'
-
-patterns: [{
-  comment: "made to only match the provided module names"
-  match: '(?<=^)(climate|market|powerflow|residential|reliability|generators|commercial|communications|matpower|network|assert|tape)(?=\\s*\\Z)'
-  captures:
-    1: name: 'entity.name.function.module.glm'
-  }]

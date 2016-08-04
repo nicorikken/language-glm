@@ -1,9 +1,0 @@
-key: 'module-inline'
-
-patterns: [{
-  name: 'module.glm'
-  match: "(?<=^|\\s)(module)\\s+([^;\\s]*\\s*);"
-  captures:
-    1: name: 'keyword.type.module.glm'
-    2: patterns: [{include: "#module-name"}]
-  }]

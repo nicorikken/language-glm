@@ -1,0 +1,22 @@
+key: 'module-market'
+
+patterns: [
+  {
+    name: 'module.glm'
+    match: "(?<=^|\\s)(module)\\s+(market)\\s*;"
+    captures:
+      1: name: 'keyword.type.module.glm'
+      2: patterns: "entity.name.function.module.glm"
+  }
+  {
+    name: 'module.glm'
+    begin: "(?<=^|\\s)(module)\\s+(market)\\s*\\{?"
+    beginCaptures:
+      1: name: "keyword.type.module.glm"
+      2: name: "entity.name.function.module.glm"
+    end: "}"
+    patterns: [
+      {include: "#comments"}
+      {include: "#market-module-globals"}
+      #TODO maybe include generic variables
+  ]}]

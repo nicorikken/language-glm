@@ -35,6 +35,9 @@ patterns: [
     include: "#modules"
   }
   {
+    include: "#powerflow-objects"
+  }
+  {
     include: "#objects"
   }
   {
@@ -156,8 +159,36 @@ repository:
         include: "#powerflow-properties"
       }
     ]
+  "powerflow-objects":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(transformer)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-powerflow_object"
+          }
+          {
+            include: "#object-includes"
+          }
+        ]
+      }
+    ]
   "powerflow-properties":
     patterns: [
+      {
+        include: "#powerflow-properties-powerflow_object"
+      }
       {
         include: "#powerflow-properties-node"
       }
@@ -1220,6 +1251,35 @@ repository:
               }
               {
                 include: "#macro-variable-expansion"
+              }
+            ]
+      }
+    ]
+  "powerflow-properties-powerflow_object":
+    patterns: [
+      {
+        name: "powerflow_object.powerflow.property.glm"
+        match: "^\\s*(phases)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.powerflow_object.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set"
+              }
+            ]
+      }
+      {
+        name: "powerflow_object.powerflow.property.glm"
+        match: "^\\s*(nominal_voltage)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.powerflow_object.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
               }
             ]
       }
@@ -2341,5 +2401,30 @@ repository:
                 include: "#enumeration"
               }
             ]
+      }
+    ]
+  "powerflow-transformer":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(transformer)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-powerflow_object"
+          }
+          {
+            include: "#object-includes"
+          }
+        ]
       }
     ]

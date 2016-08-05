@@ -38,6 +38,8 @@ patterns: [
 ,
   include: "#modules"
 ,
+  include: "#powerflow-objects" #TODO merge module-specic objects into #objects
+,
   include: "#objects"
   #TODO schedule
   #TODO script
@@ -122,8 +124,14 @@ repository:
     ,
       include: "#powerflow-properties"
     ]
+  'powerflow-objects':
+    patterns: [
+      include: "#powerflow-transformer"
+    ]
   'powerflow-properties':
     patterns: [
+      include: "#powerflow-properties-powerflow_object"
+    ,
       include: "#powerflow-properties-node"
     ,
       include: "#powerflow-properties-link"

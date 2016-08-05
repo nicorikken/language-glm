@@ -6,7 +6,7 @@ patterns: [
     match: "(?<=^|\\s)(module)\\s+(network)\\s*;"
     captures:
       1: name: 'keyword.type.module.glm'
-      2: patterns: "entity.name.function.module.glm"
+      2: name: "entity.name.function.module.glm"
   }
   {
     name: 'module.glm'

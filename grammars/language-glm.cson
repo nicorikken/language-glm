@@ -616,7 +616,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -643,7 +643,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -661,6 +661,21 @@ repository:
         ]
       }
     ]
+  "commercial-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(warn_control|warn_low_temp|warn_high_temp)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.commercial.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
   "module-commercial":
     patterns: [
       {
@@ -670,7 +685,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -700,7 +715,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -727,7 +742,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -754,7 +769,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -784,7 +799,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -811,7 +826,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -829,6 +844,21 @@ repository:
         ]
       }
     ]
+  "powerflow-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(acceleration_factor|default_maximum_voltage_error|fault_impedance|geographic_degree|line_capacitance|lu_solver|maximum_voltage_error|nominal_frequency|NR_iteration_limit|NR_superLU_procs|primary_voltage_ratio|require_voltage_control|show_matrix_values|solver_method|warning_underfrequency|warning_overfrequency|warning_undervoltage|warning_overvoltage|warning_voltageangle)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.powerflow.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
   "module-powerflow":
     patterns: [
       {
@@ -838,7 +868,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -868,7 +898,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -886,6 +916,21 @@ repository:
         ]
       }
     ]
+  "residential-module-globals":
+    patterns: [
+      {
+        match: "(?<=^|;)\\s*(default_line_voltage|default_line_current|default_outdoor_temperature|default_humidity|default_solar|default_etp_iterations)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.residential.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
   "module-residential":
     patterns: [
       {
@@ -895,7 +940,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -916,6 +961,21 @@ repository:
         ]
       }
     ]
+  "tape-module-globals":
+    patterns: [
+      {
+        match: "(?=^|;)\\s*(gnuplot_path|flush_interval)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "keyword.global.tape.module.glm"
+          "2":
+            patterns: [
+              {
+                include: "#wildcard-element"
+              }
+            ]
+      }
+    ]
   "module-tape":
     patterns: [
       {
@@ -925,7 +985,7 @@ repository:
           "1":
             name: "keyword.type.module.glm"
           "2":
-            patterns: "entity.name.function.module.glm"
+            name: "entity.name.function.module.glm"
       }
       {
         name: "module.glm"
@@ -1160,21 +1220,6 @@ repository:
               }
               {
                 include: "#macro-variable-expansion"
-              }
-            ]
-      }
-    ]
-  "powerflow-module-globals":
-    patterns: [
-      {
-        match: "(?<=^|;)\\s*(acceleration_factor|default_maximum_voltage_error|fault_impedance|geographic_degree|line_capacitance|lu_solver|maximum_voltage_error|nominal_frequency|NR_iteration_limit|NR_superLU_procs|primary_voltage_ratio|require_voltage_control|show_matrix_values|solver_method|warning_underfrequency|warning_overfrequency|warning_undervoltage|warning_overvoltage|warning_voltageangle)\\s+([^;]*)(?=\\s*;)"
-        captures:
-          "1":
-            name: "keyword.global.powerflow.module.glm"
-          "2":
-            patterns: [
-              {
-                include: "#wildcard-element"
               }
             ]
       }
@@ -2294,51 +2339,6 @@ repository:
             patterns: [
               {
                 include: "#enumeration"
-              }
-            ]
-      }
-    ]
-  "residential-module-globals":
-    patterns: [
-      {
-        match: "(?<=^|;)\\s*(default_line_voltage|default_line_current|default_outdoor_temperature|default_humidity|default_solar|default_etp_iterations)\\s+([^;]*)(?=\\s*;)"
-        captures:
-          "1":
-            name: "keyword.global.residential.module.glm"
-          "2":
-            patterns: [
-              {
-                include: "#wildcard-element"
-              }
-            ]
-      }
-    ]
-  "commercial-module-globals":
-    patterns: [
-      {
-        match: "(?<=^|;)\\s*(warn_control|warn_low_temp|warn_high_temp)\\s+([^;]*)(?=\\s*;)"
-        captures:
-          "1":
-            name: "keyword.global.commercial.module.glm"
-          "2":
-            patterns: [
-              {
-                include: "#wildcard-element"
-              }
-            ]
-      }
-    ]
-  "tape-module-globals":
-    patterns: [
-      {
-        match: "(?=^|;)\\s*(gnuplot_path|flush_interval)\\s+([^;]*)(?=\\s*;)"
-        captures:
-          "1":
-            name: "keyword.global.tape.module.glm"
-          "2":
-            patterns: [
-              {
-                include: "#wildcard-element"
               }
             ]
       }

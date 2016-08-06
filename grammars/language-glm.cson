@@ -196,10 +196,19 @@ repository:
         include: "#powerflow-properties-link"
       }
       {
+        include: "#powerflow-properties-billdump"
+      }
+      {
         include: "#powerflow-properties-capacitor"
       }
       {
+        include: "#powerflow-properties-currentdump"
+      }
+      {
         include: "#powerflow-properties-emissions"
+      }
+      {
+        include: "#powerflow-properties-fault_check"
       }
       {
         include: "#powerflow-properties-line"
@@ -272,15 +281,6 @@ repository:
       }
       {
         include: "#powerflow-properties-voltdump"
-      }
-      {
-        include: "#powerflow-properties-currentdump"
-      }
-      {
-        include: "#powerflow-properties-billdump"
-      }
-      {
-        include: "#powerflow-properties-fault_check"
       }
       {
         include: "#powerflow-properties-restoration"
@@ -1595,7 +1595,7 @@ repository:
       }
       {
         name: "fault-check.powerflow.property.glm"
-        match: "^\\s*(reliability_mode)\\s+([^;]*)(?=\\s*;)"
+        match: "^\\s*(reliability_mode|strictly_radial|full_output_file)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
             name: "entity.name.function.fault-check.powerflow.glm"
@@ -1618,6 +1618,28 @@ repository:
                 include: "#object"
               }
             ]
+      }
+    ]
+  "powerflow-fault_check":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(fault_check)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-fault_check"
+          }
+        ]
       }
     ]
   "powerflow-properties-fuse":

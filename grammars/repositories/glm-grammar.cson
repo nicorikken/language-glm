@@ -134,6 +134,8 @@ repository:
     ,
       include: "#powerflow-emissions"
     ,
+      include: "#powerflow-fault_check"
+    ,
       include: "#powerflow-transformer"
     ]
   'powerflow-properties':
@@ -144,9 +146,15 @@ repository:
     ,
       include: "#powerflow-properties-link"
     ,
+      include: "#powerflow-properties-billdump"
+    ,
       include: "#powerflow-properties-capacitor"
     ,
+      include: "#powerflow-properties-currentdump"
+    ,
       include: "#powerflow-properties-emissions"
+    ,
+      include: "#powerflow-properties-fault_check"
     ,
       include: "#powerflow-properties-line"
     ,
@@ -195,12 +203,6 @@ repository:
       include: "#powerflow-properties-volt_var_control"
     ,
       include: "#powerflow-properties-voltdump"
-    ,
-      include: "#powerflow-properties-currentdump"
-    ,
-      include: "#powerflow-properties-billdump"
-    ,
-      include: "#powerflow-properties-fault_check"
     ,
       include: "#powerflow-properties-restoration"
     ,

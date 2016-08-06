@@ -39,8 +39,8 @@ patterns: [
   include: "#modules"
 ,
   include: "#powerflow-objects" #TODO merge module-specic objects into #objects
-,
-  include: "#objects"
+# ,
+  # include: "#objects"
   #TODO schedule
   #TODO script
 ,
@@ -136,15 +136,35 @@ repository:
     ,
       include: "#powerflow-fault_check"
     ,
+      include: "#powerflow-frequency_gen"
+    ,
+      include: "#powerflow-fuse"
+    ,
+      include: "#powerflow-impedance_dump"
+    ,
+      include: "#powerflow-line"
+    ,
+      include: "#powerflow-line_configuration"
+    ,
+      include: "#powerflow-line_spacing"
+    ,
+      include: "#powerflow-link"
+    ,
+      include: "#powerflow-load"
+    ,
+      include: "#powerflow-load_tracker"
+    ,
+      include: "#powerflow-meter"
+    ,
+      include: "#powerflow-motor"
+    ,
+      include: "#powerflow-node"
+    ,
       include: "#powerflow-transformer"
     ]
   'powerflow-properties':
     patterns: [
       include: "#powerflow-properties-powerflow_object"
-    ,
-      include: "#powerflow-properties-node"
-    ,
-      include: "#powerflow-properties-link"
     ,
       include: "#powerflow-properties-billdump"
     ,
@@ -156,11 +176,29 @@ repository:
     ,
       include: "#powerflow-properties-fault_check"
     ,
+      include: "#powerflow-properties-frequency_gen"
+    ,
+      include: "#powerflow-properties-fuse"
+    ,
+      include: "#powerflow-properties-impedance_dump"
+    ,
       include: "#powerflow-properties-line"
     ,
       include: "#powerflow-properties-line_configuration"
     ,
       include: "#powerflow-properties-line_spacing"
+    ,
+      include: "#powerflow-properties-link"
+    ,
+      include: "#powerflow-properties-load"
+    ,
+      include: "#powerflow-properties-load_tracker"
+    ,
+      include: "#powerflow-properties-meter"
+    ,
+      include: "#powerflow-properties-motor"
+    ,
+      include: "#powerflow-properties-node"
     ,
       include: "#powerflow-properties-overhead_line"
     ,
@@ -174,10 +212,6 @@ repository:
     ,
       include: "#powerflow-properties-transformer_configuration"
     ,
-      include: "#powerflow-properties-load"
-    ,
-      include: "#powerflow-properties-meter"
-    ,
       include: "#powerflow-properties-triplex_node"
     ,
       include: "#powerflow-properties-triplex_meter"
@@ -187,8 +221,6 @@ repository:
       include: "#powerflow-properties-regulator"
     ,
       include: "#powerflow-properties-regulator_configuration"
-    ,
-      include: "#powerflow-properties-fuse"
     ,
       include: "#powerflow-properties-switch"
     ,

@@ -9,6 +9,9 @@ key: 'powerflow-properties-currentdump'
 # }
 
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'currentdump.powerflow.property.glm'
   match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
   captures:

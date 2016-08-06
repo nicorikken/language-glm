@@ -2,7 +2,7 @@ key: 'powerflow-capacitor'
 
 patterns: [
   name: 'object.glm'
-  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(transformer)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(capacitor(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
   beginCaptures:
     # TODO make class match more selective, based on class name
     1: name: "storage.type.object.glm"

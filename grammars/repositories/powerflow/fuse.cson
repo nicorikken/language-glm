@@ -1,8 +1,8 @@
-key: 'powerflow-billdump'
+key: 'powerflow-fuse'
 
 patterns: [
   name: 'object.glm'
-  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(billdump(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
+  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(fuse(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
   beginCaptures:
     # TODO make class match more selective, based on class name
     1: name: "storage.type.object.glm"
@@ -11,5 +11,5 @@ patterns: [
     4: name: "constant.id.object.glm"
   end: "}"
   patterns: [
-    {include: "#powerflow-properties-billdump"}
+    {include: "#powerflow-properties-fuse"}
   ]]

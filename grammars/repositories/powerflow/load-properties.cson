@@ -1,6 +1,182 @@
 key: 'powerflow-properties-load'
 
+# class load {
+# 	parent node;
+# 	class node {
+# 		parent powerflow_object;
+# 		class powerflow_object {
+# 			set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+# 			double nominal_voltage[V];
+# 		}
+#
+# 		function delta_linkage_node();
+# 		function interupdate_pwr_object();
+# 		function delta_freq_pwr_object();
+# 		enumeration {SWING=2, PV=1, PQ=0} bustype; // defines whether the node is a PQ, PV, or SWING node
+# 		set {HASSOURCE=1} busflags; // flag indicates node has a source for voltage, i.e. connects to the swing node
+# 		object reference_bus; // reference bus from which frequency is defined
+# 		double maximum_voltage_error[V]; // convergence voltage limit or convergence criteria
+# 		complex voltage_A[V]; // bus voltage, Phase A to ground
+# 		complex voltage_B[V]; // bus voltage, Phase B to ground
+# 		complex voltage_C[V]; // bus voltage, Phase C to ground
+# 		complex voltage_AB[V]; // line voltages, Phase AB
+# 		complex voltage_BC[V]; // line voltages, Phase BC
+# 		complex voltage_CA[V]; // line voltages, Phase CA
+# 		complex current_A[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_B[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_C[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_A[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_B[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_C[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex shunt_A[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_B[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_C[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex current_AB[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_BC[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_CA[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_AN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_BN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_CN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_AB[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_BC[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_CA[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_AN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_BN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_CN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex shunt_AB[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_BC[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_CA[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_AN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_BN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_CN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		double mean_repair_time[s]; // Time after a fault clears for the object to be back in service
+# 		enumeration {OUT_OF_SERVICE=0, IN_SERVICE=1} service_status; // In and out of service flag
+# 		double service_status_double; // In and out of service flag - type double - will indiscriminately override service_status - useful for schedules
+# 		double previous_uptime[min]; // Previous time between disconnects of node in minutes
+# 		double current_uptime[min]; // Current time since last disconnect of node in minutes
+# 		bool Norton_dynamic; // Flag to indicate a Norton-equivalent connection -- used for generators and deltamode
+# 		object topological_parent; // topological parent as per GLM configuration
+# 	}
+#
+# 	function delta_linkage_node();
+# 	function interupdate_pwr_object();
+# 	function delta_freq_pwr_object();
+# 	enumeration {A=4, I=3, C=2, R=1, U=0} load_class; // Flag to track load type, not currently used for anything except sorting
+# 	complex constant_power_A[VA]; // constant power load on phase A, specified as VA
+# 	complex constant_power_B[VA]; // constant power load on phase B, specified as VA
+# 	complex constant_power_C[VA]; // constant power load on phase C, specified as VA
+# 	double constant_power_A_real[W]; // constant power load on phase A, real only, specified as W
+# 	double constant_power_B_real[W]; // constant power load on phase B, real only, specified as W
+# 	double constant_power_C_real[W]; // constant power load on phase C, real only, specified as W
+# 	double constant_power_A_reac[VAr]; // constant power load on phase A, imaginary only, specified as VAr
+# 	double constant_power_B_reac[VAr]; // constant power load on phase B, imaginary only, specified as VAr
+# 	double constant_power_C_reac[VAr]; // constant power load on phase C, imaginary only, specified as VAr
+# 	complex constant_current_A[A]; // constant current load on phase A, specified as Amps
+# 	complex constant_current_B[A]; // constant current load on phase B, specified as Amps
+# 	complex constant_current_C[A]; // constant current load on phase C, specified as Amps
+# 	double constant_current_A_real[A]; // constant current load on phase A, real only, specified as Amps
+# 	double constant_current_B_real[A]; // constant current load on phase B, real only, specified as Amps
+# 	double constant_current_C_real[A]; // constant current load on phase C, real only, specified as Amps
+# 	double constant_current_A_reac[A]; // constant current load on phase A, imaginary only, specified as Amps
+# 	double constant_current_B_reac[A]; // constant current load on phase B, imaginary only, specified as Amps
+# 	double constant_current_C_reac[A]; // constant current load on phase C, imaginary only, specified as Amps
+# 	complex constant_impedance_A[Ohm]; // constant impedance load on phase A, specified as Ohms
+# 	complex constant_impedance_B[Ohm]; // constant impedance load on phase B, specified as Ohms
+# 	complex constant_impedance_C[Ohm]; // constant impedance load on phase C, specified as Ohms
+# 	double constant_impedance_A_real[Ohm]; // constant impedance load on phase A, real only, specified as Ohms
+# 	double constant_impedance_B_real[Ohm]; // constant impedance load on phase B, real only, specified as Ohms
+# 	double constant_impedance_C_real[Ohm]; // constant impedance load on phase C, real only, specified as Ohms
+# 	double constant_impedance_A_reac[Ohm]; // constant impedance load on phase A, imaginary only, specified as Ohms
+# 	double constant_impedance_B_reac[Ohm]; // constant impedance load on phase B, imaginary only, specified as Ohms
+# 	double constant_impedance_C_reac[Ohm]; // constant impedance load on phase C, imaginary only, specified as Ohms
+# 	complex constant_power_AN[VA]; // constant power wye-connected load on phase A, specified as VA
+# 	complex constant_power_BN[VA]; // constant power wye-connected load on phase B, specified as VA
+# 	complex constant_power_CN[VA]; // constant power wye-connected load on phase C, specified as VA
+# 	double constant_power_AN_real[W]; // constant power wye-connected load on phase A, real only, specified as W
+# 	double constant_power_BN_real[W]; // constant power wye-connected load on phase B, real only, specified as W
+# 	double constant_power_CN_real[W]; // constant power wye-connected load on phase C, real only, specified as W
+# 	double constant_power_AN_reac[VAr]; // constant power wye-connected load on phase A, imaginary only, specified as VAr
+# 	double constant_power_BN_reac[VAr]; // constant power wye-connected load on phase B, imaginary only, specified as VAr
+# 	double constant_power_CN_reac[VAr]; // constant power wye-connected load on phase C, imaginary only, specified as VAr
+# 	complex constant_current_AN[A]; // constant current wye-connected load on phase A, specified as Amps
+# 	complex constant_current_BN[A]; // constant current wye-connected load on phase B, specified as Amps
+# 	complex constant_current_CN[A]; // constant current wye-connected load on phase C, specified as Amps
+# 	double constant_current_AN_real[A]; // constant current wye-connected load on phase A, real only, specified as Amps
+# 	double constant_current_BN_real[A]; // constant current wye-connected load on phase B, real only, specified as Amps
+# 	double constant_current_CN_real[A]; // constant current wye-connected load on phase C, real only, specified as Amps
+# 	double constant_current_AN_reac[A]; // constant current wye-connected load on phase A, imaginary only, specified as Amps
+# 	double constant_current_BN_reac[A]; // constant current wye-connected load on phase B, imaginary only, specified as Amps
+# 	double constant_current_CN_reac[A]; // constant current wye-connected load on phase C, imaginary only, specified as Amps
+# 	complex constant_impedance_AN[Ohm]; // constant impedance wye-connected load on phase A, specified as Ohms
+# 	complex constant_impedance_BN[Ohm]; // constant impedance wye-connected load on phase B, specified as Ohms
+# 	complex constant_impedance_CN[Ohm]; // constant impedance wye-connected load on phase C, specified as Ohms
+# 	double constant_impedance_AN_real[Ohm]; // constant impedance wye-connected load on phase A, real only, specified as Ohms
+# 	double constant_impedance_BN_real[Ohm]; // constant impedance wye-connected load on phase B, real only, specified as Ohms
+# 	double constant_impedance_CN_real[Ohm]; // constant impedance wye-connected load on phase C, real only, specified as Ohms
+# 	double constant_impedance_AN_reac[Ohm]; // constant impedance wye-connected load on phase A, imaginary only, specified as Ohms
+# 	double constant_impedance_BN_reac[Ohm]; // constant impedance wye-connected load on phase B, imaginary only, specified as Ohms
+# 	double constant_impedance_CN_reac[Ohm]; // constant impedance wye-connected load on phase C, imaginary only, specified as Ohms
+# 	complex constant_power_AB[VA]; // constant power delta-connected load on phase A, specified as VA
+# 	complex constant_power_BC[VA]; // constant power delta-connected load on phase B, specified as VA
+# 	complex constant_power_CA[VA]; // constant power delta-connected load on phase C, specified as VA
+# 	double constant_power_AB_real[W]; // constant power delta-connected load on phase A, real only, specified as W
+# 	double constant_power_BC_real[W]; // constant power delta-connected load on phase B, real only, specified as W
+# 	double constant_power_CA_real[W]; // constant power delta-connected load on phase C, real only, specified as W
+# 	double constant_power_AB_reac[VAr]; // constant power delta-connected load on phase A, imaginary only, specified as VAr
+# 	double constant_power_BC_reac[VAr]; // constant power delta-connected load on phase B, imaginary only, specified as VAr
+# 	double constant_power_CA_reac[VAr]; // constant power delta-connected load on phase C, imaginary only, specified as VAr
+# 	complex constant_current_AB[A]; // constant current delta-connected load on phase A, specified as Amps
+# 	complex constant_current_BC[A]; // constant current delta-connected load on phase B, specified as Amps
+# 	complex constant_current_CA[A]; // constant current delta-connected load on phase C, specified as Amps
+# 	double constant_current_AB_real[A]; // constant current delta-connected load on phase A, real only, specified as Amps
+# 	double constant_current_BC_real[A]; // constant current delta-connected load on phase B, real only, specified as Amps
+# 	double constant_current_CA_real[A]; // constant current delta-connected load on phase C, real only, specified as Amps
+# 	double constant_current_AB_reac[A]; // constant current delta-connected load on phase A, imaginary only, specified as Amps
+# 	double constant_current_BC_reac[A]; // constant current delta-connected load on phase B, imaginary only, specified as Amps
+# 	double constant_current_CA_reac[A]; // constant current delta-connected load on phase C, imaginary only, specified as Amps
+# 	complex constant_impedance_AB[Ohm]; // constant impedance delta-connected load on phase A, specified as Ohms
+# 	complex constant_impedance_BC[Ohm]; // constant impedance delta-connected load on phase B, specified as Ohms
+# 	complex constant_impedance_CA[Ohm]; // constant impedance delta-connected load on phase C, specified as Ohms
+# 	double constant_impedance_AB_real[Ohm]; // constant impedance delta-connected load on phase A, real only, specified as Ohms
+# 	double constant_impedance_BC_real[Ohm]; // constant impedance delta-connected load on phase B, real only, specified as Ohms
+# 	double constant_impedance_CA_real[Ohm]; // constant impedance delta-connected load on phase C, real only, specified as Ohms
+# 	double constant_impedance_AB_reac[Ohm]; // constant impedance delta-connected load on phase A, imaginary only, specified as Ohms
+# 	double constant_impedance_BC_reac[Ohm]; // constant impedance delta-connected load on phase B, imaginary only, specified as Ohms
+# 	double constant_impedance_CA_reac[Ohm]; // constant impedance delta-connected load on phase C, imaginary only, specified as Ohms
+# 	complex measured_voltage_A; // current measured voltage on phase A
+# 	complex measured_voltage_B; // current measured voltage on phase B
+# 	complex measured_voltage_C; // current measured voltage on phase C
+# 	complex measured_voltage_AB; // current measured voltage on phases AB
+# 	complex measured_voltage_BC; // current measured voltage on phases BC
+# 	complex measured_voltage_CA; // current measured voltage on phases CA
+# 	bool phase_loss_protection; // Trip all three phases of the load if a fault occurs
+# 	double base_power_A[VA]; // in similar format as ZIPload, this represents the nominal power on phase A before applying ZIP fractions
+# 	double base_power_B[VA]; // in similar format as ZIPload, this represents the nominal power on phase B before applying ZIP fractions
+# 	double base_power_C[VA]; // in similar format as ZIPload, this represents the nominal power on phase C before applying ZIP fractions
+# 	double power_pf_A[pu]; // in similar format as ZIPload, this is the power factor of the phase A constant power portion of load
+# 	double current_pf_A[pu]; // in similar format as ZIPload, this is the power factor of the phase A constant current portion of load
+# 	double impedance_pf_A[pu]; // in similar format as ZIPload, this is the power factor of the phase A constant impedance portion of load
+# 	double power_pf_B[pu]; // in similar format as ZIPload, this is the power factor of the phase B constant power portion of load
+# 	double current_pf_B[pu]; // in similar format as ZIPload, this is the power factor of the phase B constant current portion of load
+# 	double impedance_pf_B[pu]; // in similar format as ZIPload, this is the power factor of the phase B constant impedance portion of load
+# 	double power_pf_C[pu]; // in similar format as ZIPload, this is the power factor of the phase C constant power portion of load
+# 	double current_pf_C[pu]; // in similar format as ZIPload, this is the power factor of the phase C constant current portion of load
+# 	double impedance_pf_C[pu]; // in similar format as ZIPload, this is the power factor of the phase C constant impedance portion of load
+# 	double power_fraction_A[pu]; // this is the constant power fraction of base power on phase A
+# 	double current_fraction_A[pu]; // this is the constant current fraction of base power on phase A
+# 	double impedance_fraction_A[pu]; // this is the constant impedance fraction of base power on phase A
+# 	double power_fraction_B[pu]; // this is the constant power fraction of base power on phase B
+# 	double current_fraction_B[pu]; // this is the constant current fraction of base power on phase B
+# 	double impedance_fraction_B[pu]; // this is the constant impedance fraction of base power on phase B
+# 	double power_fraction_C[pu]; // this is the constant power fraction of base power on phase C
+# 	double current_fraction_C[pu]; // this is the constant current fraction of base power on phase C
+# 	double impedance_fraction_C[pu]; // this is the constant impedance fraction of base power on phase C
+# }
+
 patterns:[{
+  include: "#powerflow-properties-node"
+}
+{
   name: 'load.powerflow.property.glm'
   match: "^\\s*(load_class)\\s+([^;]*)(?=\\s*;)"
   captures:
@@ -9,8 +185,23 @@ patterns:[{
 }
 {
   name: 'load.powerflow.property.glm'
-  match: "^\\s*(measured_voltage_(?:A|B|C|AB|BC|CA)|constant_power_[ABC]|constant_current_[ABC]|constant_impedance_[ABC]|base_power_[ABC]|power_pf_[ABC]|current_pf_[ABC]|impedance_pf_[ABC]|power_fraction_[ABC]|current_fraction_[ABC]|impedance_fraction_[ABC])\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(constant_power_(?:A|B|C|AN|BN|CN|AB|BC|CA)|constant_current_(?:A|B|C|AN|BN|CN|AB|BC|CA)|constant_impedance_(?:A|B|C|AN|BN|CN|AB|BC|CA)|measured_voltage_(?:A|B|C|AB|BC|CA))\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.load.powerflow.glm'
     2: patterns: [{include: "#complex"}]
-}]
+}
+{
+  name: 'load.powerflow.property.glm'
+  match: "^\\s*(constant_power_(?:A|B|C|AN|BN|CN|AB|BC|CA)_rea[lc]|constant_current_(?:A|B|C|AN|BN|CN|AB|BC|CA)_rea[lc]|constant_impedance_(?:A|B|C|AN|BN|CN|AB|BC|CA)_rea[lc]|base_power_[ABC]|power_pf_[ABC]|current_pf_[ABC]|impedance_pf_[ABC]|power_fraction_[ABC]|current_fraction_[ABC]|impedance_fraction_[ABC])\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'load.powerflow.property.glm'
+  match: "^\\s*(phase_loss_protection)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+}
+]

@@ -9,6 +9,9 @@ key: 'powerflow-properties-billdump'
 # }
 
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'billdump.powerflow.property.glm'
   match: "^\\s*(group)\\s+([^;]*)(?=\\s*;)"
   captures:

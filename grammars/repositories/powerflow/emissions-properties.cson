@@ -100,9 +100,12 @@ key: 'powerflow-properties-emissions'
 # }
 
 patterns: [{
-  name: 'billdump.powerflow.property.glm'
+  include: "#object-properties-common"
+}
+{
+  name: 'emissions.powerflow.property.glm'
   match: "^\\s*((?:Nuclear|Hydroelectric|Solarthermal|Biomass|Wind|Coal|Naturalgas|Geothermal|Petroleum)_(?:Order|Max_Out|Out|Conv_Eff|CO2|SO2|NOx|emissions_CO2|emissions_SO2|emissions_NOx)|Total_emissions_(?:CO2|SO2|NOx)|Total_energy_out|Region|cycle_interval)\\s+([^;]*)(?=\\s*;)"
   captures:
-    1: name: 'entity.name.function.billdump.powerflow.glm'
+    1: name: 'entity.name.function.emissions.powerflow.glm'
     2: patterns: [{include: "#double"}]
 }]

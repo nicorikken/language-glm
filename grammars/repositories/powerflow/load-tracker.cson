@@ -1,8 +1,8 @@
-key: 'powerflow-objects'
+key: 'powerflow-load_tracker'
 
 patterns: [
   name: 'object.glm'
-  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(transformer)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(load_tracker(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
   beginCaptures:
     # TODO make class match more selective, based on class name
     1: name: "storage.type.object.glm"
@@ -11,6 +11,5 @@ patterns: [
     4: name: "constant.id.object.glm"
   end: "}"
   patterns: [
-    {include: "#powerflow-properties-powerflow_object"}
-    {include: "#object-includes"}
+    {include: "#powerflow-properties-load_tracker"}
   ]]

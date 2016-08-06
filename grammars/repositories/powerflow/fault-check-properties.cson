@@ -12,6 +12,9 @@ key: 'powerflow-properties-fault_check'
 # }
 
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'fault-check.powerflow.property.glm'
   match: "^\\s*(check_mode)\\s+([^;]*)(?=\\s*;)"
   captures:

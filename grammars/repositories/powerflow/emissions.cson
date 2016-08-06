@@ -2,7 +2,7 @@ key: 'powerflow-emissions'
 
 patterns: [
   name: 'object.glm'
-  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(emissions)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(emissions(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
   beginCaptures:
     # TODO make class match more selective, based on class name
     1: name: "storage.type.object.glm"

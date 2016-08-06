@@ -1,9 +1,56 @@
 key: 'powerflow-properties-line_configuration'
 
+# class line_configuration {
+# 	object conductor_A;
+# 	object conductor_B;
+# 	object conductor_C;
+# 	object conductor_N;
+# 	object spacing;
+# 	complex z11[Ohm/mile];
+# 	complex z12[Ohm/mile];
+# 	complex z13[Ohm/mile];
+# 	complex z21[Ohm/mile];
+# 	complex z22[Ohm/mile];
+# 	complex z23[Ohm/mile];
+# 	complex z31[Ohm/mile];
+# 	complex z32[Ohm/mile];
+# 	complex z33[Ohm/mile];
+# 	double c11[nF/mile];
+# 	double c12[nF/mile];
+# 	double c13[nF/mile];
+# 	double c21[nF/mile];
+# 	double c22[nF/mile];
+# 	double c23[nF/mile];
+# 	double c31[nF/mile];
+# 	double c32[nF/mile];
+# 	double c33[nF/mile];
+# 	double rating.summer.continuous[A]; // amp rating in summer, continuous
+# 	double rating.summer.emergency[A]; // amp rating in summer, short term
+# 	double rating.winter.continuous[A]; // amp rating in winter, continuous
+# 	double rating.winter.emergency[A]; // amp rating in winter, short term
+# }
+
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'line-configuration.powerflow.property.glm'
-  match: "^\\s*(conductor_[ABCN]|spacing|z(?:11|12|13|21|22|23|31|32|33))\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(conductor_[ABCN]|spacing)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.line-configuration.powerflow.glm'
-    2: patterns: [{include: "#wildcard-element"}] #TODO
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'line-configuration.powerflow.property.glm'
+  match: "^\\s*(z(?:11|12|13|21|22|23|31|32|33))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.line-configuration.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}
+{
+  name: 'line-configuration.powerflow.property.glm'
+  match: "^\\s*(c(?:11|12|13|21|22|23|31|32|33)|rating\\.(?:summer|winter)\\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.line-configuration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
 }]

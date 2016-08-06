@@ -126,6 +126,14 @@ repository:
     ]
   'powerflow-objects':
     patterns: [
+      include: "#powerflow-billdump"
+    ,
+      include: "#powerflow-capacitor"
+    ,
+      include: "#powerflow-currentdump"
+    ,
+      include: "#powerflow-emissions"
+    ,
       include: "#powerflow-transformer"
     ]
   'powerflow-properties':
@@ -135,6 +143,10 @@ repository:
       include: "#powerflow-properties-node"
     ,
       include: "#powerflow-properties-link"
+    ,
+      include: "#powerflow-properties-capacitor"
+    ,
+      include: "#powerflow-properties-emissions"
     ,
       include: "#powerflow-properties-line"
     ,
@@ -167,8 +179,6 @@ repository:
       include: "#powerflow-properties-regulator"
     ,
       include: "#powerflow-properties-regulator_configuration"
-    ,
-      include: "#powerflow-properties-capacitor"
     ,
       include: "#powerflow-properties-fuse"
     ,
@@ -231,6 +241,8 @@ repository:
         include: "#int32"
       ,
         include: "#char32"
+      ,
+        include: "#char256"
       ,
         include: "#char1024"
       ,

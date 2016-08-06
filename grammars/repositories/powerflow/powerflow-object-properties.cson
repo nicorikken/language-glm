@@ -6,6 +6,9 @@ key: 'powerflow-properties-powerflow_object'
 # }
 
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'powerflow_object.powerflow.property.glm'
   match: "^\\s*(phases)\\s+([^;]*)(?=\\s*;)"
   captures:

@@ -196,6 +196,12 @@ repository:
         include: "#powerflow-properties-link"
       }
       {
+        include: "#powerflow-properties-capacitor"
+      }
+      {
+        include: "#powerflow-properties-emissions"
+      }
+      {
         include: "#powerflow-properties-line"
       }
       {
@@ -242,9 +248,6 @@ repository:
       }
       {
         include: "#powerflow-properties-regulator_configuration"
-      }
-      {
-        include: "#powerflow-properties-capacitor"
       }
       {
         include: "#powerflow-properties-fuse"
@@ -335,6 +338,9 @@ repository:
         }
         {
           include: "#char32"
+        }
+        {
+          include: "#char256"
         }
         {
           include: "#char1024"
@@ -1052,6 +1058,12 @@ repository:
         include: "#wildcard-element"
       }
     ]
+  char256:
+    patterns: [
+      {
+        include: "#wildcard-element"
+      }
+    ]
   char32:
     patterns: [
       {
@@ -1259,7 +1271,7 @@ repository:
     patterns: [
       {
         name: "billdump.powerflow.property.glm"
-        match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+        match: "^\\s*(group)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
             name: "entity.name.function.billdump.powerflow.glm"
@@ -1283,9 +1295,73 @@ repository:
               }
             ]
       }
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*(filename)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#char256"
+              }
+            ]
+      }
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*(runcount)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int32"
+              }
+            ]
+      }
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*(meter_type)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#enumeration"
+              }
+            ]
+      }
+    ]
+  "powerflow-billdump":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(billdump)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-billdump"
+          }
+        ]
+      }
     ]
   "powerflow-properties-capacitor":
     patterns: [
+      {
+        include: "#powerflow-properties-node"
+      }
       {
         name: "capacitor.powerflow.property.glm"
         match: "^\\s*(pt_phase|phases_connected)\\s+([^;]*)(?=\\s*;)"
@@ -1327,7 +1403,7 @@ repository:
       }
       {
         name: "capacitor.powerflow.property.glm"
-        match: "^\\s*((?:voltage|VAr)_set_(?:high|low)|capacitor_[ABC]|cap_nominal_voltage|time_delay|dwell_time|lockout_time)\\s+([^;]*)(?=\\s*;)"
+        match: "^\\s*((?:voltage|VAr|current)_set_(?:high|low)|capacitor_[ABC]|cap_nominal_voltage|time_delay|dwell_time|lockout_time)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
             name: "entity.name.function.capacitor.powerflow.glm"
@@ -1350,6 +1426,28 @@ repository:
                 include: "#object"
               }
             ]
+      }
+    ]
+  "powerflow-capacitor":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(transformer)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-capacitor"
+          }
+        ]
       }
     ]
   "powerflow-properties-currentdump":
@@ -1382,6 +1480,19 @@ repository:
       }
       {
         name: "currentdump.powerflow.property.glm"
+        match: "^\\s*(runcount)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.currentdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#int32"
+              }
+            ]
+      }
+      {
+        name: "currentdump.powerflow.property.glm"
         match: "^\\s*(mode)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
@@ -1392,6 +1503,66 @@ repository:
                 include: "#enumeration"
               }
             ]
+      }
+    ]
+  "powerflow-currentdump":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(currdump)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-currentdump"
+          }
+        ]
+      }
+    ]
+  "powerflow-properties-emissions":
+    patterns: [
+      {
+        name: "billdump.powerflow.property.glm"
+        match: "^\\s*((?:Nuclear|Hydroelectric|Solarthermal|Biomass|Wind|Coal|Naturalgas|Geothermal|Petroleum)_(?:Order|Max_Out|Out|Conv_Eff|CO2|SO2|NOx|emissions_CO2|emissions_SO2|emissions_NOx)|Total_emissions_(?:CO2|SO2|NOx)|Total_energy_out|Region|cycle_interval)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.billdump.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
+              }
+            ]
+      }
+    ]
+  "powerflow-emissions":
+    patterns: [
+      {
+        name: "object.glm"
+        begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(emissions)(?::(\\d*)(?:\\.\\.(\\d+))?)?)?\\s*\\{?"
+        beginCaptures:
+          "1":
+            name: "storage.type.object.glm"
+          "2":
+            name: "entity.name.function.object.glm"
+          "3":
+            name: "constant.id.object.glm"
+          "4":
+            name: "constant.id.object.glm"
+        end: "}"
+        patterns: [
+          {
+            include: "#powerflow-properties-emissions"
+          }
+        ]
       }
     ]
   "powerflow-properties-fault_check":
@@ -1529,15 +1700,70 @@ repository:
   "powerflow-properties-link":
     patterns: [
       {
+        include: "#powerflow-properties-powerflow_object"
+      }
+      {
         name: "link.powerflow.property.glm"
-        match: "^\\s*(from|to|power_in|power_out|power_losses|power_in_[ABC]|power_out[ABC]|power_losses_[ABC]|status|current_out_[ABC]|current_in_[ABC]|flow_direction|mean_repair_time)\\s+([^;]*)(?=\\s*;)"
+        match: "^\\s*(status)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
             name: "entity.name.function.link.powerflow.glm"
           "2":
             patterns: [
               {
-                include: "#wildcard-element"
+                include: "#enumeration"
+              }
+            ]
+      }
+      {
+        name: "link.powerflow.property.glm"
+        match: "^\\s*(from|to)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.link.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#object"
+              }
+            ]
+      }
+      {
+        name: "link.powerflow.property.glm"
+        match: "^\\s*(power_(?:in|out|losses)(?:_[ABC])?|(?:fault_)?current_(?:in|out)_[ABC])\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.link.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#complex"
+              }
+            ]
+      }
+      {
+        name: "link.powerflow.property.glm"
+        match: "^\\s*(flow_direction)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.link.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#set"
+              }
+            ]
+      }
+      {
+        name: "link.powerflow.property.glm"
+        match: "^\\s*(power_out_real|mean_repair_time|continuous_rating|emergency_rating|inrush_convergence_value)\\s+([^;]*)(?=\\s*;)"
+        captures:
+          "1":
+            name: "entity.name.function.link.powerflow.glm"
+          "2":
+            patterns: [
+              {
+                include: "#double"
               }
             ]
       }
@@ -1642,8 +1868,11 @@ repository:
   "powerflow-properties-node":
     patterns: [
       {
+        include: "#powerflow-properties-powerflow_object"
+      }
+      {
         name: "node.powerflow.property.glm"
-        match: "^\\s*(phases|nominal_voltage|voltage_(?:A|B|C|AB|BC|CA)|current_[ABC]|power_[ABC]|shunt_[ABC]|bustype)\\s+([^;]*)(?=\\s*;)"
+        match: "^\\s*(bustype|busflags|reference_bus|maximum_voltage_error|voltage_(?:A|B|C|AB|BC|CA)|current_(?:A|B|C|AB|BC|CA|AN|BN|CN)|power_(?:A|B|C|AB|BC|CA|AN|BN|CN)|shunt_(?:A|B|C|AB|BC|CA|AN|BN|CN)|mean_repair_time|service_status|service_status_double|previous_uptime|current_uptime|Norton_dynamic|topological_parent)\\s+([^;]*)(?=\\s*;)"
         captures:
           "1":
             name: "entity.name.function.node.powerflow.glm"
@@ -1689,6 +1918,9 @@ repository:
     ]
   "powerflow-properties-powerflow_object":
     patterns: [
+      {
+        include: "#object-properties-common"
+      }
       {
         name: "powerflow_object.powerflow.property.glm"
         match: "^\\s*(phases)\\s+([^;]*)(?=\\s*;)"

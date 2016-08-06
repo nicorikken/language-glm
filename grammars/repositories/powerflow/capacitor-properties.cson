@@ -1,6 +1,9 @@
 key: 'powerflow-properties-capacitor'
 
 patterns: [{
+  include: "#powerflow-properties-node"
+}
+{
   name: 'capacitor.powerflow.property.glm'
   match: "^\\s*(pt_phase|phases_connected)\\s+([^;]*)(?=\\s*;)"
   captures:
@@ -23,7 +26,7 @@ patterns: [{
 }
 {
   name: 'capacitor.powerflow.property.glm'
-  match: "^\\s*((?:voltage|VAr)_set_(?:high|low)|capacitor_[ABC]|cap_nominal_voltage|time_delay|dwell_time|lockout_time)\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*((?:voltage|VAr|current)_set_(?:high|low)|capacitor_[ABC]|cap_nominal_voltage|time_delay|dwell_time|lockout_time)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.capacitor.powerflow.glm'
     2: patterns: [{include: "#double"}]

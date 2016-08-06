@@ -1,8 +1,16 @@
 key: 'powerflow-properties-billdump'
 
+# class billdump {
+# 	char32 group; // the group ID to output data for (all nodes if empty)
+# 	timestamp runtime; // the time to check voltage data
+# 	char256 filename; // the file to dump the voltage data into
+# 	int32 runcount; // the number of times the file has been written to
+# 	enumeration {METER=1, TRIPLEX_METER=0} meter_type; // describes whether to collect from 3-phase or S-phase meters
+# }
+
 patterns: [{
   name: 'billdump.powerflow.property.glm'
-  match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(group)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.billdump.powerflow.glm'
     2: patterns: [{include: "#char32"}]
@@ -13,4 +21,25 @@ patterns: [{
   captures:
     1: name: 'entity.name.function.billdump.powerflow.glm'
     2: patterns: [{include: "#timestamp"}]
-  }]
+}
+{
+  name: 'billdump.powerflow.property.glm'
+  match: "^\\s*(filename)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.billdump.powerflow.glm'
+    2: patterns: [{include: "#char256"}]
+}
+{
+  name: 'billdump.powerflow.property.glm'
+  match: "^\\s*(runcount)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.billdump.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
+}
+{
+  name: 'billdump.powerflow.property.glm'
+  match: "^\\s*(meter_type)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.billdump.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}]

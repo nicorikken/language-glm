@@ -1,0 +1,108 @@
+key: 'powerflow-properties-emissions'
+
+# class emissions {
+# 	double Nuclear_Order;
+# 	double Hydroelectric_Order;
+# 	double Solarthermal_Order;
+# 	double Biomass_Order;
+# 	double Wind_Order;
+# 	double Coal_Order;
+# 	double Naturalgas_Order;
+# 	double Geothermal_Order;
+# 	double Petroleum_Order;
+# 	double Naturalgas_Max_Out[kWh];
+# 	double Coal_Max_Out[kWh];
+# 	double Biomass_Max_Out[kWh];
+# 	double Geothermal_Max_Out[kWh];
+# 	double Hydroelectric_Max_Out[kWh];
+# 	double Nuclear_Max_Out[kWh];
+# 	double Wind_Max_Out[kWh];
+# 	double Petroleum_Max_Out[kWh];
+# 	double Solarthermal_Max_Out[kWh];
+# 	double Naturalgas_Out[kWh];
+# 	double Coal_Out[kWh];
+# 	double Biomass_Out[kWh];
+# 	double Geothermal_Out[kWh];
+# 	double Hydroelectric_Out[kWh];
+# 	double Nuclear_Out[kWh];
+# 	double Wind_Out[kWh];
+# 	double Petroleum_Out[kWh];
+# 	double Solarthermal_Out[kWh];
+# 	double Naturalgas_Conv_Eff[Btu/kWh];
+# 	double Coal_Conv_Eff[Btu/kWh];
+# 	double Biomass_Conv_Eff[Btu/kWh];
+# 	double Geothermal_Conv_Eff[Btu/kWh];
+# 	double Hydroelectric_Conv_Eff[Btu/kWh];
+# 	double Nuclear_Conv_Eff[Btu/kWh];
+# 	double Wind_Conv_Eff[Btu/kWh];
+# 	double Petroleum_Conv_Eff[Btu/kWh];
+# 	double Solarthermal_Conv_Eff[Btu/kWh];
+# 	double Naturalgas_CO2[lb/Btu];
+# 	double Coal_CO2[lb/Btu];
+# 	double Biomass_CO2[lb/Btu];
+# 	double Geothermal_CO2[lb/Btu];
+# 	double Hydroelectric_CO2[lb/Btu];
+# 	double Nuclear_CO2[lb/Btu];
+# 	double Wind_CO2[lb/Btu];
+# 	double Petroleum_CO2[lb/Btu];
+# 	double Solarthermal_CO2[lb/Btu];
+# 	double Naturalgas_SO2[lb/Btu];
+# 	double Coal_SO2[lb/Btu];
+# 	double Biomass_SO2[lb/Btu];
+# 	double Geothermal_SO2[lb/Btu];
+# 	double Hydroelectric_SO2[lb/Btu];
+# 	double Nuclear_SO2[lb/Btu];
+# 	double Wind_SO2[lb/Btu];
+# 	double Petroleum_SO2[lb/Btu];
+# 	double Solarthermal_SO2[lb/Btu];
+# 	double Naturalgas_NOx[lb/Btu];
+# 	double Coal_NOx[lb/Btu];
+# 	double Biomass_NOx[lb/Btu];
+# 	double Geothermal_NOx[lb/Btu];
+# 	double Hydroelectric_NOx[lb/Btu];
+# 	double Nuclear_NOx[lb/Btu];
+# 	double Wind_NOx[lb/Btu];
+# 	double Petroleum_NOx[lb/Btu];
+# 	double Solarthermal_NOx[lb/Btu];
+# 	double Naturalgas_emissions_CO2[lb];
+# 	double Naturalgas_emissions_SO2[lb];
+# 	double Naturalgas_emissions_NOx[lb];
+# 	double Coal_emissions_CO2[lb];
+# 	double Coal_emissions_SO2[lb];
+# 	double Coal_emissions_NOx[lb];
+# 	double Biomass_emissions_CO2[lb];
+# 	double Biomass_emissions_SO2[lb];
+# 	double Biomass_emissions_NOx[lb];
+# 	double Geothermal_emissions_CO2[lb];
+# 	double Geothermal_emissions_SO2[lb];
+# 	double Geothermal_emissions_NOx[lb];
+# 	double Hydroelectric_emissions_CO2[lb];
+# 	double Hydroelectric_emissions_SO2[lb];
+# 	double Hydroelectric_emissions_NOx[lb];
+# 	double Nuclear_emissions_CO2[lb];
+# 	double Nuclear_emissions_SO2[lb];
+# 	double Nuclear_emissions_NOx[lb];
+# 	double Wind_emissions_CO2[lb];
+# 	double Wind_emissions_SO2[lb];
+# 	double Wind_emissions_NOx[lb];
+# 	double Petroleum_emissions_CO2[lb];
+# 	double Petroleum_emissions_SO2[lb];
+# 	double Petroleum_emissions_NOx[lb];
+# 	double Solarthermal_emissions_CO2[lb];
+# 	double Solarthermal_emissions_SO2[lb];
+# 	double Solarthermal_emissions_NOx[lb];
+# 	double Total_emissions_CO2[lb];
+# 	double Total_emissions_SO2[lb];
+# 	double Total_emissions_NOx[lb];
+# 	double Total_energy_out[kWh];
+# 	double Region;
+# 	double cycle_interval[s];
+# }
+
+patterns: [{
+  name: 'billdump.powerflow.property.glm'
+  match: "^\\s*((?:Nuclear|Hydroelectric|Solarthermal|Biomass|Wind|Coal|Naturalgas|Geothermal|Petroleum)_(?:Order|Max_Out|Out|Conv_Eff|CO2|SO2|NOx|emissions_CO2|emissions_SO2|emissions_NOx)|Total_emissions_(?:CO2|SO2|NOx)|Total_energy_out|Region|cycle_interval)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.billdump.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

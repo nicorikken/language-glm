@@ -50,9 +50,33 @@ object climate:0 {
 }
 
 
-// class csv
-ERROR    [INIT] : --example: class 225071984 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class csv_reader
+object csv_reader:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// csv_reader properties
+	index 0;
+	city_name "";
+	state_name "";
+	lat_deg +0;
+	lat_min +0;
+	long_deg +0;
+	long_min +0;
+	low_temp +0;
+	high_temp +0;
+	peak_solar +0;
+	elevation 0;
+	status INIT;
+	timefmt "";
+	timezone "";
+	timezone_offset +0;
+	columns "";
+	filename "";
+}
+
 
 // class weather
 object weather:0 {

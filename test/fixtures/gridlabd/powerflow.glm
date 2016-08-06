@@ -223,13 +223,25 @@ object emissions:0 {
 }
 
 
-// class fault
-ERROR    [INIT] : --example: class -160678480 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class fault_check
+object fault_check:0 {
 
-// class frequency
-ERROR    [INIT] : --example: class -1847529920 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// fault_check properties
+	check_mode SINGLE;
+	output_filename "";
+	reliability_mode FALSE;
+	strictly_radial FALSE;
+	full_output_file FALSE;
+	eventgen_object "";
+}
+
+
+// class frequency_gen
+Segmentation fault
 
 // class fuse
 object fuse:0 {
@@ -286,9 +298,20 @@ object fuse:0 {
 }
 
 
-// class impedance
-ERROR    [INIT] : --example: class 175714272 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class impedance_dump
+object impedance_dump:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// impedance_dump properties
+	group "";
+	filename "";
+	runtime 'INIT';
+	runcount 0;
+}
+
 
 // class line
 object line:0 {
@@ -337,6 +360,65 @@ object line:0 {
 	// line properties
 	configuration "";
 	length +0 ft;
+}
+
+
+// class line_configuration
+object line_configuration:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// line_configuration properties
+	conductor_A "";
+	conductor_B "";
+	conductor_C "";
+	conductor_N "";
+	spacing "";
+	z11 +0+0i Ohm/mile;
+	z12 +0+0i Ohm/mile;
+	z13 +0+0i Ohm/mile;
+	z21 +0+0i Ohm/mile;
+	z22 +0+0i Ohm/mile;
+	z23 +0+0i Ohm/mile;
+	z31 +0+0i Ohm/mile;
+	z32 +0+0i Ohm/mile;
+	z33 +0+0i Ohm/mile;
+	c11 +0 nF/mile;
+	c12 +0 nF/mile;
+	c13 +0 nF/mile;
+	c21 +0 nF/mile;
+	c22 +0 nF/mile;
+	c23 +0 nF/mile;
+	c31 +0 nF/mile;
+	c32 +0 nF/mile;
+	c33 +0 nF/mile;
+	rating.summer.continuous +0 A;
+	rating.summer.emergency +0 A;
+	rating.winter.continuous +0 A;
+	rating.winter.emergency +0 A;
+}
+
+
+// class line_spacing
+object line_spacing:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// line_spacing properties
+	distance_AB +0 ft;
+	distance_BC +0 ft;
+	distance_AC +0 ft;
+	distance_AN +0 ft;
+	distance_BN +0 ft;
+	distance_CN +0 ft;
+	distance_AE +0 ft;
+	distance_BE +0 ft;
+	distance_CE +0 ft;
+	distance_NE +0 ft;
 }
 
 
@@ -556,6 +638,26 @@ object load:0 {
 }
 
 
+// class load_tracker
+object load_tracker:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// load_tracker properties
+	target "";
+	target_property "";
+	operation REAL;
+	full_scale +0;
+	setpoint +0;
+	deadband +0;
+	damping +0;
+	output +0;
+	feedback +0;
+}
+
+
 // class meter
 object meter:0 {
 
@@ -769,17 +871,110 @@ object node:0 {
 }
 
 
-// class overhead
-ERROR    [INIT] : --example: class 826803760 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class overhead_line
+object overhead_line:0 {
 
-// class power
-ERROR    [INIT] : --example: class 1403387888 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// line properties
+	configuration "";
+	length +0 ft;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// overhead_line properties
+}
 
-// class powerflow
-ERROR    [INIT] : --example: class 1004503648 is not found
-FATAL    [INIT] : shutdown after command line rejected
+
+// class overhead_line_conductor
+object overhead_line_conductor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// overhead_line_conductor properties
+	geometric_mean_radius +0 ft;
+	resistance +0 Ohm/mile;
+	diameter +0 in;
+	rating.summer.continuous +0 A;
+	rating.summer.emergency +0 A;
+	rating.winter.continuous +0 A;
+	rating.winter.emergency +0 A;
+}
+
+
+// class power_metrics
+object power_metrics:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// power_metrics properties
+	SAIFI +0;
+	SAIFI_int +0;
+	SAIDI +0;
+	SAIDI_int +0;
+	CAIDI +0;
+	CAIDI_int +0;
+	ASAI +0;
+	ASAI_int +0;
+	MAIFI +0;
+	MAIFI_int +0;
+	base_time_value +0 s;
+}
+
+
+// class powerflow_library
+object powerflow_library:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// powerflow_library properties
+}
+
+
+// class powerflow_object
+UNHANDLED EXCEPTION: object_create_single(CLASS *oclass='powerflow_object'): abstract class '(null)' cannot be instantiated
 
 // class pqload
 object pqload:0 {
@@ -1117,6 +1312,42 @@ object regulator:0 {
 }
 
 
+// class regulator_configuration
+object regulator_configuration:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// regulator_configuration properties
+	connect_type UNKNOWN;
+	band_center +0 V;
+	band_width +0 V;
+	time_delay +0 s;
+	dwell_time +0 s;
+	raise_taps 0;
+	lower_taps 0;
+	current_transducer_ratio +0 pu;
+	power_transducer_ratio +0 pu;
+	compensator_r_setting_A +0 V;
+	compensator_r_setting_B +0 V;
+	compensator_r_setting_C +0 V;
+	compensator_x_setting_A +0 V;
+	compensator_x_setting_B +0 V;
+	compensator_x_setting_C +0 V;
+	CT_phase "";
+	PT_phase "";
+	regulation +0;
+	control_level 0;
+	Control 0;
+	reverse_flow_control LOCK_NONE;
+	Type 0;
+	tap_pos_A 0;
+	tap_pos_B 0;
+	tap_pos_C 0;
+}
+
+
 // class restoration
 object restoration:0 {
 
@@ -1196,9 +1427,63 @@ object sectionalizer:0 {
 }
 
 
-// class series
-ERROR    [INIT] : --example: class 184287824 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class series_reactor
+object series_reactor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// series_reactor properties
+	phase_A_impedance +0+0i Ohm;
+	phase_A_resistance +0 Ohm;
+	phase_A_reactance +0 Ohm;
+	phase_B_impedance +0+0i Ohm;
+	phase_B_resistance +0 Ohm;
+	phase_B_reactance +0 Ohm;
+	phase_C_impedance +0+0i Ohm;
+	phase_C_resistance +0 Ohm;
+	phase_C_reactance +0 Ohm;
+	rated_current_limit +0 A;
+}
+
 
 // class substation
 object substation:0 {
@@ -1393,17 +1678,553 @@ object transformer:0 {
 }
 
 
-// class triplex
-ERROR    [INIT] : --example: class -2109031744 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class transformer_configuration
+object transformer_configuration:0 {
 
-// class underground
-ERROR    [INIT] : --example: class 148626016 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// transformer_configuration properties
+	connect_type UNKNOWN;
+	install_type UNKNOWN;
+	coolant_type UNKNOWN;
+	cooling_type UNKNOWN;
+	primary_voltage +0 V;
+	secondary_voltage +0 V;
+	power_rating +0 kVA;
+	powerA_rating +0 kVA;
+	powerB_rating +0 kVA;
+	powerC_rating +0 kVA;
+	resistance +0 pu*Ohm;
+	reactance +0 pu*Ohm;
+	impedance +0+0i pu*Ohm;
+	resistance1 +0 pu*Ohm;
+	reactance1 +0 pu*Ohm;
+	impedance1 +0+0i pu*Ohm;
+	resistance2 +0 pu*Ohm;
+	reactance2 +0 pu*Ohm;
+	impedance2 +0+0i pu*Ohm;
+	shunt_resistance +0 pu*Ohm;
+	shunt_reactance +0 pu*Ohm;
+	shunt_impedance +0+0i pu*Ohm;
+	core_coil_weight +0 lb;
+	tank_fittings_weight +0 lb;
+	oil_volume +0 gal;
+	rated_winding_time_constant +0 h;
+	rated_winding_hot_spot_rise +0 degC;
+	rated_top_oil_rise +0 degC;
+	no_load_loss +0 pu;
+	full_load_loss +0 pu;
+	reactance_resistance_ratio +0;
+	installed_insulation_life +0 h;
+}
 
-// class volt
-ERROR    [INIT] : --example: class -1124171792 is not found
-FATAL    [INIT] : shutdown after command line rejected
+
+// class triplex_line
+object triplex_line:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// line properties
+	configuration "";
+	length +0 ft;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// triplex_line properties
+}
+
+
+// class triplex_line_conductor
+object triplex_line_conductor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// triplex_line_conductor properties
+	resistance +0 Ohm/mile;
+	geometric_mean_radius +0 ft;
+	rating.summer.continuous +0 A;
+	rating.summer.emergency +0 A;
+	rating.winter.continuous +0 A;
+	rating.winter.emergency +0 A;
+}
+
+
+// class triplex_line_configuration
+object triplex_line_configuration:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// triplex_line_configuration properties
+	conductor_1 "";
+	conductor_2 "";
+	conductor_N "";
+	insulation_thickness +0 in;
+	diameter +0 in;
+	spacing "";
+	z11 +0+0i Ohm/mile;
+	z12 +0+0i Ohm/mile;
+	z21 +0+0i Ohm/mile;
+	z22 +0+0i Ohm/mile;
+	rating.summer.continuous +0 A;
+	rating.summer.emergency +0 A;
+	rating.winter.continuous +0 A;
+	rating.winter.emergency +0 A;
+}
+
+
+// class triplex_load
+object triplex_load:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// triplex_node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_1 +0+0i V;
+	voltage_2 +0+0i V;
+	voltage_N +0+0i V;
+	voltage_12 +0+0i V;
+	voltage_1N +0+0i V;
+	voltage_2N +0+0i V;
+	current_1 +0+0i A;
+	current_2 +0+0i A;
+	current_N +0+0i A;
+	current_1_real +0 A;
+	current_2_real +0 A;
+	current_N_real +0 A;
+	current_1_reac +0 A;
+	current_2_reac +0 A;
+	current_N_reac +0 A;
+	current_12 +0+0i A;
+	current_12_real +0 A;
+	current_12_reac +0 A;
+	residential_nominal_current_1 +0+0i A;
+	residential_nominal_current_2 +0+0i A;
+	residential_nominal_current_12 +0+0i A;
+	residential_nominal_current_1_real +0 A;
+	residential_nominal_current_1_imag +0 A;
+	residential_nominal_current_2_real +0 A;
+	residential_nominal_current_2_imag +0 A;
+	residential_nominal_current_12_real +0 A;
+	residential_nominal_current_12_imag +0 A;
+	power_1 +0+0i VA;
+	power_2 +0+0i VA;
+	power_12 +0+0i VA;
+	power_1_real +0 W;
+	power_2_real +0 W;
+	power_12_real +0 W;
+	power_1_reac +0 VAr;
+	power_2_reac +0 VAr;
+	power_12_reac +0 VAr;
+	shunt_1 +0+0i S;
+	shunt_2 +0+0i S;
+	shunt_12 +0+0i S;
+	impedance_1 +0+0i Ohm;
+	impedance_2 +0+0i Ohm;
+	impedance_12 +0+0i Ohm;
+	impedance_1_real +0 Ohm;
+	impedance_2_real +0 Ohm;
+	impedance_12_real +0 Ohm;
+	impedance_1_reac +0 Ohm;
+	impedance_2_reac +0 Ohm;
+	impedance_12_reac +0 Ohm;
+	house_present FALSE;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	topological_parent "";
+	// powerflow_object properties
+	phases S;
+	nominal_voltage +0 V;
+	// triplex_load properties
+	load_class U;
+	constant_power_1 +0+0i VA;
+	constant_power_2 +0+0i VA;
+	constant_power_12 +0+0i VA;
+	constant_power_1_real +0 W;
+	constant_power_2_real +0 W;
+	constant_power_12_real +0 W;
+	constant_power_1_reac +0 VAr;
+	constant_power_2_reac +0 VAr;
+	constant_power_12_reac +0 VAr;
+	constant_current_1 +0+0i A;
+	constant_current_2 +0+0i A;
+	constant_current_12 +0+0i A;
+	constant_current_1_real +0 A;
+	constant_current_2_real +0 A;
+	constant_current_12_real +0 A;
+	constant_current_1_reac +0 A;
+	constant_current_2_reac +0 A;
+	constant_current_12_reac +0 A;
+	constant_impedance_1 +0+0i Ohm;
+	constant_impedance_2 +0+0i Ohm;
+	constant_impedance_12 +0+0i Ohm;
+	constant_impedance_1_real +0 Ohm;
+	constant_impedance_2_real +0 Ohm;
+	constant_impedance_12_real +0 Ohm;
+	constant_impedance_1_reac +0 Ohm;
+	constant_impedance_2_reac +0 Ohm;
+	constant_impedance_12_reac +0 Ohm;
+	measured_voltage_1 +0+0i;
+	measured_voltage_2 +0+0i;
+	measured_voltage_12 +0+0i;
+	base_power_1 +0 VA;
+	base_power_2 +0 VA;
+	base_power_12 +0 VA;
+	power_pf_1 +0 pu;
+	current_pf_1 +0 pu;
+	impedance_pf_1 +0 pu;
+	power_pf_2 +0 pu;
+	current_pf_2 +0 pu;
+	impedance_pf_2 +0 pu;
+	power_pf_12 +0 pu;
+	current_pf_12 +0 pu;
+	impedance_pf_12 +0 pu;
+	power_fraction_1 +0 pu;
+	current_fraction_1 +0 pu;
+	impedance_fraction_1 +0 pu;
+	power_fraction_2 +0 pu;
+	current_fraction_2 +0 pu;
+	impedance_fraction_2 +0 pu;
+	power_fraction_12 +0 pu;
+	current_fraction_12 +0 pu;
+	impedance_fraction_12 +0 pu;
+}
+
+
+// class triplex_meter
+object triplex_meter:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// triplex_node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_1 +0+0i V;
+	voltage_2 +0+0i V;
+	voltage_N +0+0i V;
+	voltage_12 +0+0i V;
+	voltage_1N +0+0i V;
+	voltage_2N +0+0i V;
+	current_1 +0+0i A;
+	current_2 +0+0i A;
+	current_N +0+0i A;
+	current_1_real +0 A;
+	current_2_real +0 A;
+	current_N_real +0 A;
+	current_1_reac +0 A;
+	current_2_reac +0 A;
+	current_N_reac +0 A;
+	current_12 +0+0i A;
+	current_12_real +0 A;
+	current_12_reac +0 A;
+	residential_nominal_current_1 +0+0i A;
+	residential_nominal_current_2 +0+0i A;
+	residential_nominal_current_12 +0+0i A;
+	residential_nominal_current_1_real +0 A;
+	residential_nominal_current_1_imag +0 A;
+	residential_nominal_current_2_real +0 A;
+	residential_nominal_current_2_imag +0 A;
+	residential_nominal_current_12_real +0 A;
+	residential_nominal_current_12_imag +0 A;
+	power_1 +0+0i VA;
+	power_2 +0+0i VA;
+	power_12 +0+0i VA;
+	power_1_real +0 W;
+	power_2_real +0 W;
+	power_12_real +0 W;
+	power_1_reac +0 VAr;
+	power_2_reac +0 VAr;
+	power_12_reac +0 VAr;
+	shunt_1 +0+0i S;
+	shunt_2 +0+0i S;
+	shunt_12 +0+0i S;
+	impedance_1 +0+0i Ohm;
+	impedance_2 +0+0i Ohm;
+	impedance_12 +0+0i Ohm;
+	impedance_1_real +0 Ohm;
+	impedance_2_real +0 Ohm;
+	impedance_12_real +0 Ohm;
+	impedance_1_reac +0 Ohm;
+	impedance_2_reac +0 Ohm;
+	impedance_12_reac +0 Ohm;
+	house_present FALSE;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	topological_parent "";
+	// powerflow_object properties
+	phases S;
+	nominal_voltage +0 V;
+	// triplex_meter properties
+	measured_real_energy +0 Wh;
+	measured_reactive_energy +0 VAh;
+	measured_power +0+0i VA;
+	indiv_measured_power_1 +0+0i VA;
+	indiv_measured_power_2 +0+0i VA;
+	indiv_measured_power_N +0+0i VA;
+	measured_demand +0 W;
+	measured_real_power +0 W;
+	measured_reactive_power +0 VAr;
+	meter_power_consumption +0+0i VA;
+	measured_voltage_1 +0+0i V;
+	measured_voltage_2 +0+0i V;
+	measured_voltage_N +0+0i V;
+	measured_current_1 +0+0i A;
+	measured_current_2 +0+0i A;
+	measured_current_N +0+0i A;
+	customer_interrupted FALSE;
+	customer_interrupted_secondary FALSE;
+	monthly_bill +0 $;
+	previous_monthly_bill +0 $;
+	previous_monthly_energy +0 kWh;
+	monthly_fee +0 $;
+	monthly_energy +0 kWh;
+	bill_mode NONE;
+	power_market "";
+	bill_day 0;
+	price +0 $/kWh;
+	price_base +0 $/kWh;
+	first_tier_price +0 $/kWh;
+	first_tier_energy +0 kWh;
+	second_tier_price +0 $/kWh;
+	second_tier_energy +0 kWh;
+	third_tier_price +0 $/kWh;
+	third_tier_energy +0 kWh;
+}
+
+
+// class triplex_node
+object triplex_node:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// powerflow_object properties
+	phases S;
+	nominal_voltage +0 V;
+	// triplex_node properties
+	bustype PQ;
+	busflags "";
+	reference_bus "";
+	maximum_voltage_error +0 V;
+	voltage_1 +0+0i V;
+	voltage_2 +0+0i V;
+	voltage_N +0+0i V;
+	voltage_12 +0+0i V;
+	voltage_1N +0+0i V;
+	voltage_2N +0+0i V;
+	current_1 +0+0i A;
+	current_2 +0+0i A;
+	current_N +0+0i A;
+	current_1_real +0 A;
+	current_2_real +0 A;
+	current_N_real +0 A;
+	current_1_reac +0 A;
+	current_2_reac +0 A;
+	current_N_reac +0 A;
+	current_12 +0+0i A;
+	current_12_real +0 A;
+	current_12_reac +0 A;
+	residential_nominal_current_1 +0+0i A;
+	residential_nominal_current_2 +0+0i A;
+	residential_nominal_current_12 +0+0i A;
+	residential_nominal_current_1_real +0 A;
+	residential_nominal_current_1_imag +0 A;
+	residential_nominal_current_2_real +0 A;
+	residential_nominal_current_2_imag +0 A;
+	residential_nominal_current_12_real +0 A;
+	residential_nominal_current_12_imag +0 A;
+	power_1 +0+0i VA;
+	power_2 +0+0i VA;
+	power_12 +0+0i VA;
+	power_1_real +0 W;
+	power_2_real +0 W;
+	power_12_real +0 W;
+	power_1_reac +0 VAr;
+	power_2_reac +0 VAr;
+	power_12_reac +0 VAr;
+	shunt_1 +0+0i S;
+	shunt_2 +0+0i S;
+	shunt_12 +0+0i S;
+	impedance_1 +0+0i Ohm;
+	impedance_2 +0+0i Ohm;
+	impedance_12 +0+0i Ohm;
+	impedance_1_real +0 Ohm;
+	impedance_2_real +0 Ohm;
+	impedance_12_real +0 Ohm;
+	impedance_1_reac +0 Ohm;
+	impedance_2_reac +0 Ohm;
+	impedance_12_reac +0 Ohm;
+	house_present FALSE;
+	service_status OUT_OF_SERVICE;
+	service_status_double +0;
+	previous_uptime +0 min;
+	current_uptime +0 min;
+	topological_parent "";
+}
+
+
+// class underground_line
+object underground_line:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// line properties
+	configuration "";
+	length +0 ft;
+	// link properties
+	status OPEN;
+	from "";
+	to "";
+	power_in +0+0i VA;
+	power_out +0+0i VA;
+	power_out_real +0 W;
+	power_losses +0+0i VA;
+	power_in_A +0+0i VA;
+	power_in_B +0+0i VA;
+	power_in_C +0+0i VA;
+	power_out_A +0+0i VA;
+	power_out_B +0+0i VA;
+	power_out_C +0+0i VA;
+	power_losses_A +0+0i VA;
+	power_losses_B +0+0i VA;
+	power_losses_C +0+0i VA;
+	current_out_A +0+0i A;
+	current_out_B +0+0i A;
+	current_out_C +0+0i A;
+	current_in_A +0+0i A;
+	current_in_B +0+0i A;
+	current_in_C +0+0i A;
+	fault_current_in_A +0+0i A;
+	fault_current_in_B +0+0i A;
+	fault_current_in_C +0+0i A;
+	fault_current_out_A +0+0i A;
+	fault_current_out_B +0+0i A;
+	fault_current_out_C +0+0i A;
+	flow_direction UNKNOWN;
+	mean_repair_time +0 s;
+	continuous_rating +0 A;
+	emergency_rating +0 A;
+	inrush_convergence_value +0 V;
+	// powerflow_object properties
+	phases "";
+	nominal_voltage +0 V;
+	// underground_line properties
+}
+
+
+// class underground_line_conductor
+object underground_line_conductor:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// underground_line_conductor properties
+	outer_diameter +0 in;
+	conductor_gmr +0 ft;
+	conductor_diameter +0 in;
+	conductor_resistance +0 Ohm/mile;
+	neutral_gmr +0 ft;
+	neutral_diameter +0 in;
+	neutral_resistance +0 Ohm/mile;
+	neutral_strands 0;
+	shield_thickness +0 in;
+	shield_diameter +0 in;
+	insulation_relative_permitivitty +0 unit;
+	shield_gmr +0 ft;
+	shield_resistance +0 Ohm/mile;
+	rating.summer.continuous +0 A;
+	rating.summer.emergency +0 A;
+	rating.winter.continuous +0 A;
+	rating.winter.emergency +0 A;
+}
+
+
+// class volt_var_control
+object volt_var_control:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// volt_var_control properties
+	control_method STANDBY;
+	capacitor_delay +0 s;
+	regulator_delay +0 s;
+	desired_pf +0;
+	d_max +0;
+	d_min +0;
+	substation_link "";
+	pf_phase "";
+	regulator_list "";
+	capacitor_list "";
+	voltage_measurements "";
+	minimum_voltages "";
+	maximum_voltages "";
+	desired_voltages "";
+	max_vdrop "";
+	high_load_deadband "";
+	low_load_deadband "";
+	pf_signed FALSE;
+}
+
 
 // class voltdump
 object voltdump:0 {

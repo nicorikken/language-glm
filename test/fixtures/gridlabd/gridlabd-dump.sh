@@ -3,7 +3,7 @@ GRIDLABD="gridlabd"
 
 function module2classes {
   # For a given GridLAB-D module, outputing included classes
-  $GRIDLABD --modhelp $1 2>/dev/null | sed -n -e '/^ *class *[a-zA-Z0-9]*/p' | sed 's/^ *class *\([a-z]*\).*/\1/' | uniq
+  $GRIDLABD --modhelp $1 2>/dev/null | sed -n -e '/^ *class *[a-zA-Z0-9_]*/p' | sed 's/^ *class *\([a-zA-Z0-9_]*\).*/\1/' | uniq
 }
 
 function dump_examples {

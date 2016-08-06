@@ -18,9 +18,25 @@ object collector:0 {
 }
 
 
-// class group
-ERROR    [INIT] : --example: class 553497872 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class group_recorder
+object group_recorder:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// group_recorder properties
+	file "";
+	group "";
+	interval +0 s;
+	flush_interval +0 s;
+	strict FALSE;
+	print_units FALSE;
+	property "";
+	limit 0;
+	complex_part NONE;
+}
+
 
 // class histogram
 object histogram:0 {
@@ -45,9 +61,30 @@ object histogram:0 {
 }
 
 
-// class multi
-ERROR    [INIT] : --example: class 26688208 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class multi_recorder
+object multi_recorder:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// multi_recorder properties
+	interval +0 s;
+	property "";
+	trigger "";
+	file "";
+	filetype "";
+	mode "";
+	multifile "";
+	limit 0;
+	plotcommands "";
+	xdata "";
+	columns "";
+	output SCREEN;
+	header_units DEFAULT;
+	line_units DEFAULT;
+}
+
 
 // class player
 object player:0 {
@@ -111,6 +148,41 @@ object shaper:0 {
 
 Segmentation fault
 
-// class violation
-ERROR    [INIT] : --example: class -541575088 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class violation_recorder
+object violation_recorder:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// violation_recorder properties
+	file violation_recorder-violation-log.csv;
+	summary violation_recorder-violation-summary.csv;
+	virtual_substation "";
+	interval +0 s;
+	flush_interval +0 s;
+	strict FALSE;
+	echo FALSE;
+	limit 0;
+	violation_delay 0;
+	xfrmr_thermal_limit_upper +0;
+	xfrmr_thermal_limit_lower +0;
+	line_thermal_limit_upper +0;
+	line_thermal_limit_lower +0;
+	node_instantaneous_voltage_limit_upper +0;
+	node_instantaneous_voltage_limit_lower +0;
+	node_continuous_voltage_limit_upper +0;
+	node_continuous_voltage_limit_lower +0;
+	node_continuous_voltage_interval +0;
+	secondary_dist_voltage_rise_upper_limit +0;
+	secondary_dist_voltage_rise_lower_limit +0;
+	substation_breaker_A_limit +0;
+	substation_breaker_B_limit +0;
+	substation_breaker_C_limit +0;
+	substation_pf_lower_limit +0;
+	inverter_v_chng_per_interval_upper_bound +0;
+	inverter_v_chng_per_interval_lower_bound +0;
+	inverter_v_chng_interval +0;
+	violation_flag VIOLATION0;
+}
+

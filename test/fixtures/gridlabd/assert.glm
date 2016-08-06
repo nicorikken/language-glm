@@ -19,18 +19,69 @@ object assert:0 {
 }
 
 
-// class complex
-ERROR    [INIT] : --example: class -1867657808 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class complex_assert
+object complex_assert:0 {
 
-// class double
-ERROR    [INIT] : --example: class -757513904 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// complex_assert properties
+	status 0;
+	once ONCE_FALSE;
+	operation FULL;
+	value +0+0i;
+	within +0;
+	target "";
+}
 
-// class enum
-ERROR    [INIT] : --example: class 1280238144 is not found
-FATAL    [INIT] : shutdown after command line rejected
 
-// class int
-ERROR    [INIT] : --example: class 1778056448 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class double_assert
+object double_assert:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// double_assert properties
+	status 0;
+	once ONCE_FALSE;
+	within_mode WITHIN_VALUE;
+	value +0;
+	within +0;
+	target "";
+}
+
+
+// class enum_assert
+object enum_assert:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// enum_assert properties
+	status 0;
+	value 0;
+	target "";
+}
+
+Segmentation fault
+
+// class int_assert
+object int_assert:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// int_assert properties
+	status 0;
+	once ONCE_FALSE;
+	within_mode WITHIN_VALUE;
+	value 0;
+	within 0;
+	target "";
+}
+
+Segmentation fault

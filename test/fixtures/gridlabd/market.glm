@@ -79,9 +79,9 @@ object auction:0 {
 	curve_log_info NORMAL;
 }
 
-Processing 2001-01-28 18:05:00 UTC...
+
 // class controller
-object controller:0 {
+object controller:0 {
 
 	// header properties
 	rank 0;
@@ -168,21 +168,206 @@ Processing 2001-01-28 18:05:00 UTC...
 }
 
 
-// class double
-ERROR    [INIT] : --example: class -1717644352 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class double_controller
+object double_controller:0 {
 
-// class generator
-ERROR    [INIT] : --example: class -2127551280 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// double_controller properties
+	thermostat_mode INVALID;
+	last_mode INVALID;
+	resolve_mode NONE;
+	setup_mode NONE;
+	bid_mode OFF;
+	last_mode_timer 0;
+	cool_ramp_low +0;
+	cool_ramp_high +0;
+	cool_range_low +0;
+	cool_range_high +0;
+	cool_set_base +0;
+	cool_setpoint +0;
+	heat_ramp_low +0;
+	heat_ramp_high +0;
+	heat_range_low +0;
+	heat_range_high +0;
+	heat_set_base +0;
+	heat_setpoint +0;
+	temperature_name "";
+	cool_setpoint_name "";
+	cool_demand_name "";
+	heat_setpoint_name "";
+	heat_demand_name "";
+	load_name "";
+	total_load_name "";
+	deadband_name "";
+	state_name "";
+	market "";
+	market_period +0;
+	bid_price +0;
+	bid_quant +0;
+	load "";
+	total "";
+	last_price +0;
+	temperature +0;
+	cool_bid +0;
+	heat_bid +0;
+	cool_demand +0;
+	heat_demand +0;
+	price +0;
+	avg_price +0;
+	stdev_price +0;
+}
 
-// class passive
-ERROR    [INIT] : --example: class -749942640 is not found
-FATAL    [INIT] : shutdown after command line rejected
 
-// class stub
-ERROR    [INIT] : --example: class 212907376 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class generator_controller
+object generator_controller:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// generator_controller properties
+	generator_state OFF;
+	amortization_type EXPONENTIAL;
+	generator_state_number 0;
+	market "";
+	bid_curve "";
+	bid_curve_file "";
+	bid_generator_rating +0 VA;
+	update_curve FALSE;
+	is_marginal_gen FALSE;
+	generator_rating +0 VA;
+	generator_output +0;
+	input_unit_base +0 MW;
+	startup_cost +0 $;
+	shutdown_cost +0 $;
+	minimum_runtime +0 s;
+	minimum_downtime +0 s;
+	capacity_factor +0;
+	amortization_factor +0 1/s;
+	bid_delay +0;
+	generator_attachment STANDALONE;
+	building_load_curr +0;
+	building_load_bid +0;
+	year_runtime_limit +0 h;
+	current_year_runtime +0 h;
+	runtime_year_end "";
+	scaling_factor +0 unit;
+	license_premium +0;
+	hours_in_year +0 h;
+	op_and_maint_cost +0 $;
+	bid_id 0;
+}
+
+
+// class passive_controller
+object passive_controller:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// passive_controller properties
+	input_state 0;
+	input_setpoint +0;
+	input_chained FALSE;
+	observation +0;
+	mean_observation +0;
+	stdev_observation +0;
+	expectation +0;
+	sensitivity +0;
+	period +0 s;
+	expectation_prop "";
+	expectation_obj "";
+	expectation_property "";
+	expectation_object "";
+	setpoint_prop "";
+	setpoint "";
+	state_prop "";
+	state_property "";
+	observation_obj "";
+	observation_prop "";
+	observation_object "";
+	observation_property "";
+	mean_observation_prop "";
+	stdev_observation_prop "";
+	stdev_observation_property "";
+	cycle_length 0;
+	base_setpoint +0;
+	critical_day +0;
+	two_tier_cpp FALSE;
+	daily_elasticity +0;
+	sub_elasticity_first_second +0;
+	sub_elasticity_first_third +0;
+	second_tier_hours 0;
+	third_tier_hours 0;
+	first_tier_hours 0;
+	first_tier_price +0;
+	second_tier_price +0;
+	third_tier_price +0;
+	old_first_tier_price +0;
+	old_second_tier_price +0;
+	old_third_tier_price +0;
+	Percent_change_in_price +0;
+	Percent_change_in_peakoffpeak_ratio +0;
+	Percent_change_in_Criticalpeakoffpeak_ratio +0;
+	linearize_elasticity FALSE;
+	price_offset +0;
+	pool_pump_model FALSE;
+	base_duty_cycle +0;
+	trigger_time_under_frequency 0;
+	trigger_time_over_frequency 0;
+	release_time_under_frequency 0;
+	release_time_over_frequency 0;
+	release_point_under_frequency +0;
+	release_point_over_frequency +0;
+	trigger_point_under_frequency +0;
+	trigger_point_over_frequency +0;
+	frequency +0;
+	PFC_mode OVER_FREQUENCY;
+	PFC_state FREE;
+	state_observed "";
+	power_observed "";
+	output_observed 0;
+	bid_delay 0;
+	voltage_lockout +0 %;
+	voltage_lockout_time +0 s;
+	voltage_lockout_state 0;
+	distribution_type NORMAL;
+	comfort_level +0;
+	range_high +0;
+	range_low +0;
+	ramp_high +0;
+	ramp_low +0;
+	prob_off +0;
+	output_state 0;
+	output_setpoint +0;
+	control_mode NONE;
+	dlc_mode OFF;
+	cycle_length_off +0 s;
+	cycle_length_on +0 s;
+}
+
+
+// class stub_bidder
+object stub_bidder:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// stub_bidder properties
+	bid_period +0 s;
+	count 0;
+	market "";
+	role BUYER;
+	price +0;
+	quantity +0;
+	bid_id 0;
+}
+
 
 // class stubauction
 object stubauction:0 {
@@ -209,7 +394,23 @@ object stubauction:0 {
 	control_mode NORMAL;
 }
 
-Processing 2000-04-18 10:35:00 UTC...
-// class supervisory
-ERROR    [INIT] : --example: class -10928880 is not found
-FATAL    [INIT] : shutdown after command line rejected
+Processing 2001-03-11 17:35:00 UTC...
+// class supervisory_control
+object supervisory_control:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags NONE;
+	// supervisory_control properties
+	unit "";
+	period +300 s;
+	market_id 0;
+	nominal_frequency +0 Hz;
+	droop +0 %;
+	frequency_deadband +0.015 Hz;
+	PFC_mode OVER_FREQUENCY;
+	bid_sort_mode NONE;
+}
+
+Processing 2001-05-09 03:00:00 UTC...

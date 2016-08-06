@@ -1,5 +1,62 @@
 // Examples for module residential
 
+// class ZIPload
+object ZIPload:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// ZIPload properties
+	heat_fraction +0;
+	base_power +0 kW;
+	power_pf +0;
+	current_pf +0;
+	impedance_pf +0;
+	is_240 FALSE;
+	breaker_val +0 A;
+	actual_power +0+0i kVA;
+	multiplier +0;
+	heatgain_only FALSE;
+	demand_response_mode FALSE;
+	number_of_devices 0;
+	thermostatic_control_range 0;
+	number_of_devices_off +0;
+	number_of_devices_on +0;
+	rate_of_cooling +0 K/h;
+	rate_of_heating +0 K/h;
+	temperature 0;
+	phi +0;
+	demand_rate +0 1/h;
+	nominal_power +0;
+	duty_cycle +0 pu;
+	recovery_duty_cycle +0 pu;
+	period +0 h;
+	phase +0 pu;
+}
+
+
 // class appliance
 object appliance:0 {
 
@@ -134,6 +191,59 @@ Segmentation fault
 
 // class evcharger
 Segmentation fault
+
+// class evcharger_det
+object evcharger_det:0 {
+
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+	// evcharger_det properties
+	charge_rate +0 W;
+	variation_mean +0 s;
+	variation_std_dev +0 s;
+	variation_trip_mean +0 mile;
+	variation_trip_std_dev +0 mile;
+	mileage_classification +0 mile;
+	work_charging_available FALSE;
+	data_file "";
+	vehicle_index 0;
+	vehicle_location HOME;
+	travel_distance +0 mile;
+	arrival_at_work +0;
+	duration_at_work +0 s;
+	arrival_at_home +0;
+	duration_at_home +0 s;
+	battery_capacity +0 kWh;
+	battery_SOC +0 %;
+	battery_size +0 kWh;
+	mileage_efficiency +0 mile/kWh;
+	maximum_charge_rate +0 W;
+	charging_efficiency +0 unit;
+}
+
 
 // class freezer
 object freezer:0 {
@@ -620,13 +730,39 @@ object refrigerator:0 {
 }
 
 
-// class residential
-ERROR    [INIT] : --example: class 1377367168 is not found
-FATAL    [INIT] : shutdown after command line rejected
+// class residential_enduse
+object residential_enduse:0 {
 
-// class thermal
-ERROR    [INIT] : --example: class -1876196048 is not found
-FATAL    [INIT] : shutdown after command line rejected
+	// header properties
+	rank 0;
+	clock (invalid);
+	flags (invalid);
+	// residential_enduse properties
+	shape "type: unknown";
+	load "power_factor: 0.000000; power.r: 0.000000";
+	energy +0+0i kVAh;
+	power +0+0i kVA;
+	peak_demand +0+0i kVA;
+	heatgain +0 Btu/h;
+	cumulative_heatgain +0 Btu;
+	heatgain_fraction +0 pu;
+	current_fraction +0 pu;
+	impedance_fraction +0 pu;
+	power_fraction +0 pu;
+	power_factor +0;
+	constant_power +0+0i kVA;
+	constant_current +0+0i kVA;
+	constant_admittance +0+0i kVA;
+	voltage_factor +0 pu;
+	breaker_amps +0 A;
+	configuration IS110;
+	override NORMAL;
+	power_state OFF;
+}
+
+
+// class thermal_storage
+Segmentation fault
 
 // class waterheater
 object waterheater:0 {

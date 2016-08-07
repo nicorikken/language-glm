@@ -85,7 +85,7 @@ patterns: [{
 }
 {
   name: 'node.powerflow.property.glm'
-  match: "^\\s*(maximum_voltage_error|mean_repair_time|service_status|previous_uptime|current_uptime)\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(maximum_voltage_error|mean_repair_time|service_status_double|previous_uptime|current_uptime)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.node.powerflow.glm'
     2: patterns: [{include: "#double"}]

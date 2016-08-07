@@ -1,6 +1,70 @@
 key: 'powerflow-properties-regulator'
 
+# class regulator {
+# 	parent link;
+# 	class link {
+# 		parent powerflow_object;
+# 		class powerflow_object {
+# 			set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+# 			double nominal_voltage[V];
+# 		}
+#
+# 		function interupdate_pwr_object();
+# 		function update_power_pwr_object();
+# 		function check_limits_pwr_object();
+# 		enumeration {OPEN=0, CLOSED=1} status; //
+# 		object from; // from_node - source node
+# 		object to; // to_node - load node
+# 		complex power_in[VA]; // power flow in (w.r.t from node)
+# 		complex power_out[VA]; // power flow out (w.r.t to node)
+# 		double power_out_real[W]; // power flow out (w.r.t to node), real
+# 		complex power_losses[VA]; // power losses
+# 		complex power_in_A[VA]; // power flow in (w.r.t from node), phase A
+# 		complex power_in_B[VA]; // power flow in (w.r.t from node), phase B
+# 		complex power_in_C[VA]; // power flow in (w.r.t from node), phase C
+# 		complex power_out_A[VA]; // power flow out (w.r.t to node), phase A
+# 		complex power_out_B[VA]; // power flow out (w.r.t to node), phase B
+# 		complex power_out_C[VA]; // power flow out (w.r.t to node), phase C
+# 		complex power_losses_A[VA]; // power losses, phase A
+# 		complex power_losses_B[VA]; // power losses, phase B
+# 		complex power_losses_C[VA]; // power losses, phase C
+# 		complex current_out_A[A]; // current flow out of link (w.r.t. to node), phase A
+# 		complex current_out_B[A]; // current flow out of link (w.r.t. to node), phase B
+# 		complex current_out_C[A]; // current flow out of link (w.r.t. to node), phase C
+# 		complex current_in_A[A]; // current flow to link (w.r.t from node), phase A
+# 		complex current_in_B[A]; // current flow to link (w.r.t from node), phase B
+# 		complex current_in_C[A]; // current flow to link (w.r.t from node), phase C
+# 		complex fault_current_in_A[A]; // fault current flowing in, phase A
+# 		complex fault_current_in_B[A]; // fault current flowing in, phase B
+# 		complex fault_current_in_C[A]; // fault current flowing in, phase C
+# 		complex fault_current_out_A[A]; // fault current flowing out, phase A
+# 		complex fault_current_out_B[A]; // fault current flowing out, phase B
+# 		complex fault_current_out_C[A]; // fault current flowing out, phase C
+# 		set {CN=768, CR=512, CF=256, BN=48, BR=32, BF=16, AN=3, AR=2, AF=1, UNKNOWN=0} flow_direction; // flag used for describing direction of the flow of power
+# 		double mean_repair_time[s]; // Time after a fault clears for the object to be back in service
+# 		double continuous_rating[A]; // Continuous rating for this link object (set individual line segments
+# 		double emergency_rating[A]; // Emergency rating for this link object (set individual line segments
+# 		double inrush_convergence_value[V]; // Tolerance, as change in line voltage drop between iterations, for deltamode in-rush completion
+# 	}
+#
+# 	function interupdate_pwr_object();
+# 	function update_power_pwr_object();
+# 	function check_limits_pwr_object();
+# 	object configuration; // reference to the regulator_configuration object used to determine regulator properties
+# 	int16 tap_A; // current tap position of tap A
+# 	int16 tap_B; // current tap position of tap B
+# 	int16 tap_C; // current tap position of tap C
+# 	double tap_A_change_count; // count of all physical tap changes on phase A since beginning of simulation (plus initial value)
+# 	double tap_B_change_count; // count of all physical tap changes on phase B since beginning of simulation (plus initial value)
+# 	double tap_C_change_count; // count of all physical tap changes on phase C since beginning of simulation (plus initial value)
+# 	object sense_node; // Node to be monitored for voltage control in remote sense mode
+# 	double regulator_resistance[Ohm]; // The resistance value of the regulator when it is not blown.
+# }
+
 patterns: [{
+  include: "#powerflow-properties-link"
+}
+{
   name: 'regulator.powerflow.property.glm'
   match: "^\\s*(configuration|sense_node)\\s+([^;]*)(?=\\s*;)"
   captures:
@@ -9,8 +73,15 @@ patterns: [{
 }
 {
   name: 'regulator.powerflow.property.glm'
-  match: "^\\s*(tap_[ABC](?:_change_count)?)\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(tap_[ABC])\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.regulator.powerflow.glm'
     2: patterns: [{include: "#int16"}]
-  }]
+}
+{
+  name: 'regulator.powerflow.property.glm'
+  match: "^\\s*(tap_[ABC]_change_count|regulator_resistance)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.regulator.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

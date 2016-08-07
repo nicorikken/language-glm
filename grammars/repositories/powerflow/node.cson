@@ -4,7 +4,6 @@ patterns: [
   name: 'object.glm'
   begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(node(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
   beginCaptures:
-    # TODO make class match more selective, based on class name
     1: name: "storage.type.object.glm"
     2: name: "entity.name.function.object.glm"
     3: name: "constant.id.object.glm"

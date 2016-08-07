@@ -1,6 +1,9 @@
 key: 'powerflow-properties-relay'
 
 patterns: [{
+  include: "#powerflow-properties-link"
+}
+{
   name: 'relay.powerflow.property.glm'
   match: "^\\s*(time_to_change|recloser_delay)\\s+([^;]*)(?=\\s*;)"
   captures:

@@ -1,6 +1,37 @@
 key: 'powerflow-properties-regulator_configuration'
 
+# class regulator_configuration {
+# 	enumeration {CLOSED_DELTA=5, OPEN_DELTA_CABA=4, OPEN_DELTA_BCAC=3, OPEN_DELTA_ABBC=2, WYE_WYE=1, UNKNOWN=0} connect_type; // Designation of connection style
+# 	double band_center[V]; // band center setting of regulator control
+# 	double band_width[V]; // band width setting of regulator control
+# 	double time_delay[s]; // mechanical time delay between tap changes
+# 	double dwell_time[s]; // time delay before a control action of regulator control
+# 	int16 raise_taps; // number of regulator raise taps, or the maximum raise voltage tap position
+# 	int16 lower_taps; // number of regulator lower taps, or the minimum lower voltage tap position
+# 	double current_transducer_ratio[pu]; // primary rating of current transformer
+# 	double power_transducer_ratio[pu]; // potential transformer rating
+# 	double compensator_r_setting_A[V]; // Line Drop Compensation R setting of regulator control (in volts) on Phase A
+# 	double compensator_r_setting_B[V]; // Line Drop Compensation R setting of regulator control (in volts) on Phase B
+# 	double compensator_r_setting_C[V]; // Line Drop Compensation R setting of regulator control (in volts) on Phase C
+# 	double compensator_x_setting_A[V]; // Line Drop Compensation X setting of regulator control (in volts) on Phase A
+# 	double compensator_x_setting_B[V]; // Line Drop Compensation X setting of regulator control (in volts) on Phase B
+# 	double compensator_x_setting_C[V]; // Line Drop Compensation X setting of regulator control (in volts) on Phase C
+# 	set {C=4, B=2, A=1} CT_phase; // phase(s) monitored by CT
+# 	set {C=4, B=2, A=1} PT_phase; // phase(s) monitored by PT
+# 	double regulation; // regulation of voltage regulator in %
+# 	enumeration {BANK=2, INDIVIDUAL=1} control_level; // Designates whether control is on per-phase or banked level
+# 	enumeration {REMOTE_NODE=3, LINE_DROP_COMP=4, OUTPUT_VOLTAGE=2, MANUAL=1} Control; // Type of control used for regulating voltage
+# 	enumeration {LOCK_CURRENT_POSITION=2, LOCK_NEUTRAL=1, LOCK_NONE=0} reverse_flow_control; // Type of control used when power is flowing in reverse through the regulator
+# 	enumeration {B=2, A=1} Type; // Defines regulator type
+# 	int16 tap_pos_A; // initial tap position of phase A
+# 	int16 tap_pos_B; // initial tap position of phase B
+# 	int16 tap_pos_C; // initial tap position of phase C
+# }
+
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'regulator-configuration.powerflow.property.glm'
   match: "^\\s*(connect_type|Control|control_level|Type)\\s+([^;]*)(?=\\s*;)"
   captures:

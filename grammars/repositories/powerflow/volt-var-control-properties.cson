@@ -1,6 +1,30 @@
 key: 'powerflow-properties-volt_var_control'
 
+# class volt_var_control {
+# 	enumeration {STANDBY=0, ACTIVE=1} control_method; // IVVC activated or in standby
+# 	double capacitor_delay[s]; // Default capacitor time delay - overridden by local defintions
+# 	double regulator_delay[s]; // Default regulator time delay - overriden by local definitions
+# 	double desired_pf; // Desired power-factor magnitude at the substation transformer or regulator
+# 	double d_max; // Scaling constant for capacitor switching on - typically 0.3 - 0.6
+# 	double d_min; // Scaling constant for capacitor switching off - typically 0.1 - 0.4
+# 	object substation_link; // Substation link, transformer, or regulator to measure power factor
+# 	set {C=4, B=2, A=1} pf_phase; // Phase to include in power factor monitoring
+# 	char1024 regulator_list; // List of voltage regulators for the system, separated by commas
+# 	char1024 capacitor_list; // List of controllable capacitors on the system separated by commas
+# 	char1024 voltage_measurements; // List of voltage measurement devices, separated by commas
+# 	char1024 minimum_voltages; // Minimum voltages allowed for feeder, separated by commas
+# 	char1024 maximum_voltages; // Maximum voltages allowed for feeder, separated by commas
+# 	char1024 desired_voltages; // Desired operating voltages for the regulators, separated by commas
+# 	char1024 max_vdrop; // Maximum voltage drop between feeder and end measurements for each regulator, separated by commas
+# 	char1024 high_load_deadband; // High loading case voltage deadband for each regulator, separated by commas
+# 	char1024 low_load_deadband; // Low loading case voltage deadband for each regulator, separated by commas
+# 	bool pf_signed; // Set to true to consider the sign on the power factor.  Otherwise, it just maintains the deadband of +/-desired_pf
+# }
+
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'volt-var-control.powerflow.property.glm'
   match: "^\\s*(control_method)\\s+([^;]*)(?=\\s*;)"
   captures:
@@ -34,4 +58,11 @@ patterns: [{
   captures:
     1: name: 'entity.name.function.volt-var-control.powerflow.glm'
     2: patterns: [{include: "#char1024"}]
-  }]
+}
+{
+  name: 'volt-var-control.powerflow.property.glm'
+  match: "^\\s*(pf_signed)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.volt-var-control.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+}]

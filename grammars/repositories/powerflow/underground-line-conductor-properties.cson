@@ -1,0 +1,39 @@
+key: 'powerflow-properties-underground_line_conductor'
+
+# class underground_line_conductor {
+# 	double outer_diameter[in]; // Outer diameter of conductor and sheath
+# 	double conductor_gmr[ft]; // Geometric mean radius of the conductor
+# 	double conductor_diameter[in]; // Diameter of conductor
+# 	double conductor_resistance[Ohm/mile]; // Resistance of conductor in ohm/mile
+# 	double neutral_gmr[ft]; // Geometric mean radius of an individual neutral conductor/strand
+# 	double neutral_diameter[in]; // Diameter of individual neutral conductor/strand of concentric neutral
+# 	double neutral_resistance[Ohm/mile]; // Resistance of an individual neutral conductor/strand in ohm/mile
+# 	int16 neutral_strands; // Number of cable strands in neutral conductor
+# 	double shield_thickness[in]; // The thickness of Tape shield in inches
+# 	double shield_diameter[in]; // The outside diameter of Tape shield in inches
+# 	double insulation_relative_permitivitty[unit]; // Permitivitty of insulation, relative to air
+# 	double shield_gmr[ft]; // Geometric mean radius of shielding sheath
+# 	double shield_resistance[Ohm/mile]; // Resistance of shielding sheath in ohms/mile
+# 	double rating.summer.continuous[A]; // amp rating in summer, continuous
+# 	double rating.summer.emergency[A]; // amp rating in summer, short term
+# 	double rating.winter.continuous[A]; // amp rating in winter, continuous
+# 	double rating.winter.emergency[A]; // amp rating in winter, short term
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'underground-line-conductor.powerflow.property.glm'
+  match: "^\\s*(outer_diameter|(?:conductor|neutral|shield)_(?:gmr|diameter|resistance)|shield_thickness|insulation_relative_permitivitty|rating\\.(?:summer|winter)\\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.underground-line-conductor.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'underground-line-conductor.powerflow.property.glm'
+  match: "^\\s*(neutral_strands)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.underground-line-conductor.powerflow.glm'
+    2: patterns: [{include: "#int16"}]
+}]

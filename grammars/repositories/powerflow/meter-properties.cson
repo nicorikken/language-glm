@@ -106,7 +106,7 @@ patterns:[{
 }
 {
   name: 'meter.powerflow.property.glm'
-  match: "^\\s*(measured_(?:real_energy|reactive_energy|demand|real_power|reactive_power)|price|monthly_(?:fee|bill|energy)|previous_monthly_(?:bill|energy)|(?:first|second|third)_tier_(?:price|energy))\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(measured_(?:real_energy|reactive_energy|demand|real_power|reactive_power)|price|price_base|monthly_(?:fee|bill|energy)|previous_monthly_(?:bill|energy)|(?:first|second|third)_tier_(?:price|energy))\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.meter.powerflow.glm'
     2: patterns: [{include: "#double"}]

@@ -160,7 +160,57 @@ repository:
     ,
       include: "#powerflow-node"
     ,
+      include: "#powerflow-overhead_line"
+    ,
+      include: "#powerflow-overhead_line_conductor"
+    ,
+      include: "#powerflow-power_metrics"
+    ,
+      include: "#powerflow-powerflow_library"
+    ,
+      include: "#powerflow-pqload"
+    ,
+      include: "#powerflow-recloser"
+    ,
+      include: "#powerflow-regulator"
+    ,
+      include: "#powerflow-regulator_configuration"
+    ,
+      include: "#powerflow-relay"
+    ,
+      include: "#powerflow-restoration"
+    ,
+      include: "#powerflow-sectionalizer"
+    ,
+      include: "#powerflow-series_reactor"
+    ,
+      include: "#powerflow-substation"
+    ,
+      include: "#powerflow-switch"
+    ,
       include: "#powerflow-transformer"
+    ,
+      include: "#powerflow-transformer_configuration"
+    ,
+      include: "#powerflow-triplex_line"
+    ,
+      include: "#powerflow-triplex_line_conductor"
+    ,
+      include: "#powerflow-triplex_line_configuration"
+    ,
+      include: "#powerflow-triplex_load"
+    ,
+      include: "#powerflow-triplex_node"
+    ,
+      include: "#powerflow-triplex_meter"
+    ,
+      include: "#powerflow-underground_line"
+    ,
+      include: "#powerflow-underground_line_conductor"
+    ,
+      include: "#powerflow-volt_var_control"
+    ,
+      include: "#powerflow-voltdump"
     ]
   'powerflow-properties':
     patterns: [
@@ -202,47 +252,57 @@ repository:
     ,
       include: "#powerflow-properties-overhead_line"
     ,
-      include: "#powerflow-properties-underground_line"
+      include: "#powerflow-properties-overhead_line_conductor"
     ,
-      include: "#powerflow-properties-triplex_line_configuration"
+      include: "#powerflow-properties-power_metrics"
     ,
-      include: "#powerflow-properties-triplex_line_conductor"
+      include: "#powerflow-properties-powerflow_library"
     ,
-      include: "#powerflow-properties-transformer"
+      include: "#powerflow-properties-pqload"
     ,
-      include: "#powerflow-properties-transformer_configuration"
-    ,
-      include: "#powerflow-properties-triplex_node"
-    ,
-      include: "#powerflow-properties-triplex_meter"
-    ,
-      include: "#powerflow-properties-triplex_load"
+      include: "#powerflow-properties-recloser"
     ,
       include: "#powerflow-properties-regulator"
     ,
       include: "#powerflow-properties-regulator_configuration"
     ,
-      include: "#powerflow-properties-switch"
-    ,
-      include: "#powerflow-properties-recloser"
-    ,
       include: "#powerflow-properties-relay"
+    ,
+      include: "#powerflow-properties-restoration"
+    ,
+      include: "#powerflow-properties-sectionalizer"
+    ,
+      include: "#powerflow-properties-series_reactor"
     ,
       include: "#powerflow-properties-substation"
     ,
-      include: "#powerflow-properties-pqload"
+      include: "#powerflow-properties-switch"
+    ,
+      include: "#powerflow-properties-transformer"
+    ,
+      include: "#powerflow-properties-transformer_configuration"
+    ,
+      include: "#powerflow-properties-triplex_line"
+    ,
+      include: "#powerflow-properties-triplex_line_conductor"
+    ,
+      include: "#powerflow-properties-triplex_line_configuration"
+    ,
+      include: "#powerflow-properties-triplex_load"
+    ,
+      include: "#powerflow-properties-triplex_meter"
+    ,
+      include: "#powerflow-properties-triplex_node"
+    ,
+      include: "#powerflow-properties-triplex_meter"
+    ,
+      include: "#powerflow-properties-underground_line"
+    ,
+      include: "#powerflow-properties-underground_line_conductor"
     ,
       include: "#powerflow-properties-volt_var_control"
     ,
       include: "#powerflow-properties-voltdump"
-    ,
-      include: "#powerflow-properties-restoration"
-    ,
-      include: "#powerflow-properties-series_reactor"
-    ,
-      include: "#powerflow-properties-sectionalizer"
-    ,
-      include: "#powerflow-properties-power_metrics"
       #TODO include other (experimental) properties
     ]
     'variables': # grouping only for convenience

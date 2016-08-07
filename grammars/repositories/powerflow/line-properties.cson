@@ -62,7 +62,7 @@ patterns: [{
   match: "^\\s*(configuration)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.line.powerflow.glm'
-    2: patterns: [{include: "object"}]
+    2: patterns: [{include: "#object"}]
 }
 {
   name: 'line.powerflow.property.glm'

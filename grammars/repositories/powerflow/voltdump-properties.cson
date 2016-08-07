@@ -1,11 +1,30 @@
 key: 'powerflow-properties-voltdump'
 
+# class voltdump {
+# 	char32 group; // the group ID to output data for (all nodes if empty)
+# 	timestamp runtime; // the time to check voltage data
+# 	char256 filename; // the file to dump the voltage data into
+# 	char256 file; // the file to dump the voltage data into
+# 	int32 runcount; // the number of times the file has been written to
+# 	enumeration {polar=1, rect=0} mode; // dumps the voltages in either polar or rectangular notation
+# }
+
 patterns: [{
+  include: "#object-properties-common"
+}
+{
   name: 'voltdump.powerflow.property.glm'
-  match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+  match: "^\\s*(group)\\s+([^;]*)(?=\\s*;)"
   captures:
     1: name: 'entity.name.function.voltdump.powerflow.glm'
     2: patterns: [{include: "#char32"}]
+}
+{
+  name: 'voltdump.powerflow.property.glm'
+  match: "^\\s*(filename|file)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.voltdump.powerflow.glm'
+    2: patterns: [{include: "#char256"}]
 }
 {
   name: 'voltdump.powerflow.property.glm'
@@ -13,6 +32,13 @@ patterns: [{
   captures:
     1: name: 'entity.name.function.voltdump.powerflow.glm'
     2: patterns: [{include: "#timestamp"}]
+}
+{
+  name: 'voltdump.powerflow.property.glm'
+  match: "^\\s*(runcount)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.voltdump.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
 }
 {
   name: 'voltdump.powerflow.property.glm'

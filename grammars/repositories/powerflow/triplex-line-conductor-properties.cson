@@ -1,0 +1,21 @@
+key: 'powerflow-properties-triplex_line_conductor'
+
+# class triplex_line_conductor {
+# 	double resistance[Ohm/mile]; // resistance of cable in ohm/mile
+# 	double geometric_mean_radius[ft]; // geometric mean radius of the cable
+# 	double rating.summer.continuous[A]; // amp ratings for the cable during continuous operation in summer
+# 	double rating.summer.emergency[A]; // amp ratings for the cable during short term operation in summer
+# 	double rating.winter.continuous[A]; // amp ratings for the cable during continuous operation in winter
+# 	double rating.winter.emergency[A]; // amp ratings for the cable during short term operation in winter
+# }
+
+patterns:[{
+  include: "#object-properties-common"
+}
+{
+  name: 'triplex-line-conductor.powerflow.property.glm'
+  match: "^\\s*(resistance|geometric_mean_radius|rating\\.(?:summer|winter)\\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-conductor.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

@@ -1,0 +1,22 @@
+key: 'powerflow-properties-overhead_line_conductor'
+
+# class overhead_line_conductor {
+# 	double geometric_mean_radius[ft]; // radius of the conductor
+# 	double resistance[Ohm/mile]; // resistance in Ohms/mile of the conductor
+# 	double diameter[in]; // Diameter of line for capacitance calculations
+# 	double rating.summer.continuous[A]; // Continuous summer amp rating
+# 	double rating.summer.emergency[A]; // Emergency summer amp rating
+# 	double rating.winter.continuous[A]; // Continuous winter amp rating
+# 	double rating.winter.emergency[A]; // Emergency winter amp rating
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'overhead-line-conductor.powerflow.property.glm'
+  match: "^\\s*(geometric_mean_radius|resistance|diameter|rating\\.(?:summer|winter)\\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.overhead-line-conductor.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

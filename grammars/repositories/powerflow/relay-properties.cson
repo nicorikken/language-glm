@@ -1,0 +1,19 @@
+key: 'powerflow-properties-relay'
+
+patterns: [{
+  include: "#powerflow-properties-link"
+}
+{
+  name: 'relay.powerflow.property.glm'
+  match: "^\\s*(time_to_change|recloser_delay)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.relay.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'relay.powerflow.property.glm'
+  match: "^\\s*(recloser_tries)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.relay.powerflow.glm'
+    2: patterns: [{include: "#int16"}]
+  }]

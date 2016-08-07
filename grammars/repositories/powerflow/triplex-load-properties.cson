@@ -1,0 +1,155 @@
+key: 'powerflow-properties-triplex_load'
+
+# class triplex_load {
+# 	parent triplex_node;
+# 	class triplex_node {
+# 		parent powerflow_object;
+# 		class powerflow_object {
+# 			set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+# 			double nominal_voltage[V];
+# 		}
+#
+# 		function delta_linkage_node();
+# 		function interupdate_pwr_object();
+# 		function delta_freq_pwr_object();
+# 		enumeration {SWING=2, PV=1, PQ=0} bustype; // defines whether the node is a PQ, PV, or SWING node
+# 		set {HASSOURCE=1} busflags; // flag indicates node has a source for voltage, i.e. connects to the swing node
+# 		object reference_bus; // reference bus from which frequency is defined
+# 		double maximum_voltage_error[V]; // convergence voltage limit or convergence criteria
+# 		complex voltage_1[V]; // bus voltage, phase 1 to ground
+# 		complex voltage_2[V]; // bus voltage, phase 2 to ground
+# 		complex voltage_N[V]; // bus voltage, phase N to ground
+# 		complex voltage_12[V]; // bus voltage, phase 1 to 2
+# 		complex voltage_1N[V]; // bus voltage, phase 1 to N
+# 		complex voltage_2N[V]; // bus voltage, phase 2 to N
+# 		complex current_1[A]; // constant current load on phase 1, also acts as accumulator
+# 		complex current_2[A]; // constant current load on phase 2, also acts as accumulator
+# 		complex current_N[A]; // constant current load on phase N, also acts as accumulator
+# 		double current_1_real[A]; // constant current load on phase 1, real
+# 		double current_2_real[A]; // constant current load on phase 2, real
+# 		double current_N_real[A]; // constant current load on phase N, real
+# 		double current_1_reac[A]; // constant current load on phase 1, imag
+# 		double current_2_reac[A]; // constant current load on phase 2, imag
+# 		double current_N_reac[A]; // constant current load on phase N, imag
+# 		complex current_12[A]; // constant current load on phase 1 to 2
+# 		double current_12_real[A]; // constant current load on phase 1 to 2, real
+# 		double current_12_reac[A]; // constant current load on phase 1 to 2, imag
+# 		complex residential_nominal_current_1[A]; // posted current on phase 1 from a residential object, if attached
+# 		complex residential_nominal_current_2[A]; // posted current on phase 2 from a residential object, if attached
+# 		complex residential_nominal_current_12[A]; // posted current on phase 1 to 2 from a residential object, if attached
+# 		double residential_nominal_current_1_real[A]; // posted current on phase 1, real, from a residential object, if attached
+# 		double residential_nominal_current_1_imag[A]; // posted current on phase 1, imag, from a residential object, if attached
+# 		double residential_nominal_current_2_real[A]; // posted current on phase 2, real, from a residential object, if attached
+# 		double residential_nominal_current_2_imag[A]; // posted current on phase 2, imag, from a residential object, if attached
+# 		double residential_nominal_current_12_real[A]; // posted current on phase 1 to 2, real, from a residential object, if attached
+# 		double residential_nominal_current_12_imag[A]; // posted current on phase 1 to 2, imag, from a residential object, if attached
+# 		complex power_1[VA]; // constant power on phase 1 (120V)
+# 		complex power_2[VA]; // constant power on phase 2 (120V)
+# 		complex power_12[VA]; // constant power on phase 1 to 2 (240V)
+# 		double power_1_real[W]; // constant power on phase 1, real
+# 		double power_2_real[W]; // constant power on phase 2, real
+# 		double power_12_real[W]; // constant power on phase 1 to 2, real
+# 		double power_1_reac[VAr]; // constant power on phase 1, imag
+# 		double power_2_reac[VAr]; // constant power on phase 2, imag
+# 		double power_12_reac[VAr]; // constant power on phase 1 to 2, imag
+# 		complex shunt_1[S]; // constant shunt impedance on phase 1
+# 		complex shunt_2[S]; // constant shunt impedance on phase 2
+# 		complex shunt_12[S]; // constant shunt impedance on phase 1 to 2
+# 		complex impedance_1[Ohm]; // constant series impedance on phase 1
+# 		complex impedance_2[Ohm]; // constant series impedance on phase 2
+# 		complex impedance_12[Ohm]; // constant series impedance on phase 1 to 2
+# 		double impedance_1_real[Ohm]; // constant series impedance on phase 1, real
+# 		double impedance_2_real[Ohm]; // constant series impedance on phase 2, real
+# 		double impedance_12_real[Ohm]; // constant series impedance on phase 1 to 2, real
+# 		double impedance_1_reac[Ohm]; // constant series impedance on phase 1, imag
+# 		double impedance_2_reac[Ohm]; // constant series impedance on phase 2, imag
+# 		double impedance_12_reac[Ohm]; // constant series impedance on phase 1 to 2, imag
+# 		bool house_present; // boolean for detecting whether a house is attached, not an input
+# 		enumeration {OUT_OF_SERVICE=0, IN_SERVICE=1} service_status; // In and out of service flag
+# 		double service_status_double; // In and out of service flag - type double - will indiscriminately override service_status - useful for schedules
+# 		double previous_uptime[min]; // Previous time between disconnects of node in minutes
+# 		double current_uptime[min]; // Current time since last disconnect of node in minutes
+# 		object topological_parent; // topological parent as per GLM configuration
+# 	}
+#
+# 	function delta_linkage_node();
+# 	function interupdate_pwr_object();
+# 	function delta_freq_pwr_object();
+# 	enumeration {A=4, I=3, C=2, R=1, U=0} load_class; // Flag to track load type, not currently used for anything except sorting
+# 	complex constant_power_1[VA]; // constant power load on split phase 1, specified as VA
+# 	complex constant_power_2[VA]; // constant power load on split phase 2, specified as VA
+# 	complex constant_power_12[VA]; // constant power load on split phase 12, specified as VA
+# 	double constant_power_1_real[W]; // constant power load on spit phase 1, real only, specified as W
+# 	double constant_power_2_real[W]; // constant power load on phase 2, real only, specified as W
+# 	double constant_power_12_real[W]; // constant power load on phase 12, real only, specified as W
+# 	double constant_power_1_reac[VAr]; // constant power load on phase 1, imaginary only, specified as VAr
+# 	double constant_power_2_reac[VAr]; // constant power load on phase 2, imaginary only, specified as VAr
+# 	double constant_power_12_reac[VAr]; // constant power load on phase 12, imaginary only, specified as VAr
+# 	complex constant_current_1[A]; // constant current load on phase 1, specified as Amps
+# 	complex constant_current_2[A]; // constant current load on phase 2, specified as Amps
+# 	complex constant_current_12[A]; // constant current load on phase 12, specified as Amps
+# 	double constant_current_1_real[A]; // constant current load on phase 1, real only, specified as Amps
+# 	double constant_current_2_real[A]; // constant current load on phase 2, real only, specified as Amps
+# 	double constant_current_12_real[A]; // constant current load on phase 12, real only, specified as Amps
+# 	double constant_current_1_reac[A]; // constant current load on phase 1, imaginary only, specified as Amps
+# 	double constant_current_2_reac[A]; // constant current load on phase 2, imaginary only, specified as Amps
+# 	double constant_current_12_reac[A]; // constant current load on phase 12, imaginary only, specified as Amps
+# 	complex constant_impedance_1[Ohm]; // constant impedance load on phase 1, specified as Ohms
+# 	complex constant_impedance_2[Ohm]; // constant impedance load on phase 2, specified as Ohms
+# 	complex constant_impedance_12[Ohm]; // constant impedance load on phase 12, specified as Ohms
+# 	double constant_impedance_1_real[Ohm]; // constant impedance load on phase 1, real only, specified as Ohms
+# 	double constant_impedance_2_real[Ohm]; // constant impedance load on phase 2, real only, specified as Ohms
+# 	double constant_impedance_12_real[Ohm]; // constant impedance load on phase 12, real only, specified as Ohms
+# 	double constant_impedance_1_reac[Ohm]; // constant impedance load on phase 1, imaginary only, specified as Ohms
+# 	double constant_impedance_2_reac[Ohm]; // constant impedance load on phase 2, imaginary only, specified as Ohms
+# 	double constant_impedance_12_reac[Ohm]; // constant impedance load on phase 12, imaginary only, specified as Ohms
+# 	complex measured_voltage_1; // current measured voltage on phase 1
+# 	complex measured_voltage_2; // current measured voltage on phase 2
+# 	complex measured_voltage_12; // current measured voltage on phase 12
+# 	double base_power_1[VA]; // in similar format as ZIPload, this represents the nominal power on phase 1 before applying ZIP fractions
+# 	double base_power_2[VA]; // in similar format as ZIPload, this represents the nominal power on phase 2 before applying ZIP fractions
+# 	double base_power_12[VA]; // in similar format as ZIPload, this represents the nominal power on phase 12 before applying ZIP fractions
+# 	double power_pf_1[pu]; // in similar format as ZIPload, this is the power factor of the phase 1 constant power portion of load
+# 	double current_pf_1[pu]; // in similar format as ZIPload, this is the power factor of the phase 1 constant current portion of load
+# 	double impedance_pf_1[pu]; // in similar format as ZIPload, this is the power factor of the phase 1 constant impedance portion of load
+# 	double power_pf_2[pu]; // in similar format as ZIPload, this is the power factor of the phase 2 constant power portion of load
+# 	double current_pf_2[pu]; // in similar format as ZIPload, this is the power factor of the phase 2 constant current portion of load
+# 	double impedance_pf_2[pu]; // in similar format as ZIPload, this is the power factor of the phase 2 constant impedance portion of load
+# 	double power_pf_12[pu]; // in similar format as ZIPload, this is the power factor of the phase 12 constant power portion of load
+# 	double current_pf_12[pu]; // in similar format as ZIPload, this is the power factor of the phase 12 constant current portion of load
+# 	double impedance_pf_12[pu]; // in similar format as ZIPload, this is the power factor of the phase 12 constant impedance portion of load
+# 	double power_fraction_1[pu]; // this is the constant power fraction of base power on phase 1
+# 	double current_fraction_1[pu]; // this is the constant current fraction of base power on phase 1
+# 	double impedance_fraction_1[pu]; // this is the constant impedance fraction of base power on phase 1
+# 	double power_fraction_2[pu]; // this is the constant power fraction of base power on phase 2
+# 	double current_fraction_2[pu]; // this is the constant current fraction of base power on phase 2
+# 	double impedance_fraction_2[pu]; // this is the constant impedance fraction of base power on phase 2
+# 	double power_fraction_12[pu]; // this is the constant power fraction of base power on phase 12
+# 	double current_fraction_12[pu]; // this is the constant current fraction of base power on phase 12
+# 	double impedance_fraction_12[pu]; // this is the constant impedance fraction of base power on phase 12
+# }
+
+patterns: [{
+  include: "#powerflow-properties-triplex_node"
+}
+{
+  name: 'triplex-load.powerflow.property.glm'
+  match: "^\\s*(load_class)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-load.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'triplex-load.powerflow.property.glm'
+  match: "^\\s*(constant_(?:power|current|impedance)_(?:1|2|12)_rea[lc]|base_power_(?:1|2|12)|(?:power|current|impedance)_pf_(?:1|2|12)|(?:power|current|impedance)_fraction_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-load.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex-load.powerflow.property.glm'
+  match: "^\\s*(constant_(?:power|current|impedance)_(?:1|2|12)|measured_voltage_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-load.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+  }]

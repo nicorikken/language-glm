@@ -1,0 +1,44 @@
+key: 'powerflow-properties-fault_check'
+
+# class fault_check {
+# 	function reliability_alterations();
+# 	function handle_sectionalizer();
+# 	enumeration {ALL=2, ONCHANGE=1, SINGLE=0} check_mode; // Frequency of fault checks
+# 	char1024 output_filename; // Output filename for list of unsupported nodes
+# 	bool reliability_mode; // General flag indicating if fault_check is operating under faulting or restoration mode -- reliability set this
+# 	bool strictly_radial; // Flag to indicate if a system is known to be strictly radial -- uses radial assumptions for reliability alterations
+# 	bool full_output_file; // Flag to indicate if the output_filename report contains both supported and unsupported nodes -- if false, just does unsupported
+# 	object eventgen_object; // Link to generic eventgen object to handle unexpected faults
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(check_mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(output_filename)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#char1024"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(reliability_mode|strictly_radial|full_output_file)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+}
+{
+  name: 'fault-check.powerflow.property.glm'
+  match: "^\\s*(eventgen_object)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.fault-check.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+  }]

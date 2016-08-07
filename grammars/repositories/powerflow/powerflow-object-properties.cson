@@ -1,0 +1,24 @@
+key: 'powerflow-properties-powerflow_object'
+
+# class powerflow_object {
+	# set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+	# double nominal_voltage[V];
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'powerflow_object.powerflow.property.glm'
+  match: "^\\s*(phases)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.powerflow_object.powerflow.glm'
+    2: patterns: [{include: "#set"}]
+}
+{
+  name: 'powerflow_object.powerflow.property.glm'
+  match: "^\\s*(nominal_voltage)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.powerflow_object.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+  }]

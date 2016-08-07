@@ -1,9 +1,0 @@
-key: 'powerflow-properties-line_spacing'
-
-patterns: [{
-  name: 'line-spacing.powerflow.property.glm'
-  match: "^\\s*(distance_(?:AB|AC|BC|CA|AN|BN|CN|AE|BE|CE|NE))\\s+([^;]*)(?=\\s*;)"
-  captures:
-    1: name: 'entity.name.function.line-spacing.powerflow.glm'
-    2: patterns: [{include: "#wildcard-element"}] #TODO
-  }]

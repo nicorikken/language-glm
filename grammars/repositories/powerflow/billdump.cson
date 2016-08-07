@@ -1,0 +1,14 @@
+key: 'powerflow-billdump'
+
+patterns: [
+  name: 'object.glm'
+  begin: "(?<=^|\\s)(object)\\s*(?:(?<=\\s)(billdump(?=\\W))(?::(\\d*)(?:\\.\\.(\\d+))?)?)\\s*\\{?"
+  beginCaptures:
+    1: name: "storage.type.object.glm"
+    2: name: "entity.name.function.object.glm"
+    3: name: "constant.id.object.glm"
+    4: name: "constant.id.object.glm"
+  end: "}"
+  patterns: [
+    {include: "#powerflow-properties-billdump"}
+  ]]

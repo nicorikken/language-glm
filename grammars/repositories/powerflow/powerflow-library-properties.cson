@@ -1,0 +1,8 @@
+key: 'powerflow-properties-powerflow_library'
+
+# class powerflow_library {
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}]

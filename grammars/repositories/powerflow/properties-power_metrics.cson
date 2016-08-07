@@ -1,9 +1,0 @@
-key: 'powerflow-properties-power_metrics'
-
-patterns: [{
-  name: 'power-metrics.powerflow.property.glm'
-  match: "^\\s*((?:SAIDI|SAIFI|ASAI|CAIDI|MAIFI)(?:_int)?|base_time_value)\\s+([^;]*)(?=\\s*;)"
-  captures:
-    1: name: 'entity.name.function.power-metrics.powerflow.glm'
-    2: patterns: [{include: "#double"}]
-  }]

@@ -38,7 +38,9 @@ patterns: [
 ,
   include: "#modules"
 ,
-  include: "#objects"
+  include: "#powerflow-objects" #TODO merge module-specic objects into #objects
+# ,
+  # include: "#objects"
   #TODO schedule
   #TODO script
 ,
@@ -122,11 +124,113 @@ repository:
     ,
       include: "#powerflow-properties"
     ]
+  'powerflow-objects':
+    patterns: [
+      include: "#powerflow-billdump"
+    ,
+      include: "#powerflow-capacitor"
+    ,
+      include: "#powerflow-currentdump"
+    ,
+      include: "#powerflow-emissions"
+    ,
+      include: "#powerflow-fault_check"
+    ,
+      include: "#powerflow-frequency_gen"
+    ,
+      include: "#powerflow-fuse"
+    ,
+      include: "#powerflow-impedance_dump"
+    ,
+      include: "#powerflow-line"
+    ,
+      include: "#powerflow-line_configuration"
+    ,
+      include: "#powerflow-line_spacing"
+    ,
+      include: "#powerflow-link"
+    ,
+      include: "#powerflow-load"
+    ,
+      include: "#powerflow-load_tracker"
+    ,
+      include: "#powerflow-meter"
+    ,
+      include: "#powerflow-motor"
+    ,
+      include: "#powerflow-node"
+    ,
+      include: "#powerflow-overhead_line"
+    ,
+      include: "#powerflow-overhead_line_conductor"
+    ,
+      include: "#powerflow-power_metrics"
+    ,
+      include: "#powerflow-powerflow_library"
+    ,
+      include: "#powerflow-pqload"
+    ,
+      include: "#powerflow-recloser"
+    ,
+      include: "#powerflow-regulator"
+    ,
+      include: "#powerflow-regulator_configuration"
+    ,
+      include: "#powerflow-relay"
+    ,
+      include: "#powerflow-restoration"
+    ,
+      include: "#powerflow-sectionalizer"
+    ,
+      include: "#powerflow-series_reactor"
+    ,
+      include: "#powerflow-substation"
+    ,
+      include: "#powerflow-switch"
+    ,
+      include: "#powerflow-transformer"
+    ,
+      include: "#powerflow-transformer_configuration"
+    ,
+      include: "#powerflow-triplex_line"
+    ,
+      include: "#powerflow-triplex_line_conductor"
+    ,
+      include: "#powerflow-triplex_line_configuration"
+    ,
+      include: "#powerflow-triplex_load"
+    ,
+      include: "#powerflow-triplex_node"
+    ,
+      include: "#powerflow-triplex_meter"
+    ,
+      include: "#powerflow-underground_line"
+    ,
+      include: "#powerflow-underground_line_conductor"
+    ,
+      include: "#powerflow-volt_var_control"
+    ,
+      include: "#powerflow-voltdump"
+    ]
   'powerflow-properties':
     patterns: [
-      include: "#powerflow-properties-node"
+      include: "#powerflow-properties-powerflow_object"
     ,
-      include: "#powerflow-properties-link"
+      include: "#powerflow-properties-billdump"
+    ,
+      include: "#powerflow-properties-capacitor"
+    ,
+      include: "#powerflow-properties-currentdump"
+    ,
+      include: "#powerflow-properties-emissions"
+    ,
+      include: "#powerflow-properties-fault_check"
+    ,
+      include: "#powerflow-properties-frequency_gen"
+    ,
+      include: "#powerflow-properties-fuse"
+    ,
+      include: "#powerflow-properties-impedance_dump"
     ,
       include: "#powerflow-properties-line"
     ,
@@ -134,63 +238,71 @@ repository:
     ,
       include: "#powerflow-properties-line_spacing"
     ,
-      include: "#powerflow-properties-overhead_line"
-    ,
-      include: "#powerflow-properties-underground_line"
-    ,
-      include: "#powerflow-properties-triplex_line_configuration"
-    ,
-      include: "#powerflow-properties-triplex_line_conductor"
-    ,
-      include: "#powerflow-properties-transformer"
-    ,
-      include: "#powerflow-properties-transformer_configuration"
+      include: "#powerflow-properties-link"
     ,
       include: "#powerflow-properties-load"
     ,
+      include: "#powerflow-properties-load_tracker"
+    ,
       include: "#powerflow-properties-meter"
     ,
-      include: "#powerflow-properties-triplex_node"
+      include: "#powerflow-properties-motor"
     ,
-      include: "#powerflow-properties-triplex_meter"
+      include: "#powerflow-properties-node"
     ,
-      include: "#powerflow-properties-triplex_load"
+      include: "#powerflow-properties-overhead_line"
+    ,
+      include: "#powerflow-properties-overhead_line_conductor"
+    ,
+      include: "#powerflow-properties-power_metrics"
+    ,
+      include: "#powerflow-properties-powerflow_library"
+    ,
+      include: "#powerflow-properties-pqload"
+    ,
+      include: "#powerflow-properties-recloser"
     ,
       include: "#powerflow-properties-regulator"
     ,
       include: "#powerflow-properties-regulator_configuration"
     ,
-      include: "#powerflow-properties-capacitor"
-    ,
-      include: "#powerflow-properties-fuse"
-    ,
-      include: "#powerflow-properties-switch"
-    ,
-      include: "#powerflow-properties-recloser"
-    ,
       include: "#powerflow-properties-relay"
+    ,
+      include: "#powerflow-properties-restoration"
+    ,
+      include: "#powerflow-properties-sectionalizer"
+    ,
+      include: "#powerflow-properties-series_reactor"
     ,
       include: "#powerflow-properties-substation"
     ,
-      include: "#powerflow-properties-pqload"
+      include: "#powerflow-properties-switch"
+    ,
+      include: "#powerflow-properties-transformer"
+    ,
+      include: "#powerflow-properties-transformer_configuration"
+    ,
+      include: "#powerflow-properties-triplex_line"
+    ,
+      include: "#powerflow-properties-triplex_line_conductor"
+    ,
+      include: "#powerflow-properties-triplex_line_configuration"
+    ,
+      include: "#powerflow-properties-triplex_load"
+    ,
+      include: "#powerflow-properties-triplex_meter"
+    ,
+      include: "#powerflow-properties-triplex_node"
+    ,
+      include: "#powerflow-properties-triplex_meter"
+    ,
+      include: "#powerflow-properties-underground_line"
+    ,
+      include: "#powerflow-properties-underground_line_conductor"
     ,
       include: "#powerflow-properties-volt_var_control"
     ,
       include: "#powerflow-properties-voltdump"
-    ,
-      include: "#powerflow-properties-currentdump"
-    ,
-      include: "#powerflow-properties-billdump"
-    ,
-      include: "#powerflow-properties-fault_check"
-    ,
-      include: "#powerflow-properties-restoration"
-    ,
-      include: "#powerflow-properties-series_reactor"
-    ,
-      include: "#powerflow-properties-sectionalizer"
-    ,
-      include: "#powerflow-properties-power_metrics"
       #TODO include other (experimental) properties
     ]
     'variables': # grouping only for convenience
@@ -223,6 +335,8 @@ repository:
         include: "#int32"
       ,
         include: "#char32"
+      ,
+        include: "#char256"
       ,
         include: "#char1024"
       ,

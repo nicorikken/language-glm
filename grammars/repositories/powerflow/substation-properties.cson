@@ -1,0 +1,109 @@
+key: 'powerflow-properties-substation'
+
+# class substation {
+# 	parent node;
+# 	class node {
+# 		parent powerflow_object;
+# 		class powerflow_object {
+# 			set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+# 			double nominal_voltage[V];
+# 		}
+#
+# 		function delta_linkage_node();
+# 		function interupdate_pwr_object();
+# 		function delta_freq_pwr_object();
+# 		enumeration {SWING=2, PV=1, PQ=0} bustype; // defines whether the node is a PQ, PV, or SWING node
+# 		set {HASSOURCE=1} busflags; // flag indicates node has a source for voltage, i.e. connects to the swing node
+# 		object reference_bus; // reference bus from which frequency is defined
+# 		double maximum_voltage_error[V]; // convergence voltage limit or convergence criteria
+# 		complex voltage_A[V]; // bus voltage, Phase A to ground
+# 		complex voltage_B[V]; // bus voltage, Phase B to ground
+# 		complex voltage_C[V]; // bus voltage, Phase C to ground
+# 		complex voltage_AB[V]; // line voltages, Phase AB
+# 		complex voltage_BC[V]; // line voltages, Phase BC
+# 		complex voltage_CA[V]; // line voltages, Phase CA
+# 		complex current_A[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_B[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_C[A]; // bus current injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_A[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_B[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_C[VA]; // bus power injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex shunt_A[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_B[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_C[S]; // bus shunt admittance, this an accumulator only, not a output or input variable
+# 		complex current_AB[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_BC[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_CA[A]; // bus current delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_AN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_BN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex current_CN[A]; // bus current wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_AB[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_BC[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_CA[VA]; // bus power delta-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_AN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_BN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex power_CN[VA]; // bus power wye-connected injection (in = positive), this an accumulator only, not a output or input variable
+# 		complex shunt_AB[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_BC[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_CA[S]; // bus shunt delta-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_AN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_BN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		complex shunt_CN[S]; // bus shunt wye-connected admittance, this an accumulator only, not a output or input variable
+# 		double mean_repair_time[s]; // Time after a fault clears for the object to be back in service
+# 		enumeration {OUT_OF_SERVICE=0, IN_SERVICE=1} service_status; // In and out of service flag
+# 		double service_status_double; // In and out of service flag - type double - will indiscriminately override service_status - useful for schedules
+# 		double previous_uptime[min]; // Previous time between disconnects of node in minutes
+# 		double current_uptime[min]; // Current time since last disconnect of node in minutes
+# 		bool Norton_dynamic; // Flag to indicate a Norton-equivalent connection -- used for generators and deltamode
+# 		object topological_parent; // topological parent as per GLM configuration
+# 	}
+#
+# 	complex zero_sequence_voltage[V]; // The zero sequence representation of the voltage for the substation object.
+# 	complex positive_sequence_voltage[V]; // The positive sequence representation of the voltage for the substation object.
+# 	complex negative_sequence_voltage[V]; // The negative sequence representation of the voltage for the substation object.
+# 	double base_power[VA]; // The 3 phase VA power rating of the substation.
+# 	double power_convergence_value[VA]; // Default convergence criterion before power is posted to pw_load objects if connected, otherwise ignored
+# 	enumeration {PHASE_C=2, PHASE_B=1, PHASE_A=0} reference_phase; // The reference phase for the positive sequence voltage.
+# 	complex transmission_level_constant_power_load[VA]; // the average constant power load to be posted directly to the pw_load object.
+# 	complex transmission_level_constant_current_load[A]; // the average constant current load at nominal voltage to be posted directly to the pw_load object.
+# 	complex transmission_level_constant_impedance_load[Ohm]; // the average constant impedance load at nominal voltage to be posted directly to the pw_load object.
+# 	complex average_distribution_load[VA]; // The average of the loads on all three phases at the substation object.
+# 	complex distribution_power_A[VA];
+# 	complex distribution_power_B[VA];
+# 	complex distribution_power_C[VA];
+# 	complex distribution_voltage_A[V];
+# 	complex distribution_voltage_B[V];
+# 	complex distribution_voltage_C[V];
+# 	complex distribution_voltage_AB[V];
+# 	complex distribution_voltage_BC[V];
+# 	complex distribution_voltage_CA[V];
+# 	complex distribution_current_A[A];
+# 	complex distribution_current_B[A];
+# 	complex distribution_current_C[A];
+# 	double distribution_real_energy[Wh];
+# }
+
+patterns: [{
+  include: "#powerflow-properties-node"
+}
+{
+  name: 'substation.powerflow.property.glm'
+  match: "^\\s*((?:zero|positive|negative)_sequence_voltage|transmission_level_constant_(?:power|impedance|current)_load|average_distribution_load|distribution_(?:power_[ABC]|voltage_(?:A|B|C|AB|BC|CA)|current_[ABC]))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.substation.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}
+{
+  name: 'substation.powerflow.property.glm'
+  match: "^\\s*(base_power|power_convergence_value|distribution_real_energy)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.substation.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'substation.powerflow.property.glm'
+  match: "^\\s*(reference_phase)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.substation.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+  }]

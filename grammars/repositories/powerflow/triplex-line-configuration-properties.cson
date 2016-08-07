@@ -1,0 +1,43 @@
+key: 'powerflow-properties-triplex_line_configuration'
+
+# class triplex_line_configuration {
+# 	object conductor_1; // conductor type for phase 1
+# 	object conductor_2; // conductor type for phase 2
+# 	object conductor_N; // conductor type for phase N
+# 	double insulation_thickness[in]; // thickness of insulation around cabling
+# 	double diameter[in]; // total diameter of cable
+# 	object spacing; // defines the line spacing configuration
+# 	complex z11[Ohm/mile]; // phase 1 self-impedance, used for direct entry of impedance values
+# 	complex z12[Ohm/mile]; // phase 1-2 induced impedance, used for direct entry of impedance values
+# 	complex z21[Ohm/mile]; // phase 2-1 induced impedance, used for direct entry of impedance values
+# 	complex z22[Ohm/mile]; // phase 2 self-impedance, used for direct entry of impedance values
+# 	double rating.summer.continuous[A]; // amp rating in summer, continuous
+# 	double rating.summer.emergency[A]; // amp rating in summer, short term
+# 	double rating.winter.continuous[A]; // amp rating in winter, continuous
+# 	double rating.winter.emergency[A]; // amp rating in winter, short term
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(conductor_[12N]|spacing)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(insulation_thickness|diameter|rating\\.(?:summer|winter)\\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex-line-configuration.powerflow.property.glm'
+  match: "^\\s*(z11|z12|z21|z22)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex-line-configuration.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+  }]

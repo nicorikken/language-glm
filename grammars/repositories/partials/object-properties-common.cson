@@ -1,6 +1,9 @@
 key: 'object-properties-common'
 
 patterns: [{
+  include: "#comments"
+}
+{
   name: 'object.common.property.glm'
   # TODO make this match more selective
   match: "^\\s*(name|id|groupid|parent|rank|schedule_skew|latitude|longitude|in|out|heartbeat|flags)\\s+([^;]*)(?=\\s*;)"

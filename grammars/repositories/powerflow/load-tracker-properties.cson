@@ -1,0 +1,45 @@
+key: 'powerflow-properties-load_tracker'
+
+# class load_tracker {
+# 	object target; // target object to track the load of
+# 	char256 target_property; // property on the target object representing the load
+# 	enumeration {ANGLE=3, MAGNITUDE=2, IMAGINARY=1, REAL=0} operation; // operation to perform on complex property types
+# 	double full_scale; // magnitude of the load at full load, used for feed-forward control
+# 	double setpoint; // load setpoint to track to
+# 	double deadband; // percentage deadband
+# 	double damping; // load setpoint to track to
+# 	double output; // output scaling value
+# 	double feedback; // the feedback signal, for reference purposes
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'load-tracker.powerflow.property.glm'
+  match: "^\\s*(target)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load-tracker.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'load-tracker.powerflow.property.glm'
+  match: "^\\s*(target_property)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load-tracker.powerflow.glm'
+    2: patterns: [{include: "#char256"}]
+}
+{
+  name: 'load-tracker.powerflow.property.glm'
+  match: "^\\s*(operation)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load-tracker.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'load-tracker.powerflow.property.glm'
+  match: "^\\s*(full_scale|setpoint|deadband|damping|output|feedback)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.load-tracker.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}]

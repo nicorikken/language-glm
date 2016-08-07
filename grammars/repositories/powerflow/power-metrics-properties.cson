@@ -1,0 +1,31 @@
+key: 'powerflow-properties-power_metrics'
+
+# class power_metrics {
+# 	function calc_metrics();
+# 	function reset_interval_metrics();
+# 	function reset_annual_metrics();
+# 	function init_reliability();
+# 	function logfile_extra();
+# 	double SAIFI; // Displays annual SAIFI values as per IEEE 1366-2003
+# 	double SAIFI_int; // Displays SAIFI values over the period specified by base_time_value as per IEEE 1366-2003
+# 	double SAIDI; // Displays annual SAIDI values as per IEEE 1366-2003
+# 	double SAIDI_int; // Displays SAIDI values over the period specified by base_time_value as per IEEE 1366-2003
+# 	double CAIDI; // Displays annual CAIDI values as per IEEE 1366-2003
+# 	double CAIDI_int; // Displays SAIDI values over the period specified by base_time_value as per IEEE 1366-2003
+# 	double ASAI; // Displays annual AISI values as per IEEE 1366-2003
+# 	double ASAI_int; // Displays AISI values over the period specified by base_time_value as per IEEE 1366-2003
+# 	double MAIFI; // Displays annual MAIFI values as per IEEE 1366-2003
+# 	double MAIFI_int; // Displays MAIFI values over the period specified by base_time_value as per IEEE 1366-2003
+# 	double base_time_value[s]; // time period over which _int values are claculated
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'power-metrics.powerflow.property.glm'
+  match: "^\\s*((?:SAIDI|SAIFI|ASAI|CAIDI|MAIFI)(?:_int)?|base_time_value)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.power-metrics.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+  }]

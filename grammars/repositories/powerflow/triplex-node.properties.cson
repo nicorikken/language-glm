@@ -1,0 +1,117 @@
+key: 'powerflow-properties-triplex_node'
+
+# class triplex_node {
+# 	parent powerflow_object;
+# 	class powerflow_object {
+# 		set {A=1, B=2, C=4, D=256, N=8, S=112, G=128} phases;
+# 		double nominal_voltage[V];
+# 	}
+#
+# 	function delta_linkage_node();
+# 	function interupdate_pwr_object();
+# 	function delta_freq_pwr_object();
+# 	enumeration {SWING=2, PV=1, PQ=0} bustype; // defines whether the node is a PQ, PV, or SWING node
+# 	set {HASSOURCE=1} busflags; // flag indicates node has a source for voltage, i.e. connects to the swing node
+# 	object reference_bus; // reference bus from which frequency is defined
+# 	double maximum_voltage_error[V]; // convergence voltage limit or convergence criteria
+# 	complex voltage_1[V]; // bus voltage, phase 1 to ground
+# 	complex voltage_2[V]; // bus voltage, phase 2 to ground
+# 	complex voltage_N[V]; // bus voltage, phase N to ground
+# 	complex voltage_12[V]; // bus voltage, phase 1 to 2
+# 	complex voltage_1N[V]; // bus voltage, phase 1 to N
+# 	complex voltage_2N[V]; // bus voltage, phase 2 to N
+# 	complex current_1[A]; // constant current load on phase 1, also acts as accumulator
+# 	complex current_2[A]; // constant current load on phase 2, also acts as accumulator
+# 	complex current_N[A]; // constant current load on phase N, also acts as accumulator
+# 	double current_1_real[A]; // constant current load on phase 1, real
+# 	double current_2_real[A]; // constant current load on phase 2, real
+# 	double current_N_real[A]; // constant current load on phase N, real
+# 	double current_1_reac[A]; // constant current load on phase 1, imag
+# 	double current_2_reac[A]; // constant current load on phase 2, imag
+# 	double current_N_reac[A]; // constant current load on phase N, imag
+# 	complex current_12[A]; // constant current load on phase 1 to 2
+# 	double current_12_real[A]; // constant current load on phase 1 to 2, real
+# 	double current_12_reac[A]; // constant current load on phase 1 to 2, imag
+# 	complex residential_nominal_current_1[A]; // posted current on phase 1 from a residential object, if attached
+# 	complex residential_nominal_current_2[A]; // posted current on phase 2 from a residential object, if attached
+# 	complex residential_nominal_current_12[A]; // posted current on phase 1 to 2 from a residential object, if attached
+# 	double residential_nominal_current_1_real[A]; // posted current on phase 1, real, from a residential object, if attached
+# 	double residential_nominal_current_1_imag[A]; // posted current on phase 1, imag, from a residential object, if attached
+# 	double residential_nominal_current_2_real[A]; // posted current on phase 2, real, from a residential object, if attached
+# 	double residential_nominal_current_2_imag[A]; // posted current on phase 2, imag, from a residential object, if attached
+# 	double residential_nominal_current_12_real[A]; // posted current on phase 1 to 2, real, from a residential object, if attached
+# 	double residential_nominal_current_12_imag[A]; // posted current on phase 1 to 2, imag, from a residential object, if attached
+# 	complex power_1[VA]; // constant power on phase 1 (120V)
+# 	complex power_2[VA]; // constant power on phase 2 (120V)
+# 	complex power_12[VA]; // constant power on phase 1 to 2 (240V)
+# 	double power_1_real[W]; // constant power on phase 1, real
+# 	double power_2_real[W]; // constant power on phase 2, real
+# 	double power_12_real[W]; // constant power on phase 1 to 2, real
+# 	double power_1_reac[VAr]; // constant power on phase 1, imag
+# 	double power_2_reac[VAr]; // constant power on phase 2, imag
+# 	double power_12_reac[VAr]; // constant power on phase 1 to 2, imag
+# 	complex shunt_1[S]; // constant shunt impedance on phase 1
+# 	complex shunt_2[S]; // constant shunt impedance on phase 2
+# 	complex shunt_12[S]; // constant shunt impedance on phase 1 to 2
+# 	complex impedance_1[Ohm]; // constant series impedance on phase 1
+# 	complex impedance_2[Ohm]; // constant series impedance on phase 2
+# 	complex impedance_12[Ohm]; // constant series impedance on phase 1 to 2
+# 	double impedance_1_real[Ohm]; // constant series impedance on phase 1, real
+# 	double impedance_2_real[Ohm]; // constant series impedance on phase 2, real
+# 	double impedance_12_real[Ohm]; // constant series impedance on phase 1 to 2, real
+# 	double impedance_1_reac[Ohm]; // constant series impedance on phase 1, imag
+# 	double impedance_2_reac[Ohm]; // constant series impedance on phase 2, imag
+# 	double impedance_12_reac[Ohm]; // constant series impedance on phase 1 to 2, imag
+# 	bool house_present; // boolean for detecting whether a house is attached, not an input
+# 	enumeration {OUT_OF_SERVICE=0, IN_SERVICE=1} service_status; // In and out of service flag
+# 	double service_status_double; // In and out of service flag - type double - will indiscriminately override service_status - useful for schedules
+# 	double previous_uptime[min]; // Previous time between disconnects of node in minutes
+# 	double current_uptime[min]; // Current time since last disconnect of node in minutes
+# 	object topological_parent; // topological parent as per GLM configuration
+# }
+
+patterns: [{
+  include: "#powerflow-properties-powerflow_object"
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(bustype|service_status)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(busflags)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#set"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(reference_bus|topological_parent)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(maximum_voltage_error|current_(?:1|2|12|N)_rea[lc]|residential_nominal_current_(?:1|2|12)_(?:real|imag)|(?:power|impedance)_(?:1|2|12)_rea[lc]|service_status_double|(?:previous|current)_uptime)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(voltage_(?:1|2|N|12|1N|2N)|current_(?:1|2|N|12)|residential_nominal_current_(?:1|2|12)|(?:power|shunt|impedance)_(?:1|2|12))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#complex"}]
+}
+{
+  name: 'triplex_node.powerflow.property.glm'
+  match: "^\\s*(house_present)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.triplex_node.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+}]

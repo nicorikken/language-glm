@@ -1,9 +1,0 @@
-key: 'powerflow-properties-underground_line'
-
-patterns: [{
-  name: 'underground-line.powerflow.property.glm'
-  match: "^\\s*(outer_diameter|conductor_(?:gmr|diameter|resistance)|neutral_(?:gmr|diameter|resistance|strands)|insulation_relative_permitivitty|shield_(?:gmr|resistance)|rating\.(?:summer|winter)\.(?:continuous|emergency))\\s+([^;]*)(?=\\s*;)"
-  captures:
-    1: name: 'entity.name.function.underground-line.powerflow.glm'
-    2: patterns: [{include: "#wildcard-element"}] #TODO
-}]

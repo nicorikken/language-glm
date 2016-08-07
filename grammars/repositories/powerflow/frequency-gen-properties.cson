@@ -1,0 +1,48 @@
+key: 'powerflow-properties-frequency_gen'
+
+# class frequency_gen {
+# 	enumeration {AUTO=1, OFF=0} Frequency_Mode; // Frequency object operations mode
+# 	double Frequency[Hz]; // Instantaneous frequency value
+# 	double FreqChange[Hz/s]; // Frequency change from last timestep
+# 	double Deadband[Hz]; // Frequency deadband of the governor
+# 	double Tolerance[%]; // % threshold a power difference must be before it is cared about
+# 	double M[pu*s]; // Inertial constant of the system
+# 	double D[%]; // Load-damping constant
+# 	double Rated_power[W]; // Rated power of system (base power)
+# 	double Gen_power[W]; // Mechanical power equivalent
+# 	double Load_power[W]; // Last sensed load value
+# 	double Gov_delay[s]; // Governor delay time
+# 	double Ramp_rate[W/s]; // Ramp ideal ramp rate
+# 	double Low_Freq_OI[Hz]; // Low frequency setpoint for GFA devices
+# 	double High_Freq_OI[Hz]; // High frequency setpoint for GFA devices
+# 	double avg24[Hz]; // Average of last 24 hourly instantaneous measurements
+# 	double std24[Hz]; // Standard deviation of last 24 hourly instantaneous measurements
+# 	double avg168[Hz]; // Average of last 168 hourly instantaneous measurements
+# 	double std168[Hz]; // Standard deviation of last 168 hourly instantaneous measurements
+# 	int32 Num_Resp_Eqs; // Total number of equations the response can contain
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'frequency_gen.powerflow.property.glm'
+  match: "^\\s*(Frequency_Mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.frequency_gen.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}
+{
+  name: 'frequency_gen.powerflow.property.glm'
+  match: "^\\s*(Frequency|FreqChange|Deadband|Tolerance|M|D|Rated_power|Gen_power|Load_power|Gov_delay|Ramp_rate|Low_Freq_OI|High_Freq_OI|avg24|std24|avg168|std168)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.frequency_gen.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'frequency_gen.powerflow.property.glm'
+  match: "^\\s*(Num_Resp_Eqs)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.frequency_gen.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
+}]

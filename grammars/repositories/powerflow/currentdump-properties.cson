@@ -1,0 +1,41 @@
+key: 'powerflow-properties-currentdump'
+
+# class currdump {
+# 	char32 group; // the group ID to output data for (all links if empty)
+# 	timestamp runtime; // the time to check current data
+# 	char256 filename; // the file to dump the current data into
+# 	int32 runcount; // the number of times the file has been written to
+# 	enumeration {polar=1, rect=0} mode;
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(filename|group)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#char32"}]
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(runtime)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#timestamp"}]
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(runcount)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
+}
+{
+  name: 'currentdump.powerflow.property.glm'
+  match: "^\\s*(mode)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.currentdump.powerflow.glm'
+    2: patterns: [{include: "#enumeration"}]
+}]

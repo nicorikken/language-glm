@@ -1,0 +1,58 @@
+key: 'powerflow-properties-restoration'
+
+# class restoration {
+# 	function perform_restoration();
+# 	int32 reconfig_attempts; // Number of reconfigurations/timestep to try before giving up
+# 	int32 reconfig_iteration_limit; // Number of iterations to let PF go before flagging this as a bad reconfiguration
+# 	object source_vertex; // Source vertex object for reconfiguration
+# 	object faulted_section; // Faulted section for reconfiguration
+# 	char1024 feeder_power_limit; // Comma-separated power limit (VA) for feeders during reconfiguration
+# 	char1024 feeder_power_links; // Comma-separated list of link-based objects for monitoring power through
+# 	char1024 feeder_vertex_list; // Comma-separated object list that defines the feeder vertices
+# 	char1024 microgrid_power_limit; // Comma-separated power limit (complex VA) for microgrids during reconfiguration
+# 	char1024 microgrid_power_links; // Comma-separated list of link-based objects for monitoring power through
+# 	char1024 microgrid_vertex_list; // Comma-separated object list that defines the microgrid vertices
+# 	double lower_voltage_limit[pu]; // Lower voltage limit for the reconfiguration validity checks - per unit
+# 	double upper_voltage_limit[pu]; // Upper voltage limit for the reconfiguration validity checks - per unit
+# 	char1024 output_filename; // Output text file name to describe final or attempted switching operations
+# 	bool generate_all_scenarios; // Flag to determine if restoration reconfiguration and continues, or explores the full space
+# }
+
+patterns: [{
+  include: "#object-properties-common"
+}
+{
+  name: 'restoration.powerflow.property.glm'
+  match: "^\\s*(reconfig_(?:attempts|iteration_limit))\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.restoration.powerflow.glm'
+    2: patterns: [{include: "#int32"}]
+}
+{
+  name: 'restoration.powerflow.property.glm'
+  match: "^\\s*(source_vertex|faulted_section)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.restoration.powerflow.glm'
+    2: patterns: [{include: "#object"}]
+}
+{
+  name: 'restoration.powerflow.property.glm'
+  match: "^\\s*((?:feeder|microgrid)_(?:power_limit|power_links|vertex_list)|output_filename)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.restoration.powerflow.glm'
+    2: patterns: [{include: "#char1024"}]
+}
+{
+  name: 'restoration.powerflow.property.glm'
+  match: "^\\s*((?:lower|upper)_voltage_limit)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.restoration.powerflow.glm'
+    2: patterns: [{include: "#double"}]
+}
+{
+  name: 'restoration.powerflow.property.glm'
+  match: "^\\s*(generate_all_scenarios)\\s+([^;]*)(?=\\s*;)"
+  captures:
+    1: name: 'entity.name.function.restoration.powerflow.glm'
+    2: patterns: [{include: "#boolean"}]
+  }]
